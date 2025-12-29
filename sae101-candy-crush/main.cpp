@@ -2,7 +2,10 @@
 #include <cstdlib>
 #include <vector>
 #include <iomanip>
+#include "fichierfonction1.h"
 using namespace std;
+//using namespace ansiEscapeAffichage;
+//using namespace manipulationDeVecteur;
 // Début des alias
 typedef vector <unsigned> CVLigne; // un type représentant une ligne de la grille
 typedef vector <CVLigne> CMatrice; // un type représentant la grille
@@ -10,20 +13,8 @@ typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
 //Début de la déclaration des constantes
 const unsigned KReset   (0);
-const unsigned KNoir    (30);
-const unsigned KRouge   (31);
-const unsigned KVert    (32);
-const unsigned KJaune   (33);
-const unsigned KBleu    (34);
-const unsigned KMAgenta (35);
-const unsigned KCyan    (36);
 const unsigned KNbDeBonbons (4);
 const unsigned KImpossible (999);
-
-//Début des signatures
-void nettoyerLEcran ();
-void couleur (const unsigned & coul);
-void couleurBonbon(const unsigned & bonbon);
 
 void InitiationGrille (CMatrice & grille, size_t taille)
 {
@@ -33,54 +24,28 @@ void InitiationGrille (CMatrice & grille, size_t taille)
         for (unsigned & ligne : col) ligne = rand()%(KNbDeBonbons)+1; // on choisit un nb random entre [1,nbCandies]
     }
 }
-
 void afficherLaGrille (const CMatrice & grille)
 {
-    nettoyerLEcran(); //on nettoie le screen
+    ansiEscapeAffichage::nettoyerLEcran(); //on nettoie le screen
     for (const CVLigne & uneLigne : grille) // On parcourt le vect CMatrice
     {
         for (const unsigned & cellule : uneLigne) //On parcourt chaque ligne de la matrice
         {
             if (cellule >= 1 && cellule <= KNbDeBonbons) //il faut que la cellule corresponde à un bonbon
             {
-                couleurBonbon(cellule); // on affecte chaque case à une couleur selon sa valeur
+                ansiEscapeAffichage::couleurBonbon(cellule); // on affecte chaque case à une couleur selon sa valeur
                 cout << setw(3) << cellule;// on espace de 2 et le 3eme charactere est la case
             }
             else
             {
-                couleur(KReset);
+                ansiEscapeAffichage::couleur(KReset);
                 cout << setw(3) << ' '; //si ça correspond pas on a une case vide
             }
         }
         cout << endl; // saut de ligne à chaque ligne de la matrice
     }
-    couleur(KReset); // on remet la couleur à la normale
+    ansiEscapeAffichage::couleur(KReset); // on remet la couleur à la normale
 }
-void couleurBonbon(const unsigned & bonbon)
-{
-    switch (bonbon)
-    {
-    case 1 : //bonbon rouge
-        couleur(KRouge+10);
-        break;
-    case 2 :
-        couleur(KVert+10); //bonbon vert
-        break;
-    case 3 :
-        couleur(KBleu+10); //bonbon bleu
-        break;
-    case 4 :
-        couleur(KJaune+10); //bonbon jaune
-    }
-}
-
-void nettoyerLEcran () {
-    cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
-}
-void couleur (const unsigned & coul) {
-    cout << "\033[" << coul <<"m"; //On change de couleur avec coul le code couleur
-}
-
 void faireUnMouvement (CMatrice & grille,const CPosition & pos,char direction)
 {
     if ( ((pos.first <= grille.size()-1)) && ((pos.second <= grille.size()-1))) //C'est des unsigned et on a donc pas besoin de la condition >=0
@@ -225,12 +190,13 @@ bool auMoinsTroisDansLaLigne (const CMatrice & grille, CPosition & pos, unsigned
 
 vector <unsigned> & suppressionDElement (vector <unsigned> & VTemporaire, const size_t & positionDuDebut)
 
-{
-    //l'élément qui se trouve dans cette position est supprimé du vector
-    for(size_t i (positionDuDebut);i < VTemporaire.size()-1;++i) VTemporaire[i]=VTemporaire[i+1];
-    VTemporaire.resize(VTemporaire.size()-1);
-    return VTemporaire;
-}
+ {
+     //l'élément qui se trouve dans cette position est supprimé du vector
+     for(size_t i (positionDuDebut);i < VTemporaire.size()-1;++i) VTemporaire[i]=VTemporaire[i+1];
+     VTemporaire.resize(VTemporaire.size()-1);
+     return VTemporaire;
+ }
+
 vector <unsigned> & insertionDElement (vector <unsigned> & VTemporaire,const size_t pos,const unsigned val)
 {
     //On insère un élement à une certaine position
@@ -309,26 +275,6 @@ int main()
     CMatrice matrice;
     InitiationGrille(matrice,8);
     afficherLaGrille(matrice);
-    /*
-    if (auMoinsTroisDansLaColonne(matrice,p,h))
-    {
-        cout << "la position en ligne : " << p.second <<endl;
-        cout << "la position en colonne : " << p.first <<endl;
-        cout << "il y a  : " << h <<" d'alignées"<<endl;
-        supprimmerUneColonne(matrice,p,h);
-        afficherLaGrille(matrice);
-    }
-    */
-    /*
-    while(auMoinsTroisDansLaColonne(matrice,p,h))
-    {
-        cout << "la position en ligne : " << p.second <<endl;
-        cout << "la position en colonne : " << p.first <<endl;
-        cout << "il y a  : " << h <<" d'alignées"<<endl;
-        supprimmerUneColonne(matrice,p,h);
-        afficherLaGrille(matrice);
-    }
-    */
     test1_row_column(matrice,p,h);
     //test2_column_row(matrice,p,h);
     return 0;
