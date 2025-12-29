@@ -4,8 +4,8 @@
 #include <iomanip>
 using namespace std;
 // Début des alias
-typedef vector <unsigned> CVLine; // un type représentant une ligne de la grille
-typedef vector <CVLine> CMat; // un type représentant la grille
+typedef vector <unsigned> CVLigne; // un type représentant une ligne de la grille
+typedef vector <CVLigne> CMatrice; // un type représentant la grille
 typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
 //Début de la déclaration des constantes
@@ -17,31 +17,31 @@ const unsigned KJaune   (33);
 const unsigned KBleu    (34);
 const unsigned KMAgenta (35);
 const unsigned KCyan    (36);
-const unsigned KnbCandies (4);
+const unsigned KNbDeBonbons (4);
 const unsigned KImpossible (999);
 
 //Début des signatures
-void clearScreen ();
+void nettoyerLEcran ();
 void couleur (const unsigned & coul);
 void couleurBonbon(const unsigned & bonbon);
 
-void InitGrid (CMat & Grid, size_t Size)
+void InitiationGrille (CMatrice & grille, size_t taille)
 {
-    Grid.resize(Size, CVLine (Size));
-    for (CVLine & col : Grid)
+    grille.resize(taille, CVLigne (taille));
+    for (CVLigne & col : grille)
     {
-        for (unsigned & lign : col) lign = rand()%(KnbCandies)+1; // on choisit un nb random entre [1,nbCandies]
+        for (unsigned & ligne : col) ligne = rand()%(KNbDeBonbons)+1; // on choisit un nb random entre [1,nbCandies]
     }
 }
 
-void displayGrid (const CMat & grid)
+void afficherLaGrille (const CMatrice & grille)
 {
-    clearScreen(); //on nettoie le screen
-    for (const CVLine & uneLigne : grid) // On parcourt le vect CMat
+    nettoyerLEcran(); //on nettoie le screen
+    for (const CVLigne & uneLigne : grille) // On parcourt le vect CMatrice
     {
         for (const unsigned & cellule : uneLigne) //On parcourt chaque ligne de la matrice
         {
-            if (cellule >= 1 && cellule <= KnbCandies) //il faut que la cellule corresponde à un bonbon
+            if (cellule >= 1 && cellule <= KNbDeBonbons) //il faut que la cellule corresponde à un bonbon
             {
                 couleurBonbon(cellule); // on affecte chaque case à une couleur selon sa valeur
                 cout << setw(3) << cellule;// on espace de 2 et le 3eme charactere est la case
@@ -74,44 +74,44 @@ void couleurBonbon(const unsigned & bonbon)
     }
 }
 
-void clearScreen () {
+void nettoyerLEcran () {
     cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
 }
 void couleur (const unsigned & coul) {
     cout << "\033[" << coul <<"m"; //On change de couleur avec coul le code couleur
 }
 
-void MakeAMove (CMat & Grid,const CPosition & pos,char Direction)
+void faireUnMouvement (CMatrice & grille,const CPosition & pos,char direction)
 {
-    if ( ((pos.first <= Grid.size()-1)) && ((pos.second <= Grid.size()-1))) //C'est des unsigned et on a donc pas besoin de la condition >=0
+    if ( ((pos.first <= grille.size()-1)) && ((pos.second <= grille.size()-1))) //C'est des unsigned et on a donc pas besoin de la condition >=0
     {
-        switch (tolower(Direction)) //On interprete les char Maj
+        switch (tolower(direction)) //On interprete les char Maj
         {
         case 'z' :
             if (pos.second > 0 ) //On évite la ligne qui est tt en haut
             {
-                swap(Grid[pos.second][pos.first],Grid[pos.second-1][pos.first]); //On permute la case en haut
+                swap(grille[pos.second][pos.first],grille[pos.second-1][pos.first]); //On permute la case en haut
                 break;
             }
             else break;
         case 's' :
-            if (pos.second < Grid.size()-1) //On évite la ligne qui est tt en bas
+            if (pos.second < grille.size()-1) //On évite la ligne qui est tt en bas
             {
-                swap(Grid[pos.second][pos.first],Grid[pos.second+1][pos.first]); //On permute la case en bas
+                swap(grille[pos.second][pos.first],grille[pos.second+1][pos.first]); //On permute la case en bas
                 break;
             }
             else break;
         case 'a' :
             if (pos.first > 0) //On évite la colonne qui est tt à gauche
             {
-                swap(Grid[pos.second][pos.first],Grid[pos.second][pos.first-1]); //On permute la case à gauche
+                swap(grille[pos.second][pos.first],grille[pos.second][pos.first-1]); //On permute la case à gauche
                 break;
             }
             else break;
         case 'e' :
-            if (pos.first < Grid.size()-1) //On évite la colonne qui est tt à droite
+            if (pos.first < grille.size()-1) //On évite la colonne qui est tt à droite
             {
-                swap(Grid[pos.second][pos.first],Grid[pos.second][pos.first+1]); //On permute la case à droite
+                swap(grille[pos.second][pos.first],grille[pos.second][pos.first+1]); //On permute la case à droite
                 break;
             }
             else break;
@@ -120,43 +120,43 @@ void MakeAMove (CMat & Grid,const CPosition & pos,char Direction)
         }
     }
 }
-bool atLeastThreeInAColumn (const CMat & grid, CPosition & pos, unsigned & howMany)
+bool auMoinsTroisDansLaColonne (const CMatrice & grille, CPosition & pos, unsigned & combien)
 {
     bool siCEstAlignee (false);
-    howMany = 1;
-    for (size_t j (0);j < size(grid);++j) //On itère les indices des colonnes
+    combien = 1;
+    for (size_t j (0);j < size(grille);++j) //On itère les indices des colonnes
     {
-        for (size_t i (0);i < size(grid)-1 && !siCEstAlignee;++i)
+        for (size_t i (0);i < size(grille)-1 && !siCEstAlignee;++i)
         {
             /*
             On parcours la colonne en itérant l'indice de la ligne
             et on arrête lorsque le boolen est vrai ou on finit le parcours
             */
-            if (grid[i][j] != KImpossible && grid[i][j] == grid[i+1][j])
+            if (grille[i][j] != KImpossible && grille[i][j] == grille[i+1][j])
             {
                 /*
                 On vérifie que la valeur elle ne soit pas
                 vide ensuite on regarde si la valeur suivante est la même
                 */
-                while ((i < size(grid)-1) &&  grid[i][j]==grid[i+1][j])
+                while ((i < size(grille)-1) &&  grille[i][j]==grille[i+1][j])
                 {
                     /*
                     on compte il y  a combien de bonbons d'affilées et on sort lorsqu'on dépasse
                     ou la valeur suivante n'est plus la même
                      */
-                    ++howMany;
+                    ++combien;
                     ++i;
                 }
-                if (howMany >= 3)
+                if (combien >= 3)
                 {
                     /*
                     s'il y a plus de 3 bonbons d'affilées après le parcours d'un colonne on met
                     le booleen à vrai,on enregistre la position de la ligne
                     */
                     siCEstAlignee = true;
-                    pos.second = i-howMany+1;
+                    pos.second = i-combien+1;
                 }
-                else howMany =1;
+                else combien =1;
             }
         }
         if (siCEstAlignee)
@@ -171,43 +171,43 @@ bool atLeastThreeInAColumn (const CMat & grid, CPosition & pos, unsigned & howMa
     }
     return siCEstAlignee;
 }
-bool atLeastThreeInARow (const CMat & grid, CPosition & pos, unsigned & howMany)
+bool auMoinsTroisDansLaLigne (const CMatrice & grille, CPosition & pos, unsigned & combien)
 {
     bool siCEstAlignee (false);
-    howMany = 1;
-    for (size_t i (0);i < size(grid);++i) //On itère les indices des lignes
+    combien = 1;
+    for (size_t i (0);i < size(grille);++i) //On itère les indices des lignes
     {
-        for (size_t j(0);j < size(grid)-1 && !siCEstAlignee;++j)
+        for (size_t j(0);j < size(grille)-1 && !siCEstAlignee;++j)
         {
             /*
             On parcours la ligne en itérant l'indice de la colonne
             et on arrête lorsque le boolen est vrai ou on finit le parcours
             */
-            if (grid[i][j] != KImpossible && grid[i][j] == grid[i][j+1])
+            if (grille[i][j] != KImpossible && grille[i][j] == grille[i][j+1])
             {
                 /*
                 On vérifie que la valeur elle ne soit pas
                 vide ensuite on regarde si la valeur suivante est la même
                 */
-                while ((j < size(grid)-1) &&  grid[i][j]==grid[i][j+1])
+                while ((j < size(grille)-1) &&  grille[i][j]==grille[i][j+1])
                 {
                     /*
                     on compte il y  a combien de bonbons d'affilées et on sort lorsqu'on dépasse
                     ou la valeur suivante n'est plus la même
                      */
-                    ++howMany;
+                    ++combien;
                     ++j;
                 }
-                if (howMany >= 3)
+                if (combien >= 3)
                 {
                     /*
                     s'il y a plus de 3 bonbons d'affilées après le parcours d'une ligne on met
                     le booleen à vrai,on enregistre la position de la colonne
                     */
                     siCEstAlignee = true;
-                    pos.first = j-howMany+1;
+                    pos.first = j-combien+1;
                 }
-                else howMany =1;
+                else combien =1;
             }
         }
         if (siCEstAlignee)
@@ -223,15 +223,15 @@ bool atLeastThreeInARow (const CMat & grid, CPosition & pos, unsigned & howMany)
     return siCEstAlignee;
 }
 
-vector <unsigned> & Delete (vector <unsigned> & VTemporaire, const size_t & PosBeg)
+vector <unsigned> & suppressionDElement (vector <unsigned> & VTemporaire, const size_t & positionDuDebut)
 
 {
     //l'élément qui se trouve dans cette position est supprimé du vector
-    for(size_t i (PosBeg);i < VTemporaire.size()-1;++i) VTemporaire[i]=VTemporaire[i+1];
+    for(size_t i (positionDuDebut);i < VTemporaire.size()-1;++i) VTemporaire[i]=VTemporaire[i+1];
     VTemporaire.resize(VTemporaire.size()-1);
     return VTemporaire;
 }
-vector <unsigned> & insertionElement (vector <unsigned> & VTemporaire,const size_t pos,const unsigned val)
+vector <unsigned> & insertionDElement (vector <unsigned> & VTemporaire,const size_t pos,const unsigned val)
 {
     //On insère un élement à une certaine position
     VTemporaire.resize(VTemporaire.size()+1);
@@ -240,18 +240,18 @@ vector <unsigned> & insertionElement (vector <unsigned> & VTemporaire,const size
     return VTemporaire;
 }
 
-vector <unsigned> & Move (vector <unsigned> & VTemporaire, const size_t & PosBeg, const size_t & PosEnd)
+vector <unsigned> & deplacerUnElement (vector <unsigned> & VTemporaire, const size_t & positionDuDebut, const size_t & positionDeFin)
 {
     /*
-    On combine les fonctions Delete et Insertion pour déplacer un élement
+    On combine les fonctions suppressionDElement et Insertion pour déplacer un élement
     on met les valeurs à KImpossible
     */
-    unsigned val = VTemporaire[PosBeg];
-    Delete(VTemporaire,PosBeg);
-    insertionElement(VTemporaire,PosEnd,val);
+    unsigned val = VTemporaire[positionDuDebut];
+    suppressionDElement(VTemporaire,positionDuDebut);
+    insertionDElement(VTemporaire,positionDeFin,val);
     return VTemporaire;
 }
-void removalInColumn (CMat & grid, const CPosition & pos, unsigned  howMany)
+void supprimmerUneColonne (CMatrice & grille, const CPosition & pos, unsigned  combien)
 {
     /*
     On extrait une colonne en l'extrayant dans un vecteur
@@ -260,73 +260,73 @@ void removalInColumn (CMat & grid, const CPosition & pos, unsigned  howMany)
     On injecte les valeurs du vector dans la colonne de la grille
     */
     vector <unsigned> VTemporaire;
-    VTemporaire.resize(grid.size());
-    for (size_t i (0); i < grid.size() ;++i) VTemporaire[i] = grid[i][pos.first];
-    for (size_t i (pos.second); i < pos.second+howMany ;++i) insertionElement(Delete(VTemporaire,i),0,KImpossible);
-    for (size_t i (0); i < grid.size() ;++i) grid[i][pos.first] = VTemporaire[i];
+    VTemporaire.resize(grille.size());
+    for (size_t i (0); i < grille.size() ;++i) VTemporaire[i] = grille[i][pos.first];
+    for (size_t i (pos.second); i < pos.second+combien ;++i) insertionDElement(suppressionDElement(VTemporaire,i),0,KImpossible);
+    for (size_t i (0); i < grille.size() ;++i) grille[i][pos.first] = VTemporaire[i];
 }
-void removalInLigne (CMat & grid, const CPosition & pos, unsigned  howMany)
+void supprimmerUneLigne (CMatrice & grille, const CPosition & pos, unsigned  combien)
 {
 
     /*
     On supprimme une ligne en supprimmant en supprimmant une valeur dde chaque colonne le nombre de fois ou le motif se répète
     */
-    for (size_t i (pos.first); i < pos.first+howMany; ++i) removalInColumn (grid,CPosition {i,pos.second},1);
+    for (size_t i (pos.first); i < pos.first+combien; ++i) supprimmerUneColonne (grille,CPosition {i,pos.second},1);
 }
 
-void test1_row_column (CMat & matrice,CPosition p,unsigned h)
+void test1_row_column (CMatrice & matrice,CPosition p,unsigned h)
 {
-    while(atLeastThreeInARow(matrice,p,h))
+    while(auMoinsTroisDansLaLigne(matrice,p,h))
     {
-        removalInLigne (matrice,p,h);
-        displayGrid(matrice);
+        supprimmerUneLigne (matrice,p,h);
+        afficherLaGrille(matrice);
     }
-    while(atLeastThreeInAColumn(matrice,p,h))
+    while(auMoinsTroisDansLaColonne(matrice,p,h))
     {
-        removalInColumn (matrice,p,h);
-        displayGrid(matrice);
+        supprimmerUneColonne (matrice,p,h);
+        afficherLaGrille(matrice);
     }
 }
-void test2_column_row (CMat & matrice,CPosition p,unsigned h)
+void test2_column_row (CMatrice & matrice,CPosition p,unsigned h)
 {
-    while(atLeastThreeInAColumn(matrice,p,h))
+    while(auMoinsTroisDansLaColonne(matrice,p,h))
     {
-        removalInColumn (matrice,p,h);
-        displayGrid(matrice);
+        supprimmerUneColonne (matrice,p,h);
+        afficherLaGrille(matrice);
     }
-    while(atLeastThreeInARow(matrice,p,h))
+    while(auMoinsTroisDansLaLigne(matrice,p,h))
     {
-        removalInLigne (matrice,p,h);
-        displayGrid(matrice);
+        supprimmerUneLigne (matrice,p,h);
+        afficherLaGrille(matrice);
     }
-    displayGrid(matrice);
+    afficherLaGrille(matrice);
 }
 int main()
 {
     //cout << "\033[" << 41 <<"m";
     unsigned h (1);
     CPosition p {0,0};
-    CMat matrice;
-    InitGrid(matrice,8);
-    displayGrid(matrice);
+    CMatrice matrice;
+    InitiationGrille(matrice,8);
+    afficherLaGrille(matrice);
     /*
-    if (atLeastThreeInAColumn(matrice,p,h))
+    if (auMoinsTroisDansLaColonne(matrice,p,h))
     {
         cout << "la position en ligne : " << p.second <<endl;
         cout << "la position en colonne : " << p.first <<endl;
         cout << "il y a  : " << h <<" d'alignées"<<endl;
-        removalInColumn(matrice,p,h);
-        displayGrid(matrice);
+        supprimmerUneColonne(matrice,p,h);
+        afficherLaGrille(matrice);
     }
     */
     /*
-    while(atLeastThreeInAColumn(matrice,p,h))
+    while(auMoinsTroisDansLaColonne(matrice,p,h))
     {
         cout << "la position en ligne : " << p.second <<endl;
         cout << "la position en colonne : " << p.first <<endl;
         cout << "il y a  : " << h <<" d'alignées"<<endl;
-        removalInColumn(matrice,p,h);
-        displayGrid(matrice);
+        supprimmerUneColonne(matrice,p,h);
+        afficherLaGrille(matrice);
     }
     */
     test1_row_column(matrice,p,h);
