@@ -5,6 +5,9 @@
  *      Joueur 2 : ‘I’ (gauche), ‘O’ (haut), ‘P’ (droite), ‘L’ (bas)
 */
 
+/*
+
+
 #include <iostream>
 #include <vector>
 
@@ -24,10 +27,10 @@ const unsigned KBleu    (34);
 const unsigned KMAgenta (35);
 const unsigned KCyan    (36);
 
-const unsigned KTailleGrille (10); // Longueur & largeur de la grille de jeu
-const unsigned KCoupsMax     (20); // Nombre de coups possibles dans la partie
-const unsigned KNbSymboles   (5); // Nombre de symboles représentés dans la grille
-const unsigned KImpossible   (0); // symbole nul
+const unsigned KTailleGrille = 10; // Longueur & largeur de la grille de jeu
+const unsigned KCoupsMax = 20; // Nombre de coups possibles dans la partie
+const unsigned KNbSymboles = 5; // Nombre de symboles représentés dans la grille
+const unsigned KImpossible = 0; // symbole nul
 
 // change la couleur du terminal
 void changerCouleur (const unsigned & couleur) {
@@ -41,22 +44,15 @@ void effacerEcran () {
 
 // initialise toutes les cases de la grille avec des nombres tirés au hasard entre 1 et une constante
 // l'algorithme empêche les triplets ou plus
-void initGrille (CMat & grille) {
-    grille.resize(KTailleGrille, CVLine (KTailleGrille));
-    for (unsigned i (0); i < KTailleGrille; ++i) {
-        for (unsigned j (0); j < KTailleGrille; ++j) {
+void initGrille (CMat & grille, unsigned taille) {
+    grille.resize(taille, CVLine (taille));
+    for (unsigned i (0); i < taille; ++i){
+        for (unsigned j (0); j < taille; ++j){
             do{
                 grille[i][j] = rand() % KNbSymboles + 1;
             }while(i >= 2 && j >= 2 && ((grille[i][j] == grille[i-1][j] && grille[i][j] == grille[i-2][j]) || (grille[i][j] == grille[i][j-1] && grille[i][j] == grille[i][j-2])));
         }
     }
-}
-
-// (re)initialise toutes les cases de la matrice à 0
-void initMat (CMat & matrice) {
-    for (CVLine & ligne : matrice)
-        for (unsigned & element : ligne)
-            element = 0;
 }
 
 // colorie les cases du grille
@@ -95,7 +91,7 @@ void afficherGrille (const CMat & grille) {
 }
 
 // Gestion des déplacements en fonction du joueur
-void faireUnMouvement (CMat & grille, const CPosition & pos, const char direction, const unsigned KJoueur) {
+void faireUnMouvement (CMat & grille, const CPosition & pos, char direction, const unsigned KJoueur) {
     if (KJoueur == 0) {
         switch (direction) {
         case 'Z':
@@ -133,131 +129,87 @@ void faireUnMouvement (CMat & grille, const CPosition & pos, const char directio
     }
 }
 
-// Modifie la matrice en fonction des suites de nombres identiques sur les mêmes lignes
-void modifieLigneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
-    for(unsigned k (i - combienDeSuite); k < i; ++k)
-        matrice[j][k] = 1;
-}
-
-// Modifie la matrice en fonction des suites de nombres identiques sur les mêmes colonnes
-void modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
-    for(unsigned k (j + combienDeSuite); k > j; --k)
-        if(matrice[k][i] != 1)
-            matrice[k][i] = 1;
-}
-
-// Detection d’une suite de nombres identiques sur la même ligne
-bool auMoinsTroisParLigne (const CMat & grille, CMat & matrice) {
-    bool drapeau (false);
-    size_t i (1);
-    size_t j (KTailleGrille - 1);
-    unsigned combienDeSuite (1);
-    while(i <= KTailleGrille - 1) {
-        if (grille[j][i] != grille[j][i - 1]) {
+// Detection d’une suite de nombres identiques sur la même colonne
+bool auMoinsTroisParColonne (const CMat & grille, CPosition & pos, unsigned & combienDeSuite) {
+    size_t i = 1;
+    combienDeSuite = 1;
+    bool result = false;
+    while(i < size(grille)) {
+        if (grille[i][pos.second] != grille[i - 1][pos.second]) {
             if (combienDeSuite >= 3) {
-                modifieLigneMatrice(i, j, combienDeSuite, matrice);
-                drapeau = true;
+                result = true;
+                break;
             }
             combienDeSuite = 1;
         }
-        else if(grille[j][i] != 0){
+        else {
+            if (i == size(grille) - 1 && combienDeSuite >= 3) result = true;
             combienDeSuite += 1;
-            if (i == KTailleGrille - 1 && combienDeSuite >= 3) {
-                modifieLigneMatrice(i + 1, j, combienDeSuite, matrice);
-                drapeau = true;
-            }
-        }
-        if((i == KTailleGrille - 1) && (j > 0)) {
-            i = 0;
-            --j;
-            combienDeSuite = 1;
         }
         ++i;
     }
-    return drapeau;
+    return result;
 }
 
-// Detection d’une suite de nombres identiques sur la même colonne
-bool auMoinsTroisParColonne (const CMat & grille, CMat & matrice) {
-    bool drapeau (false);
-    size_t i (0);
-    size_t j (KTailleGrille - 2);
-    unsigned combienDeSuite (1);
-    while(i <= KTailleGrille - 1) {
-        if (grille[j][i] != grille[j + 1][i]) {
+// Detection d’une suite de nombres identiques sur la même ligne
+bool auMoinsTroisParLigne (const CMat & grille, CPosition & pos, unsigned & combienDeSuite) {
+    // size_t i = pos.first;
+    size_t i = 1;
+    combienDeSuite = 1;
+    bool result = false;
+    while(i < size(grille)) {
+        if (grille[pos.first][i] != grille[pos.first][i - 1]) {
             if (combienDeSuite >= 3) {
-                modifieColonneMatrice(i, j, combienDeSuite, matrice);
-                drapeau = true;
+                result = true;
+                break;
             }
             combienDeSuite = 1;
         }
-        else if(grille[j][i] != 0){
+        else {
+            if (i == size(grille) - 1 && combienDeSuite >= 3) result = true;
             combienDeSuite += 1;
-            if (j == 0 && combienDeSuite >= 3) {
-                modifieColonneMatrice(i, j - 1, combienDeSuite, matrice);
-                drapeau = true;
-            }
         }
-        if((j == 0) && (i <= KTailleGrille - 1)) {
-            j = KTailleGrille - 1;
-            ++i;
-            combienDeSuite = 1;
-        }
-        --j;
+        ++i;
     }
-    return drapeau;
+    return result;
 }
 
-// Calcule le nombre de points gagnés pendant ce tour de jeu par le joueur en cours
-unsigned compteScore (CMat & matrice) {
-    unsigned score (0);
-    for(CVLine & ligne : matrice)
-        for(unsigned & element : ligne)
-            if(element == 1)
-                ++score;
-    return score;
+// Cette fonction supprime les nombres identiques successifs de la colonne
+void suppressionDansLaColonne (CMat & grille, const CPosition & pos, unsigned combienDeSuite) {
+    unsigned i = 0;
+    while(i < combienDeSuite || pos.first + i + combienDeSuite < size(grille)) {
+        grille[pos.first + i][pos.second] = grille[pos.first + i + combienDeSuite][pos.second];
+        i += 1;
+    }
+    while(pos.first + i < size(grille)) {
+        grille[pos.first + i][pos.second] = KImpossible;
+        i += 1;
+    }
 }
 
-// Supprime les nombres identiques successifs de la grille (horizontalement et vertialement)
-void suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
-    for(unsigned i (0); i < KTailleGrille - 1; ++i)
-        for(unsigned j (0); j < KTailleGrille - 1; ++j)
-            if(matrice[i][j] == 1)
-                grille[i][j] = 0;
-}
-
-// Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
-void gravite (CMat & grille) {
-    unsigned saut (0);
-    for(unsigned i (0); i < KTailleGrille - 1; ++i) {
-        for(unsigned j (KTailleGrille - 1); j > saut; --j) {
-            while(grille[j][i] == 0) {
-                swap(grille[j][i], grille[j - (1 + saut)][i]);
-                if(grille[j][i] == 0)
-                    ++saut;
-                if(saut + 1 > j)
-                    break;
-            }
-        }
-        saut = 0;
+// Cette fonction supprime les nombres identiques successifs de la ligne
+void suppressionDansLaLigne (CMat & grille, const CPosition & pos, unsigned combienDeSuite) {
+    CPosition newPos = pos;
+    for (unsigned i = 0; i < combienDeSuite; ++i) {
+        newPos.second += 1;
+        suppressionDansLaColonne (grille, newPos, 1);
     }
 }
 
 int main () {
-    unsigned joueur (0); // Stocke le joueur en cours
-    unsigned coups (0); // Stocke le nombre de coups joués
-    pair <unsigned, unsigned> score (pair(0, 0)); // Stock le score de chaque joueur
+    unsigned joueur = 0; // Stocke le joueur en cours
+    unsigned coups = 0; // Stocke le nombre de coups joués
+    pair <unsigned, unsigned> score = pair(0, 0); // Stock le score de chaque joueur
     CPosition pos; // Tuple des coordonnées du symbole à déplacer
     char coordonnée; // Variable temporaire qui stocke le choix utilisateur des coordonnées
+    unsigned nombrePoints; // Stocke le nombre de points réalisé à cette manche
+    pair <unsigned, unsigned> flag; // Drapeau qui permet de vérifier que la grille est bien valide (pas de triplet ou plus) après modification ou non
     CMat grille; // Grille qui contiendra les symboles
-    CMat matrice; // Matrice qui contiendra les emplacements des symboles à supprimer
 
     // préparation du terminal & de la grille
     changerCouleur(KReset);
     effacerEcran();
-    initGrille(grille);
-    matrice.resize(KTailleGrille, CVLine (KTailleGrille));
-    initMat(matrice);
+    initGrille(grille, KTailleGrille);
 
     // Affichage des règles
     cout << "Pour jouer vous donnerez :\n"
@@ -284,28 +236,54 @@ int main () {
         cout << "direction : " << flush;
         cin >> coordonnée;
 
-        if ((joueur == 0 && (coordonnée == 'Z' || coordonnée == 'S' || coordonnée == 'A' || coordonnée == 'E')) || (joueur == 1 && (coordonnée == 'O' || coordonnée == 'L' || coordonnée == 'I' || coordonnée == 'P'))) {
-            faireUnMouvement(grille, pos, coordonnée, joueur);
-            while(auMoinsTroisParLigne(grille, matrice) | auMoinsTroisParColonne(grille, matrice)) {
-                joueur == 0 ? score.first += compteScore(matrice) : score.second += compteScore(matrice); // met à jour le score en fonction du joueur en cours
-                suppressionDansLaGrille(grille, matrice);
-
-                cout << "\n" << endl;
-                afficherGrille(grille);
-                cout << "\n" << endl;
-
-                gravite(grille);
-                initMat(matrice);
+        faireUnMouvement(grille, pos, coordonnée, joueur);
+        flag = pair(1, 1);
+        if ((joueur == 0 && (coordonnée == 'A' || coordonnée == 'E')) || (joueur == 1 && (coordonnée == 'I' || coordonnée == 'P'))) {
+            while (flag.first != 0 && flag.second != 0) {
+                if(auMoinsTroisParColonne(grille, pos, nombrePoints)) {
+                    joueur == 0 ? score.first += nombrePoints : score.second += nombrePoints;
+                    suppressionDansLaColonne(grille, pos, nombrePoints);
+                    flag.first = 1;
+                }
+                else
+                    flag.first = 0;
+                if(auMoinsTroisParLigne(grille, pos, nombrePoints)) {
+                    joueur == 0 ? score.first += nombrePoints : score.second += nombrePoints;
+                    suppressionDansLaLigne(grille, pos, nombrePoints);
+                    flag.second = 1;
+                }
+                else
+                    flag.second = 0;
+            }
+        }
+        else if ((joueur == 0 && (coordonnée == 'Z' || coordonnée == 'S')) || (joueur == 1 && (coordonnée == 'O' || coordonnée == 'L'))) {
+            while (flag.first != 0 && flag.second != 0) {
+                if(auMoinsTroisParLigne(grille, pos, nombrePoints)) {
+                    joueur == 0 ? score.first += nombrePoints : score.second += nombrePoints;
+                    suppressionDansLaLigne(grille, pos, nombrePoints);
+                    flag.first = 1;
+                }
+                else
+                    flag.first = 0;
+                if(auMoinsTroisParColonne(grille, pos, nombrePoints)) {
+                    joueur == 0 ? score.first += nombrePoints : score.second += nombrePoints;
+                    suppressionDansLaColonne(grille, pos, nombrePoints);
+                    flag.second = 1;
+                }
+                else
+                    flag.second = 0;
             }
         }
         else {
             cout << "\nveuillez rentrer une direction valide !\n" << endl;
             continue;
         }
-        joueur = (joueur + 1) % 2; // changement du joueur
-        ++coups; // incrémentation du nombre de coups joués par les deux joueurs
+        joueur = (joueur + 1) % 2;
+        ++coups;
     }
     // affichage du score final
     cout << "Score final :\n" << "  - 1: " << score.first << "\n" << "  - 2: " << score.second;
     return 0;
 }
+
+*/
