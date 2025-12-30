@@ -99,16 +99,28 @@ void faireUnMouvement (CMat & grille, const CPosition & pos, const char directio
     if (KJoueur == 0) {
         switch (direction) {
         case 'Z':
-            swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
+            if (grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second] != 0)
+                swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         case 'S':
-            swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
+            if (grille[(pos.first + 1) % KTailleGrille][pos.second] != 0)
+                swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         case 'A':
-            swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
+            if (grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)] != 0)
+                swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         case 'E':
-            swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
+            if (grille[pos.first][(pos.second + 1) % KTailleGrille] != 0)
+                swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         default:
             break;
@@ -116,16 +128,28 @@ void faireUnMouvement (CMat & grille, const CPosition & pos, const char directio
     }else {
         switch (direction) {
         case 'O':
-            swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
+            if (grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second] != 0)
+                swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         case 'L':
-            swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
+            if (grille[(pos.first + 1) % KTailleGrille][pos.second] != 0)
+                swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         case 'I':
-            swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
+            if (grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)] != 0)
+                swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         case 'P':
-            swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
+            if (grille[pos.first][(pos.second + 1) % KTailleGrille] != 0)
+                swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
+            else
+                cout << "\nVous ne pouvez pas aller dans cette direction !\n" << endl;
             break;
         default:
             break;
@@ -135,16 +159,22 @@ void faireUnMouvement (CMat & grille, const CPosition & pos, const char directio
 
 // Modifie la matrice en fonction des suites de nombres identiques sur les mêmes lignes
 void modifieLigneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
-    for(unsigned k (i - combienDeSuite); k < i; ++k)
+    unsigned antiDepacement (0);
+    if(i < combienDeSuite) {
+        antiDepacement = 1;
+        matrice[j][0] = 1;
+    }
+    for(unsigned k (i - combienDeSuite + antiDepacement); k++ < i; )
         matrice[j][k] = 1;
 }
 
 // Modifie la matrice en fonction des suites de nombres identiques sur les mêmes colonnes
 void modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
-    for(unsigned k (j + combienDeSuite); k > j; --k)
+    for(unsigned k (j + combienDeSuite); k-- > j; ) {
+        cout << k << endl;
         if(matrice[k][i] != 1)
             matrice[k][i] = 1;
-}
+}}
 
 // Detection d’une suite de nombres identiques sur la même ligne
 bool auMoinsTroisParLigne (const CMat & grille, CMat & matrice) {
@@ -155,16 +185,22 @@ bool auMoinsTroisParLigne (const CMat & grille, CMat & matrice) {
     while(i <= KTailleGrille - 1) {
         if (grille[j][i] != grille[j][i - 1]) {
             if (combienDeSuite >= 3) {
-                modifieLigneMatrice(i, j, combienDeSuite, matrice);
+                modifieLigneMatrice(i - 1, j, combienDeSuite, matrice);
                 drapeau = true;
+                cout << "PBL1" << endl;
             }
             combienDeSuite = 1;
         }
         else if(grille[j][i] != 0){
             combienDeSuite += 1;
             if (i == KTailleGrille - 1 && combienDeSuite >= 3) {
-                modifieLigneMatrice(i + 1, j, combienDeSuite, matrice);
+                modifieLigneMatrice(i, j, combienDeSuite, matrice);
                 drapeau = true;
+                cout << "PBL2" << endl;
+                cout << combienDeSuite << endl;
+                cout << i << endl;
+                cout << j << endl;
+                afficherGrille(matrice);
             }
         }
         if((i == KTailleGrille - 1) && (j > 0)) {
@@ -186,16 +222,22 @@ bool auMoinsTroisParColonne (const CMat & grille, CMat & matrice) {
     while(i <= KTailleGrille - 1) {
         if (grille[j][i] != grille[j + 1][i]) {
             if (combienDeSuite >= 3) {
-                modifieColonneMatrice(i, j, combienDeSuite, matrice);
+                modifieColonneMatrice(i, j + 1, combienDeSuite, matrice);
                 drapeau = true;
+                cout << "PBL3" << endl;
             }
             combienDeSuite = 1;
         }
         else if(grille[j][i] != 0){
             combienDeSuite += 1;
             if (j == 0 && combienDeSuite >= 3) {
-                modifieColonneMatrice(i, j - 1, combienDeSuite, matrice);
+                modifieColonneMatrice(i, j, combienDeSuite, matrice);
                 drapeau = true;
+                cout << "PBL4\n" << endl;
+                cout << combienDeSuite << endl;
+                cout << i << endl;
+                cout << j << endl;
+                afficherGrille(matrice);
             }
         }
         if((j == 0) && (i <= KTailleGrille - 1)) {
@@ -220,8 +262,8 @@ unsigned compteScore (CMat & matrice) {
 
 // Supprime les nombres identiques successifs de la grille (horizontalement et vertialement)
 void suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
-    for(unsigned i (0); i < KTailleGrille - 1; ++i)
-        for(unsigned j (0); j < KTailleGrille - 1; ++j)
+    for(unsigned i (0); i <= KTailleGrille - 1; ++i)
+        for(unsigned j (0); j <= KTailleGrille - 1; ++j)
             if(matrice[i][j] == 1)
                 grille[i][j] = 0;
 }
@@ -229,7 +271,7 @@ void suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
 // Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
 void gravite (CMat & grille) {
     unsigned saut (0);
-    for(unsigned i (0); i < KTailleGrille - 1; ++i) {
+    for(unsigned i (0); i <= KTailleGrille - 1; ++i) {
         for(unsigned j (KTailleGrille - 1); j > saut; --j) {
             while(grille[j][i] == 0) {
                 swap(grille[j][i], grille[j - (1 + saut)][i]);
@@ -284,24 +326,29 @@ int main () {
         cout << "direction : " << flush;
         cin >> coordonnée;
 
-        if ((joueur == 0 && (coordonnée == 'Z' || coordonnée == 'S' || coordonnée == 'A' || coordonnée == 'E')) || (joueur == 1 && (coordonnée == 'O' || coordonnée == 'L' || coordonnée == 'I' || coordonnée == 'P'))) {
-            faireUnMouvement(grille, pos, coordonnée, joueur);
-            while(auMoinsTroisParLigne(grille, matrice) | auMoinsTroisParColonne(grille, matrice)) {
-                joueur == 0 ? score.first += compteScore(matrice) : score.second += compteScore(matrice); // met à jour le score en fonction du joueur en cours
-                suppressionDansLaGrille(grille, matrice);
+        if (grille[pos.first][pos.second] != 0) {
+            if ((joueur == 0 && (coordonnée == 'Z' || coordonnée == 'S' || coordonnée == 'A' || coordonnée == 'E')) || (joueur == 1 && (coordonnée == 'O' || coordonnée == 'L' || coordonnée == 'I' || coordonnée == 'P'))) {
+                faireUnMouvement(grille, pos, coordonnée, joueur);
+                while(auMoinsTroisParLigne(grille, matrice) | auMoinsTroisParColonne(grille, matrice)) {
+                    joueur == 0 ? score.first += compteScore(matrice) : score.second += compteScore(matrice); // met à jour le score en fonction du joueur en cours
+                    suppressionDansLaGrille(grille, matrice);
 
-                cout << "\n" << endl;
-                afficherGrille(grille);
-                cout << "\n" << endl;
+                    cout << "\n" << endl;
+                    afficherGrille(grille);
+                    cout << "\n" << endl;
 
-                gravite(grille);
-                initMat(matrice);
+                    gravite(grille);
+                    initMat(matrice);
+                }
+            }
+            else {
+                cout << "\nveuillez entrer une direction valide !\n" << endl;
+                continue;
             }
         }
-        else {
-            cout << "\nveuillez rentrer une direction valide !\n" << endl;
-            continue;
-        }
+        else
+            cout << "\nVous ne pouvez pas sélectionner une zone vide !\n" << endl;
+
         joueur = (joueur + 1) % 2; // changement du joueur
         ++coups; // incrémentation du nombre de coups joués par les deux joueurs
     }
