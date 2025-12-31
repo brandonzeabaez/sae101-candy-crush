@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
 using namespace std;
 
 void ansiEscapeAffichage::couleur (const unsigned & coul)
@@ -58,9 +59,9 @@ vector <unsigned> & manipulationDeVecteur::deplacerUnElement (vector <unsigned> 
 void manipulationDeLaGrille::InitiationGrille (CMatrice & grille, size_t taille)
 {
     grille.resize(taille, CVLigne (taille));
-    for (CVLigne & col : grille)
+    for (CVLigne & ligne : grille)
     {
-        for (unsigned & ligne : col) ligne = rand()%(KNbDeBonbons)+1; // on choisit un nb random entre [1,nbCandies]
+        for (unsigned & cas : ligne) cas = rand()%(KNbDeBonbons)+1; // on choisit un nb random entre [1,nbCandies]
     }
 }
 void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
