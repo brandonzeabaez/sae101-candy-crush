@@ -11,6 +11,7 @@ void ansiEscapeAffichage::couleur (const unsigned & coul)
 }
 void ansiEscapeAffichage::nettoyerLEcran () {
     cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
+    //Remplacer 2J par 3J c mieux
 }
 void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
 {
@@ -89,7 +90,7 @@ void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
 
 void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition & pos,char direction)
 {
-    if ( ((pos.first <= grille.size()-1)) && ((pos.second <= grille.size()-1))) //C'est des unsigned et on a donc pas besoin de la condition >=0
+    if ( ((pos.first < grille.size()-1)) && ((pos.second < grille.size()-1)))
     {
         switch (tolower(direction)) //On interprete les char Maj
         {

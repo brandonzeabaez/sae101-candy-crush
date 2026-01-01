@@ -17,15 +17,16 @@ void test1_row_column (CMatrice & matrice,CPosition p,unsigned h)
         supprimmerUneLigne (matrice,p,h);
         afficherLaGrille(matrice);
         rajoutDesBonbons(matrice);
-        afficherLaGrille(matrice);
+
     }
     while(auMoinsTroisDansLaColonne(matrice,p,h))
     {
         supprimmerUneColonne (matrice,p,h);
         afficherLaGrille(matrice);
         rajoutDesBonbons(matrice);
-        afficherLaGrille(matrice);
+
     }
+
 }
 void rajoutDesBonbons(CMatrice & grille)
 {
@@ -63,30 +64,33 @@ int main()
     unsigned h (1);
     CPosition p {0,0};
     CMatrice matrice;
-    InitiationGrille(matrice,13);
+    InitiationGrille(matrice,6);
     afficherLaGrille(matrice);
     test1_row_column(matrice,p,h);
-    p = {2,2};
-    faireUnMouvement(matrice,p,'z');
-    afficherLaGrille(matrice);
-    melangeDesBonbons(matrice);
-    afficherLaGrille(matrice);
-    // for (unsigned i (0);i<5;++i)
-    // {
-    //     string chaine;
-    //     cout << "veuillez mettre une position pour la ligne : " ;
-    //     getline(cin,chaine);
-    //     p.second = stoul(chaine);
-    //     cout << '\n' <<"veuillez mettre une position pour la colonne : " ;
-    //     getline(cin,chaine);
-    //     p.first = stoul(chaine);
-    //     cout << '\n' << "veuillez appuyer sur la touche directionnelle : ";
-    //     direction = char(getchar());
-    //     cout << endl;
-    //     faireUnMouvement(matrice,p,'z');
-    //     afficherLaGrille(matrice);
-    //     test1_row_column(matrice,p,h);
-    // }
+    //afficherLaGrille(matrice);
+    //melangeDesBonbons(matrice);
+    char direction;
+    do
+    {
+        string chaine;
+        afficherLaGrille(matrice);
+        cout << "veuillez mettre une position pour la ligne : ";
+        cin >> chaine;
+        p.second=stoul(chaine);
+        cout << p.second << endl;
+        cout << "veuillez mettre une position pour la colonne : ";
+        cin >> chaine;
+        p.first=stoul(chaine);
+        cout << p.first << endl;
+        cout << "veuillez mettre une direction valide : ";
+        cin >> direction;
+        faireUnMouvement(matrice,p,direction);
+        test1_row_column(matrice,p,h);
+        ansiEscapeAffichage::nettoyerLEcran();
+        // afficherLaGrille(matrice);
+        //test1_row_column(matrice,p,h);
+    }
+    while(tolower(direction)!='x');
     //afficherLaGrille(matrice);
     //test2_column_row(matrice,p,h);
     return 0;
