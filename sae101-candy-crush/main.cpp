@@ -48,8 +48,8 @@ void testFestival (CMatrice & matrice,CPosition p,unsigned h)
     {
         int couleur = detectionBombe(matrice, p, h, true);
         supprimmerUneLigne (matrice,p,h);
-        cout << couleur << endl;
         if (couleur != 0){
+            cout << "On enleve couleur: "<< couleur << endl;
             supprimeCouleurBombe(matrice, couleur);
             gravite(matrice);
         }
@@ -62,6 +62,7 @@ void testFestival (CMatrice & matrice,CPosition p,unsigned h)
         int couleur = detectionBombe(matrice, p, h, false);
         supprimmerUneColonne (matrice,p,h);
         if (couleur != 0){
+            cout << "On enleve couleur: "<< couleur << endl;
             supprimeCouleurBombe(matrice, couleur);
             gravite(matrice);
         }

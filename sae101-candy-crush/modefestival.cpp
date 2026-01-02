@@ -6,7 +6,7 @@ using namespace manipulationDeVecteur;
 using namespace manipulationDeLaGrille;
 using namespace testSurLaGrille;
 
-
+// rajoute bombe (nombre 5) dans un endroit rnadom dans la grille
 void festival::rajouteBombe(CMatrice & grille){
     int numPremier = rand()%(grille.size());
     int numDeuxieme = rand()%(grille.size());
@@ -31,8 +31,8 @@ int festival::detectionBombe(CMatrice & grille, CPosition & pos, unsigned combie
             x = pos.first;
         }
 
-        int coordVertical[] = {-1, 1, 0, 0};
-        int coordHorizontal[] = {0, 0, -1, 1};
+        vector<int> coordVertical = {-1, 1, 0, 0};
+        vector<int> coordHorizontal = {0, 0, -1, 1};
 
         // on verifie chaque coord adjacent (haut, bas, gauche, droite)
         for (int coord = 0; coord < 4; ++coord){
@@ -53,6 +53,8 @@ int festival::detectionBombe(CMatrice & grille, CPosition & pos, unsigned combie
     return couleurCible;
 }
 
+
+// enleve toute couleurCible dans la grille avec KImpossible
 void festival::supprimeCouleurBombe(CMatrice & grille, int & couleurCible){
     for (size_t i = 0; i < grille.size(); ++i){
         for (size_t j = 0; j < grille.size(); ++j) {
@@ -63,7 +65,7 @@ void festival::supprimeCouleurBombe(CMatrice & grille, int & couleurCible){
     }
 }
 
-
+// Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
 void festival::gravite (CMatrice & grille) {
     unsigned saut (0);
     for(unsigned i (0); i <= grille.size() - 1; ++i) {
