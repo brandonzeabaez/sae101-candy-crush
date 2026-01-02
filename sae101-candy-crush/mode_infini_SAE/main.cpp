@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <any>
+#include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -410,6 +411,29 @@ bool regleRespectee(Regle & regle, CMat & grille, string & sensGravite, vector <
     return true;
 }
 
+string litUneString (ifstream & entree){
+    string uneChaine;
+    while (true){
+        getline (entree, uneChaine);
+        if ((!entree) || (uneChaine.substr(0,2) != "//")) break;
+    }
+    return uneChaine;
+}
+
+int litUnEntier (ifstream & entree){
+    string uneChaine;
+    while (true){
+        getline (entree, uneChaine);
+        if ((!entree) || (uneChaine.substr(0,2) != "//")) break;
+    }
+    return stoi(uneChaine);
+}
+
+// trie les scores lus dans le fichier
+void triScores (vector <pair<string, unsigned>> & scores) {
+    sort(scores.begin(), scores.end(), [](const pair<string, unsigned> &a, const pair<string, unsigned> &b){
+        return a.second < b.second; }); // https://www.geeksforgeeks.org/cpp/sort-c-stl/
+}
 
 int main () {
     unsigned coups (0); // Stocke le nombre de coups joués
@@ -426,6 +450,27 @@ int main () {
     size_t iRegle = 1;
     unsigned somme = 0;
     unsigned combo = 1;
+
+    ifstream entree ("scores.txt"); // Là où on récupère les scores
+    vector <pair<string, unsigned>> scores;
+    while (entree.is_open() && !entree.eof()) { // s'il existe
+        pair<string, unsigned> temp;
+        temp.first = litUneString(entree);
+        temp.second = litUnEntier(entree);
+        scores.push_back(temp);
+    }
+    ofstream fichier ("scores.txt"); // Là où on va écrire les scores
+    if (!entree.is_open()) { // s'il existe pas
+        for (unsigned i=0; i<10; ++i) {
+            pair<string, unsigned> temp;
+            temp.first = "ANONYME";
+            temp.second = 0;
+            scores.push_back(temp);
+            fichier << "ANONYME" << endl << "0" << endl;
+        }
+    }
+
+
 
     regles.push_back(Regle {"NEB", "Noir et blanc: l'atmosphère change, les chiffres apparaissent tous en noir sur fond "
                                   "blanc et vous n'avez plus le droit à l'erreur: éliminez au moins trois blocs à chaque tour", 5});
@@ -559,5 +604,21 @@ int main () {
     }
 
     cout << string(80, '^') << "- Score final : " << score << endl << "- Coups joués: " << coups << endl;
+
+    cout << endl << string(30, '*') << " tableau des scores " << string(30, '*') << endl;
+
+    pair<string, unsigned> resultat;
+    resultat.first = pseudo;
+    resultat.second = score;
+    scores.push_back(resultat);
+    triScores(scores);
+    // on garde que les 10 meilleurs scores
+    scores.resize(10);
+
+    for (pair<string, unsigned> & p: scores) {
+        cout << "  -  " << p.first << " : " << p.second << endl;
+        fichier << p.first << endl << p.second << endl;
+    }
+
     return 0;
 }
