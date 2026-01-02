@@ -5,8 +5,10 @@ CONFIG -= qt
 
 SOURCES += \
         fichierfonction1.cpp \
-        main.cpp
+        main.cpp \
+        modefestival.cpp
 
 HEADERS += \
-    fichierfonction1.h
+    fichierfonction1.h \
+    modefestival.h
 
