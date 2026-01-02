@@ -1,3 +1,7 @@
+#include "headers/mode-1vs1.h"
+#include "headers/mode-festival.h"
+#include "headers/mode-histoire.h"
+#include "headers/mode-infini.h"
 #include <iostream>
 #include <vector>
 
@@ -72,7 +76,7 @@ int main () {
         {"1: Mode histoire"},
         {"2: Mode infini"},
         {"3: Mode 1 VS 1"},
-        {"4: Mode bombe"}
+        {"4: Mode festival"}
     };
     unsigned choix;
 
@@ -91,20 +95,16 @@ int main () {
 
     switch(choix) {
     case 1:
-        // Lancement du mode histoire
-        cout << "Lancement du mode histoire" << endl;
+        modeHistoire::modeHistoire();
         break;
     case 2:
-        // Lancement du mode infini
-        cout << "Lancement du mode infini" << endl;
+        modeInfini::modeInfini();
         break;
     case 3:
-        // Lancement du mode 1 VS 1
-        cout << "Lancement du mode 1 VS 1" << endl;
+        mode1vs1::mode1vs1();
         break;
     case 4:
-        // Lancement du mode bombe
-        cout << "Lancement du mode bombe" << endl;
+        modeFestival::modeFestival();
         break;
     default:
         cout << "Aucun mode ne correpond à ce numéro" << endl;
