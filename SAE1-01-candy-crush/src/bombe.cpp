@@ -1,5 +1,5 @@
 #include "../headers/bombe.h"
-#include "../headers/affichage.h"
+#include "../headers/utilitaires.h"
 
 const unsigned KImpossible (999);
 

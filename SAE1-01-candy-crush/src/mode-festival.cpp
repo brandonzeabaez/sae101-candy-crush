@@ -1,5 +1,5 @@
 #include "../headers/mode-festival.h"
-#include "../headers/affichage.h"
+#include "../headers/utilitaires.h"
 #include "../headers/bombe.h"
 
 const unsigned KImpossible (999);

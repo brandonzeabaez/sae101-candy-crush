@@ -1,5 +1,5 @@
 #include "../headers/mode-histoire.h"
-#include "../headers/affichage.h"
+#include "../headers/utilitaires.h"
 
 const unsigned K2Impossible (999);
 const unsigned K2NbDeBonbons (4);
