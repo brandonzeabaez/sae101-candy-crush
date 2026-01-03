@@ -104,7 +104,7 @@ int main () {
         mode1vs1::mode1vs1();
         break;
     case 4:
-        modeFestival::modeFestival();
+        festival::modeFestival();
         break;
     default:
         cout << "Aucun mode ne correpond à ce numéro" << endl;

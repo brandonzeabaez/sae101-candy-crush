@@ -1,16 +1,12 @@
 #ifndef BOMBE_H
 #define BOMBE_H
-#include <iostream>
-#include "bombe.h"
-using namespace std;
-using namespace manipulationDeVecteur;
-using namespace manipulationDeLaGrille;
-using namespace testSurLaGrille;
+#include "affichage.h"
+
 
 namespace festival{
-    void rajouteBombe(CMatrice & grille);
-    int detectionBombe(CMatrice & grille, CPosition & pos, unsigned combien, bool uneLigne);
-    void supprimeCouleurBombe(CMatrice & grille, int & couleurCible);
-    void gravite (CMatrice & grille);
+    void rajouteBombe(manipulationDeLaGrille::CMatrice & grille);
+    int detectionBombe(manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien, bool uneLigne);
+    void supprimeCouleurBombe(manipulationDeLaGrille::CMatrice & grille, int & couleurCible);
+    void gravite (manipulationDeLaGrille::CMatrice & grille);
 }
 #endif // BOMBE_H
