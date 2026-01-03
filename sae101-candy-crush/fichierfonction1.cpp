@@ -121,9 +121,9 @@ void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition
                 swap(grille[pos.second][pos.first],grille[pos.second][pos.first+1]); //On permute la case à droite
                 break;
             }
-            else break;
-        default :
-            cout << "appuyer sur une touche valide" << endl;
+        //     else break;
+        // default :
+        //     cout << "appuyer sur une touche valide" << endl;
         }
     }
 }

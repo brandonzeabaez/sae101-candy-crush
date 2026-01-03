@@ -92,29 +92,45 @@ int main()
     //melangeDesBonbons(matrice);
     cpt =0;
     char direction;
+    unsigned nbDeToursMax (2);
+    unsigned scoreMinimale (1000);
+    unsigned nbDeTours (0);
     do
     {
         string chaine;
         afficherLaGrille(matrice);
-        cout << "voici votre score actuel : " << cpt <<endl;
+        lectureFichier("../../modeHistoire/lore.txt");
+        lectureFichier("../../modeHistoire/regles_du_mode_histoire.txt");
+        cout << "voici votre score actuel : " << cpt << endl;
+        cout << "voici vos nombres de tours restants : " << nbDeToursMax-nbDeTours << endl;
+        cout << "veuillez mettre une direction valide : " <<flush;
+        cin >> direction;
+        if (tolower(direction) == 'x') break;
         //lectureFichier();
-        cout << "veuillez mettre une position pour la ligne : ";
+        cout << "veuillez mettre une position pour la ligne : "<<flush;
         cin >> chaine;
         p.second=stoul(chaine);
-        cout << "veuillez mettre une position pour la colonne : ";
+        cout << "veuillez mettre une position pour la colonne : "<<flush;
         cin >> chaine;
         p.first=stoul(chaine);
-        cout << "veuillez mettre une direction valide : ";
-        cin >> direction;
         faireUnMouvement(matrice,p,direction);
-        if (! (auMoinsTroisDansLaColonne(matrice,p,h) || auMoinsTroisDansLaLigne(matrice,p,h))) faireUnMouvement(matrice,p,direction);
-        else test1_row_column(matrice,p,h,cpt);
-
+        if (! (auMoinsTroisDansLaColonne(matrice,p,h) || auMoinsTroisDansLaLigne(matrice,p,h)))
+        {
+            faireUnMouvement(matrice,p,direction);
+        }
+        else
+        {
+            test1_row_column(matrice,p,h,cpt);
+            ++nbDeTours;
+        }
         //test1_row_column(matrice,p,h);
     }
-    while(tolower(direction)!='x');
-
-    //afficherLaGrille(matrice);
+    while(tolower(direction)!='x' && nbDeTours != nbDeToursMax);
+    if (cpt < scoreMinimale)
+    {
+        cout << "vous avez perdu !" << endl;
+    }
+        //afficherLaGrille(matrice);
     //test2_column_row(matrice,p,h);
     return 0;
 }

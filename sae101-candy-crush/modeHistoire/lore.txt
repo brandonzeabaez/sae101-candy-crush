@@ -3,24 +3,24 @@ C'etait il y a longtemps dans une planète appelée la Zibie-030-X.
 Il y avait des habitants intitulés les Zibiens, ces énergumène
 passaient leur temps à rien foutre ,et ils avaient comme passe temps
 de jouer avec des bonbons en les combinant (vraiment des êtres vraiment primitifs).
- 
- Niveau 2 :
- Il ne se passe bien évidemment rien mise à part 
- que les règles du jeu ont changé et ils ont a rajouté 
- des noveaux bonbons.
- 
- Niveau 3 :
- Le jeu devient vraiment populaire
- qu'il arrive à se répendre jusqu'à Nouvelle Zibie-030-X
- et des tournois se sont organisés.
- 
- Niveau 4 :
- Il y a eu 67 tournois en tout qui ont été organisés 
- par les jeunes Zibiens, leur fermeture à été dû 
- face aux plaintes déposé par les spectateurs du tournoi 
- raison <<Mauvaise odeur des joueurs>> .
- 
- Niveau 5 :
- Cette fermeture à déplu aux zibiens qui se
- sont entretués, jusqu'au dernier en mettant 
- fin à leur espèce. FIN 
+####
+Niveau 2 :
+Il ne se passe bien évidemment rien mise à part
+que les règles du jeu ont changé et ils ont a rajouté
+des noveaux bonbons.
+####
+Niveau 3 :
+Le jeu devient vraiment populaire
+qu'il arrive à se répendre jusqu'à Nouvelle Zibie-030-X
+et des tournois se sont organisés.
+####
+Niveau 4 :
+Il y a eu 67 tournois en tout qui ont été organisés
+par les jeunes Zibiens, leur fermeture à été dû
+face aux plaintes déposé par les spectateurs du tournoi
+raison <<Mauvaise odeur des joueurs>> .
+####
+Niveau 5 :
+Cette fermeture à déplu aux zibiens qui se
+sont entretués, jusqu'au dernier en mettant
+fin à leur espèce. FIN
