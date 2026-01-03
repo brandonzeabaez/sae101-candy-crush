@@ -13,23 +13,22 @@ const unsigned K2Impossible (999);
 const unsigned K2NbDeBonbons (4);
 void rajoutDesBonbons(CMatrice & grille);
 ifstream ifs;
-void test1_row_column (CMatrice & matrice,CPosition p,unsigned h)
+void test1_row_column (CMatrice & matrice,CPosition p,unsigned h,unsigned & cpt)
 {
     while(auMoinsTroisDansLaLigne(matrice,p,h))
     {
         supprimmerUneLigne (matrice,p,h);
+        cpt = cpt +100;
         afficherLaGrille(matrice);
         rajoutDesBonbons(matrice);
-
     }
     while(auMoinsTroisDansLaColonne(matrice,p,h))
     {
         supprimmerUneColonne (matrice,p,h);
+        cpt = cpt +100;
         afficherLaGrille(matrice);
         rajoutDesBonbons(matrice);
-
     }
-
 }
 void rajoutDesBonbons(CMatrice & grille)
 {
@@ -41,9 +40,9 @@ void rajoutDesBonbons(CMatrice & grille)
         }
     }
 }
-vector <string> & lectureFichier(vector <string> & vect,const size_t i = 0)
+void lectureFichier(const string & cheminDuFichier,const size_t i = 0)
 {
-    ifs.open("../../modeHistoire/ascii_art.txt");
+    ifs.open(cheminDuFichier);
     for (size_t j (0);j!=i && !ifs.eof();++j)
     {
         for(string chaine;!ifs.eof();)
@@ -56,10 +55,9 @@ vector <string> & lectureFichier(vector <string> & vect,const size_t i = 0)
     {
         getline(ifs,chaine);
         if(chaine=="####") break;
-        vect.push_back(chaine);
+        cout << chaine << endl;
     }
     ifs.close();
-    return vect;
 }
 void melangeDesBonbons(CMatrice & grille)
 {
@@ -83,22 +81,23 @@ void test2_column_row (CMatrice & matrice,CPosition p,unsigned h)
 }
 int main()
 {
-    /*
+    unsigned cpt (0);
     unsigned h (1);
     CPosition p {0,0};
     CMatrice matrice;
     InitiationGrille(matrice,6);
     afficherLaGrille(matrice);
-    test1_row_column(matrice,p,h);
+    test1_row_column(matrice,p,h,cpt);
     //afficherLaGrille(matrice);
     //melangeDesBonbons(matrice);
-
+    cpt =0;
     char direction;
     do
     {
         string chaine;
         afficherLaGrille(matrice);
-        lecteurFichier();
+        cout << "voici votre score actuel : " << cpt <<endl;
+        //lectureFichier();
         cout << "veuillez mettre une position pour la ligne : ";
         cin >> chaine;
         p.second=stoul(chaine);
@@ -108,26 +107,13 @@ int main()
         cout << "veuillez mettre une direction valide : ";
         cin >> direction;
         faireUnMouvement(matrice,p,direction);
-        test1_row_column(matrice,p,h);
-        ansiEscapeAffichage::nettoyerLEcran();
-        // afficherLaGrille(matrice);
+        if (! (auMoinsTroisDansLaColonne(matrice,p,h) || auMoinsTroisDansLaLigne(matrice,p,h))) faireUnMouvement(matrice,p,direction);
+        else test1_row_column(matrice,p,h,cpt);
+
         //test1_row_column(matrice,p,h);
     }
     while(tolower(direction)!='x');
-    */
-    vector <string> vec1,vec2,vec3,vec4,vec5;
-    lectureFichier(vec1,1);
-    lectureFichier(vec2,0);
-    lectureFichier(vec4,9);
-    for(unsigned i (0);i<vec1.size();++i)
-    {
-        vec3.push_back(vec1[i]+vec2[i]);
-    }
-    for(unsigned i (0);i<vec3.size();++i)
-    {
-        vec5.push_back(vec4[i]+vec3[i]);
-    }
-    for (string & chaine : vec5) cout << chaine << endl;
+
     //afficherLaGrille(matrice);
     //test2_column_row(matrice,p,h);
     return 0;
