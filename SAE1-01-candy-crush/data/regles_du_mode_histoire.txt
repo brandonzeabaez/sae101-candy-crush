@@ -1,0 +1,6 @@
+Déplacement vers la Gauche 'A' 
+Déplacement vers la Droite 'E'
+Déplacement vers le haut Haut 'Z'
+Déplacement vers le bas Bas 'S'
+Sortir de la partie appuyer sur 'X'
+Chaque combinaison vaut 100 points !

@@ -4,88 +4,54 @@
 const unsigned K2Impossible (999);
 const unsigned K2NbDeBonbons (4);
 
-void modeHistoire::rajoutDesBonbons(CMat & grille)
-{
-    for(CVLigne & ligne : grille)
-    {
-        for(unsigned & cas : ligne)
-        {
-            if (cas == K2Impossible) cas = rand()%(K2NbDeBonbons)+1;
-        }
-    }
-}
-void modeHistoire::test1_row_column (CMat & matrice,CPosition p,unsigned h)
-{
-    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
-    {
-        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
-        manipulationDeLaGrille::afficherLaGrille(matrice);
-        rajoutDesBonbons(matrice);
-
-    }
-    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
-    {
-        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
-        manipulationDeLaGrille::afficherLaGrille(matrice);
-        rajoutDesBonbons(matrice);
-
-    }
-
-}
-void modeHistoire::melangeDesBonbons(CMat & grille)
-{
-    for(size_t ligne (0) ; ligne < grille.size(); ++ligne)
-    {
-        for(size_t colonne (0) ; colonne < grille.size(); ++colonne) grille[ligne][colonne] = grille[rand()%(grille.size())][rand()%(grille.size())];
-    }
-}
-void modeHistoire::test2_column_row (CMat & matrice,CPosition p,unsigned h)
-{
-    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
-    {
-        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
-        manipulationDeLaGrille::afficherLaGrille(matrice);
-    }
-    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
-    {
-        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
-        manipulationDeLaGrille::afficherLaGrille(matrice);
-    }
-}
 int modeHistoire::lancer ()
 {
-    //cout << "\033[" << 41 <<"m";
-    unsigned h (1);
-    CPosition p {0,0};
-    CMat matrice;
-    manipulationDeLaGrille::InitiationGrille(matrice,6);
-    manipulationDeLaGrille::afficherLaGrille(matrice);
-    test1_row_column(matrice,p,h);
-    //afficherLaGrille(matrice);
-    //melangeDesBonbons(matrice);
+    parametresDeLaPartie partie;
+    unsigned choix;
     char direction;
+    unsigned nbDeTours (0);
+    unsigned scoreActuelle (0);
+    unsigned combien (1);
+    manipulationDeLaGrille::CPosition position {0,0};
+    manipulationDeLaGrille::CMatrice matrice;
+    std::cout << "veuillez saisir votre niveau : ";
+    std::cin >> choix;
+    choix = choix-1;
+    gestionHistoire::selecteurDeNiveaux(choix,partie);
+    manipulationDeLaGrille::InitiationGrille(matrice,partie.taille);
+    manipulationDeLaGrille::afficherLaGrille(matrice);
+    gestionHistoire::dynamiqueDuJeu(matrice,position,combien,scoreActuelle);
+    ansiEscapeAffichage::nettoyerLEcran();
+    scoreActuelle = 0;
     do
     {
         std::string chaine;
         manipulationDeLaGrille::afficherLaGrille(matrice);
-        std::cout << "veuillez mettre une position pour la ligne : ";
-        std::cin >> chaine;
-        p.second=std::stoul(chaine);
-        std::cout << p.second << std::endl;
-        std::cout << "veuillez mettre une position pour la colonne : ";
-        std::cin >> chaine;
-        p.first=std::stoul(chaine);
-        std::cout << p.first << std::endl;
-        std::cout << "veuillez mettre une direction valide : ";
+        gestionHistoire::lectureFichier("../data/regles_du_mode_histoire.txt");
+        gestionHistoire::lectureFichier("../data/lore.txt",choix);
+        std::cout << "voici votre score actuel : " << scoreActuelle << std::endl;
+        std::cout << "voici vos nombres de tours restants : " << partie.nombreDeTours-nbDeTours << std::endl;
+        std::cout << "veuillez mettre une direction valide : " << std::flush;
         std::cin >> direction;
-        manipulationDeLaGrille::faireUnMouvement(matrice,p,direction);
-        test1_row_column(matrice,p,h);
-        ansiEscapeAffichage::nettoyerLEcran();
-        // afficherLaGrille(matrice);
-        //test1_row_column(matrice,p,h);
+        if (tolower(direction) == 'x') break;
+        std::cout << "veuillez mettre une position pour la ligne : "<< std::flush;
+        std::cin >> chaine;
+        position.second=std::stoul(chaine);
+        std::cout << "veuillez mettre une position pour la colonne : "<< std::flush;
+        std::cin >> chaine;
+        position.first=std::stoul(chaine);
+        manipulationDeLaGrille::faireUnMouvement(matrice,position,direction);
+        if (! (testSurLaGrille::auMoinsTroisDansLaColonne(matrice,position,combien) || testSurLaGrille::auMoinsTroisDansLaLigne(matrice,position,combien)))
+        {
+            manipulationDeLaGrille::faireUnMouvement(matrice,position,direction);
+        }
+        else
+        {
+            gestionHistoire::dynamiqueDuJeu(matrice,position,combien,scoreActuelle);
+            ++nbDeTours;
+        }
     }
-    while(tolower(direction)!='x');
-    //afficherLaGrille(matrice);
-    //test2_column_row(matrice,p,h);
+    while(nbDeTours != partie.nombreDeTours);
+    if ( scoreActuelle< partie.score) std::cout << "vous avez perdu !" << std::endl;
     return 0;
 }

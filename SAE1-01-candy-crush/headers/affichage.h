@@ -6,6 +6,13 @@
 #include <iomanip>
 #include <cstdlib>
 
+struct parametresDeLaPartie
+{
+    size_t taille;
+    unsigned nombreDeTours;
+    unsigned score;
+};
+
 namespace ansiEscapeAffichage
 {
     void couleurBonbon (const unsigned & bonbon);
@@ -37,6 +44,16 @@ namespace testSurLaGrille
 {
     bool auMoinsTroisDansLaColonne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien);
     bool auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien);
+}
+
+namespace gestionHistoire
+{
+    void dynamiqueDuJeu (manipulationDeLaGrille::CMatrice & matrice,manipulationDeLaGrille::CPosition p,unsigned h,unsigned & cpt);
+    void rajoutDesBonbons(manipulationDeLaGrille::CMatrice & grille);
+    void lectureFichier(const std::string & cheminDuFichier,const size_t i = 0);
+    void selecteurDeNiveaux(const unsigned & niveau,parametresDeLaPartie & partie);
+    std::string lectureDeChiffresDansUneChaine(const std::string & chaine);
+    void melangeDesBonbons(manipulationDeLaGrille::CMatrice & grille);
 }
 
 #endif // AFFICHAGE_H

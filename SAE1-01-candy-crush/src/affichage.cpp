@@ -1,4 +1,5 @@
 #include "../headers/affichage.h"
+#include <fstream>
 
 const unsigned KNoir    (30);
 const unsigned KRouge   (31);
@@ -261,4 +262,91 @@ bool testSurLaGrille::auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMa
         }
     }
     return siCEstAlignee;
+}
+
+void gestionHistoire::dynamiqueDuJeu (manipulationDeLaGrille::CMatrice & matrice, manipulationDeLaGrille::CPosition p, unsigned h, unsigned & cpt)
+{
+    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
+    {
+        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
+        cpt = cpt +100;
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        gestionHistoire::rajoutDesBonbons(matrice);
+    }
+    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
+    {
+        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
+        cpt = cpt +100;
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        gestionHistoire::rajoutDesBonbons(matrice);
+    }
+}
+void gestionHistoire::rajoutDesBonbons(manipulationDeLaGrille::CMatrice & grille)
+{
+    for(manipulationDeLaGrille::CVLigne & ligne : grille)
+    {
+        for(unsigned & cas : ligne)
+        {
+            if (cas == KImpossible) cas = rand()%(KNbDeBonbons)+1;
+        }
+    }
+}
+void gestionHistoire::lectureFichier(const std::string & cheminDuFichier, const size_t i)
+{
+    std::ifstream ifs;
+    ifs.open(cheminDuFichier);
+    for (size_t j (0);j!=i && !ifs.eof();++j)
+    {
+        for(std::string chaine;!ifs.eof();)
+        {
+            std::getline(ifs,chaine);
+            if(chaine=="####") break;
+        }
+    }
+    for(std::string chaine;!ifs.eof();)
+    {
+        std::getline(ifs,chaine);
+        if(chaine=="####") break;
+        std::cout << chaine << std::endl;
+    }
+    ifs.close();
+}
+void gestionHistoire::selecteurDeNiveaux(const unsigned & niveau,parametresDeLaPartie & partie)
+{
+    std::ifstream ifs;
+    ifs.open("../data/niveaux.txt");
+    for (size_t j (0);j!=niveau && !ifs.eof();++j)
+    {
+        for(std::string chaine;!ifs.eof();)
+        {
+            std::getline(ifs,chaine);
+            if(chaine=="####") break;
+        }
+    }
+    ifs.clear();
+    std::string chaine;
+    std::getline(ifs,chaine);
+    std::getline(ifs,chaine);
+    partie.taille= std::stoul(gestionHistoire::lectureDeChiffresDansUneChaine (chaine));
+    std::getline(ifs,chaine);
+    partie.nombreDeTours= std::stoul(gestionHistoire::lectureDeChiffresDansUneChaine(chaine));
+    std::getline(ifs,chaine);
+    partie.score= std::stoul(gestionHistoire::lectureDeChiffresDansUneChaine (chaine));
+    ifs.close();
+}
+std::string gestionHistoire::lectureDeChiffresDansUneChaine(const std::string & chaine)
+{
+    std::string numeros;
+    for (const char & c : chaine )
+    {
+        if (isdigit(c)) numeros = numeros + c;
+    }
+    return numeros;
+}
+void gestionHistoire::melangeDesBonbons(manipulationDeLaGrille::CMatrice & grille)
+{
+    for(size_t ligne (0) ; ligne < grille.size(); ++ligne)
+    {
+        for(size_t colonne (0) ; colonne < grille.size(); ++colonne) grille[ligne][colonne] = grille[rand()%(grille.size())][rand()%(grille.size())];
+    }
 }
