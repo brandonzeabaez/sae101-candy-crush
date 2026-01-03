@@ -1,0 +1,19 @@
+Niveau 1
+Taille de la grille : 6
+Nombre de tours : 15
+Score à atteindre : 1000
+####
+Niveau 2
+Taille de la grille : 13
+Nombre de tours : 25
+Score à atteindre : 3000
+####
+Niveau 3
+Taille de la grille : 8  
+Nombre de tours : 20
+Score à atteindre : 1500
+####
+Niveau 4
+Taille de la grille : 6
+Nombre de tours : 30
+Score à atteindre : 2000

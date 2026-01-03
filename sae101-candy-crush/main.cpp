@@ -4,7 +4,12 @@
 #include <iomanip>
 #include "fichierfonction1.h"
 #include <fstream>
-
+struct parametresDeLaPartie
+{
+    size_t taille;
+    unsigned nombreDeTours;
+    unsigned score;
+};
 using namespace std;
 using namespace manipulationDeVecteur;
 using namespace manipulationDeLaGrille;
@@ -13,6 +18,7 @@ const unsigned K2Impossible (999);
 const unsigned K2NbDeBonbons (4);
 void rajoutDesBonbons(CMatrice & grille);
 ifstream ifs;
+string truc(const string & chaine);
 void test1_row_column (CMatrice & matrice,CPosition p,unsigned h,unsigned & cpt)
 {
     while(auMoinsTroisDansLaLigne(matrice,p,h))
@@ -79,8 +85,41 @@ void test2_column_row (CMatrice & matrice,CPosition p,unsigned h)
         afficherLaGrille(matrice);
     }
 }
+void selecteurDeNiveaux(const unsigned & niveau,parametresDeLaPartie & partie)
+{
+    ifs.open("../../modeHistoire/niveaux.txt");
+    for (size_t j (0);j!=niveau && !ifs.eof();++j)
+    {
+        for(string chaine;!ifs.eof();)
+        {
+            getline(ifs,chaine);
+            if(chaine=="####") break;
+        }
+    }
+    ifs.clear();
+    string chaine;
+    getline(ifs,chaine);
+    getline(ifs,chaine);
+    partie.taille= stoull(truc (chaine));
+    getline(ifs,chaine);
+    partie.nombreDeTours= stoul(truc(chaine));
+    getline(ifs,chaine);
+    partie.score= stoul(truc (chaine));
+    ifs.close();
+}
+
+string truc(const string & chaine)
+{
+    string numeros;
+    for (const char & c : chaine )
+    {
+        if (isdigit(c)) numeros = numeros + c;
+    }
+    return numeros;
+}
 int main()
 {
+    /*
     unsigned cpt (0);
     unsigned h (1);
     CPosition p {0,0};
@@ -88,19 +127,24 @@ int main()
     InitiationGrille(matrice,6);
     afficherLaGrille(matrice);
     test1_row_column(matrice,p,h,cpt);
+    ansiEscapeAffichage::nettoyerLEcran();
     //afficherLaGrille(matrice);
     //melangeDesBonbons(matrice);
     cpt =0;
     char direction;
+    unsigned choix;
     unsigned nbDeToursMax (2);
     unsigned scoreMinimale (1000);
     unsigned nbDeTours (0);
+    cout << "veuillez saisir votre niveau : ";
+    cin >> choix;
+    choix = choix-1;
     do
     {
         string chaine;
         afficherLaGrille(matrice);
-        lectureFichier("../../modeHistoire/lore.txt");
         lectureFichier("../../modeHistoire/regles_du_mode_histoire.txt");
+        lectureFichier("../../modeHistoire/lore.txt",choix);
         cout << "voici votre score actuel : " << cpt << endl;
         cout << "voici vos nombres de tours restants : " << nbDeToursMax-nbDeTours << endl;
         cout << "veuillez mettre une direction valide : " <<flush;
@@ -123,14 +167,16 @@ int main()
             test1_row_column(matrice,p,h,cpt);
             ++nbDeTours;
         }
-        //test1_row_column(matrice,p,h);
     }
-    while(tolower(direction)!='x' && nbDeTours != nbDeToursMax);
-    if (cpt < scoreMinimale)
-    {
-        cout << "vous avez perdu !" << endl;
-    }
-        //afficherLaGrille(matrice);
+    while(nbDeTours != nbDeToursMax);
+    if (cpt < scoreMinimale) cout << "vous avez perdu !" << endl;
+    */
+    parametresDeLaPartie partie;
+    selecteurDeNiveaux(0,partie);
+    cout << partie.taille<< endl;
+    cout << partie.nombreDeTours<< endl;
+    cout << partie.score<< endl;
+    //afficherLaGrille(matrice);
     //test2_column_row(matrice,p,h);
     return 0;
 }

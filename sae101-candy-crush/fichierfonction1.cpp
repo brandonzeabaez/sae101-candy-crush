@@ -10,7 +10,7 @@ void ansiEscapeAffichage::couleur (const unsigned & coul)
     cout << "\033[" << coul <<"m"; //On change de couleur avec coul le code couleur
 }
 void ansiEscapeAffichage::nettoyerLEcran () {
-    cout << "\033[H\033[3J"; //on dit au terminal CTRL+L
+    cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
     //Remplacer 2J par 3J c mieux
 }
 void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
