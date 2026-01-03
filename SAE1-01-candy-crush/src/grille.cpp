@@ -16,18 +16,46 @@ const unsigned KNbSymboles   (5); // Nombre de symboles représentés dans la gr
 const unsigned KImpossible   (0); // symbole nul
 
 // change la couleur du terminal
-void changerCouleur (const unsigned & couleur) {
+void affichage::changerCouleur (const unsigned & couleur) {
     std::cout << "\033[" << couleur <<"m";
 }
 
 // efface/réinitialise le terminal
-void effacerEcran () {
+void affichage::effacerEcran () {
     std::cout << "\033[H\033[2J";
+}
+
+void affichage::retouralaligne(unsigned n) {
+    for(unsigned i (0); i < n; ++i)
+        std::cout << "\n";
+    std::cout << std::flush;
+}
+
+std::string & affichage::centrer (std::string & chaine, const unsigned long n) {
+    unsigned ancienneTaille = size(chaine);
+    unsigned posDeb = (n-ancienneTaille)/2;
+    chaine.resize(n);
+    for(unsigned i (ancienneTaille); i-- > 0;) chaine[posDeb+i-1] = chaine[i];
+    for(unsigned i (0); i < posDeb-1; ++i) chaine[i] = ' ';
+    for(unsigned i (posDeb+ancienneTaille); i < size(chaine)-1; ++i) chaine[i] = ' ';
+    return chaine;
+}
+
+std::string & affichage::alignement (std::string & chaine, const unsigned n) {
+    while(chaine[0] == ' '){
+        for(unsigned i (1); i <= size(chaine)-1; ++i) chaine[i-1] = chaine[i];
+        chaine.resize(size(chaine)-1);
+    }
+    unsigned ancienneTaille = size(chaine);
+    chaine.resize(n + ancienneTaille);
+    for(unsigned i (ancienneTaille); i-- > 0;) chaine[i+n-1] = chaine[i];
+    for(unsigned i (0); i < n-1; ++i) chaine[i] = ' ';
+    return chaine;
 }
 
 // initialise toutes les cases de la grille avec des nombres tirés au hasard entre 1 et une constante
 // l'algorithme empêche les triplets ou plus
-void initGrille (CMat & grille) {
+void grille::initGrille (CMat & grille) {
     grille.resize(KTailleGrille, CVLine (KTailleGrille));
     for (unsigned i (0); i < KTailleGrille; ++i) {
         for (unsigned j (0); j < KTailleGrille; ++j) {
@@ -39,14 +67,14 @@ void initGrille (CMat & grille) {
 }
 
 // (re)initialise toutes les cases de la matrice à 0
-void initMat (CMat & matrice) {
+void grille::initMat (CMat & matrice) {
     for (CVLine & ligne : matrice)
         for (unsigned & element : ligne)
             element = 0;
 }
 
 // colorie les cases du grille
-void afficherGrille (const CMat & grille) {
+void affichage::afficherGrille (const CMat & grille) {
     for (const CVLine & ligne : grille) {
         for (const unsigned & elm : ligne) {
             std::cout << " | ";
@@ -80,73 +108,8 @@ void afficherGrille (const CMat & grille) {
     }
 }
 
-// Gestion des déplacements en fonction du joueur
-bool faireUnMouvement (CMat & grille, const CPosition & pos, const char direction, const unsigned KJoueur) {
-    bool changement = true;
-    if (KJoueur == 0) {
-        switch (direction) {
-        case 'Z':
-            if (grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second] != 0)
-                std::swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
-            else
-                changement = false;
-            break;
-        case 'S':
-            if (grille[(pos.first + 1) % KTailleGrille][pos.second] != 0)
-                std::swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
-            else
-                changement = false;
-            break;
-        case 'A':
-            if (grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)] != 0)
-                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
-            else
-                changement = false;
-            break;
-        case 'E':
-            if (grille[pos.first][(pos.second + 1) % KTailleGrille] != 0)
-                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
-            else
-                changement = false;
-            break;
-        default:
-            break;
-        }
-    }else {
-        switch (direction) {
-        case 'O':
-            if (grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second] != 0)
-                std::swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
-            else
-                changement = false;
-            break;
-        case 'L':
-            if (grille[(pos.first + 1) % KTailleGrille][pos.second] != 0)
-                std::swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
-            else
-                changement = false;
-            break;
-        case 'I':
-            if (grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)] != 0)
-                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
-            else
-                changement = false;
-            break;
-        case 'P':
-            if (grille[pos.first][(pos.second + 1) % KTailleGrille] != 0)
-                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
-            else
-                changement = false;
-            break;
-        default:
-            break;
-        }
-    }
-    return changement;
-}
-
 // Modifie la matrice en fonction des suites de nombres identiques sur les mêmes lignes
-void modifieLigneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
+void grille::modifieLigneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
     unsigned antiDepacement (0);
     if(i < combienDeSuite) {
         antiDepacement = 1;
@@ -157,7 +120,7 @@ void modifieLigneMatrice (const unsigned i, const unsigned j, const unsigned com
 }
 
 // Modifie la matrice en fonction des suites de nombres identiques sur les mêmes colonnes
-void modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
+void grille::modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
     for(unsigned k (j + combienDeSuite); k-- > j; ) {
         std::cout << k << std::endl;
         if(matrice[k][i] != 1)
@@ -165,7 +128,7 @@ void modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned c
     }}
 
 // Detection d’une suite de nombres identiques sur la même ligne
-bool auMoinsTroisParLigne (const CMat & grille, CMat & matrice) {
+bool grille::auMoinsTroisParLigne (const CMat & grille, CMat & matrice) {
     bool drapeau (false);
     size_t i (1);
     size_t j (KTailleGrille - 1);
@@ -196,7 +159,7 @@ bool auMoinsTroisParLigne (const CMat & grille, CMat & matrice) {
 }
 
 // Detection d’une suite de nombres identiques sur la même colonne
-bool auMoinsTroisParColonne (const CMat & grille, CMat & matrice) {
+bool grille::auMoinsTroisParColonne (const CMat & grille, CMat & matrice) {
     bool drapeau (false);
     size_t i (0);
     size_t j (KTailleGrille - 2);
@@ -224,12 +187,4 @@ bool auMoinsTroisParColonne (const CMat & grille, CMat & matrice) {
         --j;
     }
     return drapeau;
-}
-
-// Supprime les nombres identiques successifs de la grille (horizontalement et vertialement)
-void suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
-    for(unsigned i (0); i <= KTailleGrille - 1; ++i)
-        for(unsigned j (0); j <= KTailleGrille - 1; ++j)
-            if(matrice[i][j] == 1)
-                grille[i][j] = 0;
 }

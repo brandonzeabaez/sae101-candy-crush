@@ -21,44 +21,6 @@ typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 // const unsigned KMAgenta (35);
 // const unsigned KCyan    (36);
 
-// change la couleur du terminal
-void changerCouleur (const unsigned & couleur) {
-    cout << "\033[" << couleur <<"m";
-}
-
-// efface/réinitialise le terminal
-void effacerEcran () {
-    cout << "\033[H\033[2J";
-}
-
-void retouralaligne(unsigned n) {
-    for(unsigned i (0); i < n; ++i)
-        cout << "\n";
-    cout << flush;
-}
-
-string & centrer (string & chaine, const unsigned long n){
-    unsigned ancienneTaille = size(chaine);
-    unsigned posDeb = (n-ancienneTaille)/2;
-    chaine.resize(n);
-    for(unsigned i (ancienneTaille); i-- > 0;) chaine[posDeb+i-1] = chaine[i];
-    for(unsigned i (0); i < posDeb-1; ++i) chaine[i] = ' ';
-    for(unsigned i (posDeb+ancienneTaille); i < size(chaine)-1; ++i) chaine[i] = ' ';
-    return chaine;
-}
-
-string & alignement (string & chaine, const unsigned n){
-    while(chaine[0] == ' '){
-        for(unsigned i (1); i <= size(chaine)-1; ++i) chaine[i-1] = chaine[i];
-        chaine.resize(size(chaine)-1);
-    }
-    unsigned ancienneTaille = size(chaine);
-    chaine.resize(n + ancienneTaille);
-    for(unsigned i (ancienneTaille); i-- > 0;) chaine[i+n-1] = chaine[i];
-    for(unsigned i (0); i < n-1; ++i) chaine[i] = ' ';
-    return chaine;
-}
-
 int main () {
     srand(time(nullptr));
     vector <string> logo = {
@@ -81,15 +43,15 @@ int main () {
     };
     unsigned choix;
 
-    retouralaligne(3);
+    affichage::retouralaligne(3);
     for(string & ligne : logo) {
-        cout << centrer(ligne, 80)<< endl;
+        cout << affichage::centrer(ligne, 80)<< endl;
     }
-    retouralaligne(3);
+    affichage::retouralaligne(3);
     for(string & ligne : modes) {
-        cout << alignement(ligne, 30)<< endl;
+        cout << affichage::alignement(ligne, 30)<< endl;
     }
-    retouralaligne(3);
+    affichage::retouralaligne(3);
 
     cout << "> " << flush;
     cin >> choix;

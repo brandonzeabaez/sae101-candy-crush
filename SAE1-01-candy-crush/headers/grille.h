@@ -11,20 +11,21 @@ typedef std::vector <CVLine> CMat; // un type représentant la grille
 typedef std::pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
 namespace affichage{
-void changerCouleur (const unsigned & couleur);
-void effacerEcran ();
-void afficherGrille (const CMat & grille);
+    void changerCouleur (const unsigned & couleur);
+    void effacerEcran ();
+    void afficherGrille (const CMat & grille);
+    void retouralaligne(unsigned n);
+    std::string & centrer (std::string & chaine, const unsigned long n);
+    std::string & alignement (std::string & chaine, const unsigned n);
 }
 
 namespace grille{
-void initGrille (CMat & grille);
-void initMat (CMat & matrice);
-bool faireUnMouvement (CMat & grille, const CPosition & pos, const char direction, const unsigned KJoueur);
-void modifieLigneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice);
-void modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice);
-bool auMoinsTroisParLigne (const CMat & grille, CMat & matrice);
-bool auMoinsTroisParColonne (const CMat & grille, CMat & matrice);
-void suppressionDansLaGrille (CMat & grille, const CMat & matrice);
+    void initGrille (CMat & grille);
+    void initMat (CMat & matrice);
+    void modifieLigneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice);
+    void modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice);
+    bool auMoinsTroisParLigne (const CMat & grille, CMat & matrice);
+    bool auMoinsTroisParColonne (const CMat & grille, CMat & matrice);
 }
 
 #endif // GRILLE_H

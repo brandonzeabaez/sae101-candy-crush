@@ -30,7 +30,7 @@ const unsigned KNbSymboles   (5); // Nombre de symboles représentés dans la gr
 const unsigned KImpossible   (0); // symbole nul
 
 // Calcule le score (nb de blocs éliminés * combo)
-unsigned compteScore (CMat & matrice, unsigned & combo) {
+unsigned modeInfini::compteScore (CMat & matrice, unsigned & combo) {
     unsigned score (0);
     for(CVLine & ligne : matrice)
         for(unsigned & element : ligne)
@@ -40,7 +40,7 @@ unsigned compteScore (CMat & matrice, unsigned & combo) {
 }
 
 // Remplace les zéros de la grille par des bonbons
-void remplacerZero (CMat & grille) {
+void modeInfini::remplacerZero (CMat & grille) {
     for (unsigned i=0 ; i <= KTailleGrille - 1; ++i) {
         for (unsigned j=0 ; j <= KTailleGrille - 1; ++j) {
             if (grille[i][j] == 0) {
@@ -51,7 +51,7 @@ void remplacerZero (CMat & grille) {
 }
 
 // Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
-void gravite (CMat & grille, std::string & sens) {
+void modeInfini::gravite (CMat & grille, std::string & sens) {
     unsigned saut (0);
     if (sens == "BAS") { // C'est à dire les bonbons descendent
         for(unsigned i (0); i <= KTailleGrille - 1; ++i) {
@@ -121,7 +121,7 @@ void gravite (CMat & grille, std::string & sens) {
     }
 }
 
-std::vector <CPosition> obtenirPositionsSept (CMat & grille) {
+std::vector <CPosition> modeInfini::obtenirPositionsSept (CMat & grille) {
     std::vector <CPosition> positionsSept;
     for (unsigned i=0; i < KTailleGrille; ++i) {
         for (unsigned j=0; j < KTailleGrille; ++j) {
@@ -136,7 +136,7 @@ std::vector <CPosition> obtenirPositionsSept (CMat & grille) {
     return positionsSept;
 }
 
-void transformer(const unsigned & a, const unsigned & b, CMat & grille) {
+void modeInfini::transformer(const unsigned & a, const unsigned & b, CMat & grille) {
     for (unsigned i = 0; i < KTailleGrille; ++i) {
         for (unsigned j = 0; j < KTailleGrille; ++j) {
             if (grille[i][j] == a) {
@@ -147,7 +147,7 @@ void transformer(const unsigned & a, const unsigned & b, CMat & grille) {
 }
 
 // Réalisation d'un objectif, dès qu'il est réalisé un nouveau apparait s'il n'est pas réalisé dans le nombre de tours imparti alors finito
-bool regleRespectee(Regle & regle, CMat & grille, std::string & sensGravite, std::vector <CPosition> & posSept, unsigned & tribut, CPosition & pos, unsigned & somme, unsigned & combo, bool & tourNonJoue) {
+bool modeInfini::regleRespectee(Regle & regle, CMat & grille, std::string & sensGravite, std::vector <CPosition> & posSept, unsigned & tribut, CPosition & pos, unsigned & somme, unsigned & combo, bool & tourNonJoue) {
     if (tourNonJoue) {
         return true;
     }
@@ -204,7 +204,7 @@ bool regleRespectee(Regle & regle, CMat & grille, std::string & sensGravite, std
 }
 
 // Gestion des déplacements des bonbons de la grille
-bool faireUnMouvement (CMat & grille, const CPosition & pos, const char direction) {
+bool modeInfini::faireUnMouvement (CMat & grille, const CPosition & pos, const char direction) {
     bool changement = true;
     switch (direction) {
     case 'Z':
@@ -238,7 +238,7 @@ bool faireUnMouvement (CMat & grille, const CPosition & pos, const char directio
 }
 
 
-std::string litUneString (std::ifstream & entree){
+std::string modeInfini::litUneString (std::ifstream & entree){
     std::string uneChaine;
     while (true){
         std::getline (entree, uneChaine);
@@ -247,7 +247,7 @@ std::string litUneString (std::ifstream & entree){
     return uneChaine;
 }
 
-int litUnEntier (std::ifstream & entree){
+int modeInfini::litUnEntier (std::ifstream & entree){
     std::string uneChaine;
     while (true){
         std::getline (entree, uneChaine);
@@ -256,7 +256,7 @@ int litUnEntier (std::ifstream & entree){
     return stoi(uneChaine);
 }
 
-std::vector <unsigned> suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
+std::vector <unsigned> modeInfini::suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
     std::vector <unsigned> historiqueSuppressions;
     for(unsigned i (0); i <= KTailleGrille - 1; ++i) {
         for(unsigned j (0); j <= KTailleGrille - 1; ++j) {
@@ -270,12 +270,12 @@ std::vector <unsigned> suppressionDansLaGrille (CMat & grille, const CMat & matr
 }
 
 // trie les scores lus dans le fichier
-void triScores (std::vector <std::pair<std::string, unsigned>> & scores) {
+void modeInfini::triScores (std::vector <std::pair<std::string, unsigned>> & scores) {
     sort(scores.begin(), scores.end(), [](const std::pair<std::string, unsigned> &a, const std::pair<std::string, unsigned> &b){
         return a.second < b.second; }); // https://www.geeksforgeeks.org/cpp/sort-c-stl/
 }
 
-int lancer () {
+int modeInfini::lancer () {
     unsigned coups (0); // Stocke le nombre de coups joués
     unsigned score = 0; // Stock le score de chaque joueur
     CPosition pos; // Tuple des coordonnées du symbole à déplacer

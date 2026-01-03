@@ -23,18 +23,73 @@ const unsigned KCoupsMax     (20); // Nombre de coups possibles dans la partie
 const unsigned KNbSymboles   (5); // Nombre de symboles représentés dans la grille
 const unsigned KImpossible   (0); // symbole nul
 
-// Calcule le nombre de points gagnés pendant ce tour de jeu par le joueur en cours
-unsigned compteScore (CMat & matrice) {
-    unsigned score (0);
-    for(CVLine & ligne : matrice)
-        for(unsigned & element : ligne)
-            if(element == 1)
-                ++score;
-    return score;
+// Gestion des déplacements en fonction du joueur
+bool mode1vs1::faireUnMouvement (CMat & grille, const CPosition & pos, const char direction, const unsigned KJoueur) {
+    bool changement = true;
+    if (KJoueur == 0) {
+        switch (direction) {
+        case 'Z':
+            if (grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second] != 0)
+                std::swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
+            else
+                changement = false;
+            break;
+        case 'S':
+            if (grille[(pos.first + 1) % KTailleGrille][pos.second] != 0)
+                std::swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
+            else
+                changement = false;
+            break;
+        case 'A':
+            if (grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)] != 0)
+                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
+            else
+                changement = false;
+            break;
+        case 'E':
+            if (grille[pos.first][(pos.second + 1) % KTailleGrille] != 0)
+                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
+            else
+                changement = false;
+            break;
+        default:
+            break;
+        }
+    }else {
+        switch (direction) {
+        case 'O':
+            if (grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second] != 0)
+                std::swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
+            else
+                changement = false;
+            break;
+        case 'L':
+            if (grille[(pos.first + 1) % KTailleGrille][pos.second] != 0)
+                std::swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
+            else
+                changement = false;
+            break;
+        case 'I':
+            if (grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)] != 0)
+                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
+            else
+                changement = false;
+            break;
+        case 'P':
+            if (grille[pos.first][(pos.second + 1) % KTailleGrille] != 0)
+                std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
+            else
+                changement = false;
+            break;
+        default:
+            break;
+        }
+    }
+    return changement;
 }
 
 // Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
-void gravite (CMat & grille) {
+void mode1vs1::gravite (CMat & grille) {
     unsigned saut (0);
     for(unsigned i (0); i <= KTailleGrille - 1; ++i) {
         for(unsigned j (KTailleGrille - 1); j > saut; --j) {
@@ -50,7 +105,25 @@ void gravite (CMat & grille) {
     }
 }
 
-int lancer () {
+// Supprime les nombres identiques successifs de la grille (horizontalement et vertialement)
+void mode1vs1::suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
+    for(unsigned i (0); i <= KTailleGrille - 1; ++i)
+        for(unsigned j (0); j <= KTailleGrille - 1; ++j)
+            if(matrice[i][j] == 1)
+                grille[i][j] = 0;
+}
+
+// Calcule le nombre de points gagnés pendant ce tour de jeu par le joueur en cours
+unsigned mode1vs1::compteScore (CMat & matrice) {
+    unsigned score (0);
+    for(CVLine & ligne : matrice)
+        for(unsigned & element : ligne)
+            if(element == 1)
+                ++score;
+    return score;
+}
+
+int mode1vs1::lancer () {
     unsigned joueur (0); // Stocke le joueur en cours
     unsigned coups (0); // Stocke le nombre de coups joués
     std::pair <unsigned, unsigned> score (std::pair(0, 0)); // Stock le score de chaque joueur
@@ -93,10 +166,10 @@ int lancer () {
 
         if (grille[pos.first][pos.second] != 0) {
             if ((joueur == 0 && (coordonnée == 'Z' || coordonnée == 'S' || coordonnée == 'A' || coordonnée == 'E')) || (joueur == 1 && (coordonnée == 'O' || coordonnée == 'L' || coordonnée == 'I' || coordonnée == 'P'))) {
-                if (grille::faireUnMouvement(grille, pos, coordonnée, joueur)) {
+                if (mode1vs1::faireUnMouvement(grille, pos, coordonnée, joueur)) {
                     while(grille::auMoinsTroisParLigne(grille, matrice) | grille::auMoinsTroisParColonne(grille, matrice)) {
                         joueur == 0 ? score.first += mode1vs1::compteScore(matrice) : score.second += mode1vs1::compteScore(matrice); // met à jour le score en fonction du joueur en cours
-                        grille::suppressionDansLaGrille(grille, matrice);
+                        mode1vs1::suppressionDansLaGrille(grille, matrice);
 
                         std::cout << "\n" << std::endl;
                         affichage::afficherGrille(grille);

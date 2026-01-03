@@ -4,7 +4,9 @@
 #include "grille.h"
 
 namespace mode1vs1{
+    bool faireUnMouvement (CMat & grille, const CPosition & pos, const char direction, const unsigned KJoueur);
     void gravite (CMat & grille);
+    void suppressionDansLaGrille (CMat & grille, const CMat & matrice);
     unsigned compteScore (CMat & matrice);
     int lancer ();
 }
