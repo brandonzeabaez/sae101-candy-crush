@@ -1,9 +1,9 @@
 #ifndef MODE_1VS1_H
 #define MODE_1VS1_H
 #include <vector>
-typedef vector <unsigned> CVLine; // un type représentant une ligne de la grille
-typedef vector <CVLine> CMat; // un type représentant la grille
-typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
+typedef std::vector <unsigned> CVLine; // un type représentant une ligne de la grille
+typedef std::vector <CVLine> CMat; // un type représentant la grille
+typedef std::pair <unsigned, unsigned> CPosition; // une position dans la girlle
 const unsigned KNoir    (30);
 const unsigned KRouge   (31);
 const unsigned KVert    (32);
