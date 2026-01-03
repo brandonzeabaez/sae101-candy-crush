@@ -1,20 +1,16 @@
 #ifndef BOMBE_H
 #define BOMBE_H
-#include <iostream>
-#include "bombe.h"
-// Pas de namespaces dans les fichiers.h askip
-// using namespace std;
-using namespace manipulationDeVecteur;
-using namespace manipulationDeLaGrille;
-using namespace testSurLaGrille;
 
-typedef std::vector <CVLine> CMat; // un type représentant la grille
-typedef std::pair <unsigned, unsigned> CPosition; // une position dans la girlle
+#include "affichage.h"
 
-namespace festival{
+namespace festival
+{
+    using CMat = manipulationDeLaGrille::CMatrice; // un type représentant la grille
+    using CPosition = manipulationDeLaGrille::CPosition; // une position dans la girlle
+
     void rajouteBombe(CMat & grille);
-    int detectionBombe(CMat & grille, CPosition & pos, unsigned combien, bool uneLigne); // je sais pas si c'est voulu de pas avoir mis de & mais ok ?
-    void supprimeCouleurBombe(CMat & grille, int & couleurCible);
+    int detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne); // je sais pas si c'est voulu de pas avoir mis de & mais ok ?
+    void supprimeCouleurBombe(CMat & grille, unsigned & couleurCible);
     void gravite (CMat & grille);
 }
 #endif // BOMBE_H

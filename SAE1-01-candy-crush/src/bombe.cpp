@@ -1,22 +1,19 @@
 #include "../headers/bombe.h"
 #include "../headers/affichage.h"
-#include <iostream>
-using namespace std;
-using namespace manipulationDeVecteur;
-using namespace manipulationDeLaGrille;
-using namespace testSurLaGrille;
+
+const unsigned KImpossible (999);
 
 // rajoute bombe (nombre 5) dans un endroit rnadom dans la grille
-void festival::rajouteBombe(CMatrice & grille){
-    int numPremier = rand()%(grille.size());
-    int numDeuxieme = rand()%(grille.size());
+void festival::rajouteBombe(CMat & grille){
+    size_t numPremier = rand()%(grille.size());
+    size_t numDeuxieme = rand()%(grille.size());
     grille[numPremier][numDeuxieme] = 5;
 }
 
-int festival::detectionBombe(CMatrice & grille, CPosition & pos, unsigned combien, bool uneLigne){
+int festival::detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne){
     // si couleurCible == 0, il n'y a pas de bombe
     // si couleurCible != 0, on veut eliminer toutes cases avec couleurCible
-    int couleurCible = 0;
+    unsigned couleurCible = 0;
     int x;
     int y;
 
@@ -31,8 +28,8 @@ int festival::detectionBombe(CMatrice & grille, CPosition & pos, unsigned combie
             x = pos.first;
         }
 
-        vector<int> coordVertical = {-1, 1, 0, 0};
-        vector<int> coordHorizontal = {0, 0, -1, 1};
+        std::vector<int> coordVertical = {-1, 1, 0, 0};
+        std::vector<int> coordHorizontal = {0, 0, -1, 1};
 
         // on verifie chaque coord adjacent (haut, bas, gauche, droite)
         for (int coord = 0; coord < 4; ++coord){
@@ -55,7 +52,7 @@ int festival::detectionBombe(CMatrice & grille, CPosition & pos, unsigned combie
 
 
 // enleve toute couleurCible dans la grille avec KImpossible
-void festival::supprimeCouleurBombe(CMatrice & grille, int & couleurCible){
+void festival::supprimeCouleurBombe(CMat & grille, unsigned & couleurCible){
     for (size_t i = 0; i < grille.size(); ++i){
         for (size_t j = 0; j < grille.size(); ++j) {
             if (grille[i][j] == couleurCible){
@@ -66,12 +63,12 @@ void festival::supprimeCouleurBombe(CMatrice & grille, int & couleurCible){
 }
 
 // Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
-void festival::gravite (CMatrice & grille) {
+void festival::gravite (CMat & grille) {
     unsigned saut (0);
     for(unsigned i (0); i <= grille.size() - 1; ++i) {
         for(unsigned j (grille.size() - 1); j > saut; --j) {
             while(grille[j][i] == KImpossible) {
-                swap(grille[j][i], grille[j - (1 + saut)][i]);
+                std::swap(grille[j][i], grille[j - (1 + saut)][i]);
                 if(grille[j][i] == KImpossible)
                     ++saut;
                 if(saut + 1 > j)

@@ -60,6 +60,7 @@ string & alignement (string & chaine, const unsigned n){
 }
 
 int main () {
+    srand(time(nullptr));
     vector <string> logo = {
         {" _____________________________________ "},
         {"|   ___    __    __  _  ____  __  __  |"},
@@ -95,16 +96,16 @@ int main () {
 
     switch(choix) {
     case 1:
-        modeHistoire::modeHistoire();
+        modeHistoire::lancer();
         break;
     case 2:
-        modeInfini::modeInfini();
+        modeInfini::lancer();
         break;
     case 3:
-        mode1vs1::mode1vs1();
+        mode1vs1::lancer();
         break;
     case 4:
-        modeFestival::modeFestival();
+        modeFestival::lancer();
         break;
     default:
         cout << "Aucun mode ne correpond à ce numéro" << endl;

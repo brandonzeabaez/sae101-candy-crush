@@ -1,88 +1,80 @@
 #include "../headers/mode-festival.h"
 #include "../headers/affichage.h"
 #include "../headers/bombe.h"
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <iomanip>
-using namespace std;
-using namespace manipulationDeVecteur;
-using namespace manipulationDeLaGrille;
-using namespace testSurLaGrille;
-using namespace festival;
-void test1_row_column (CMatrice & matrice,CPosition p,unsigned h)
+
+void modeFestival::test1_row_column (CMat & matrice, CPosition p, unsigned h)
 {
-    while(auMoinsTroisDansLaLigne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
     {
-        supprimmerUneLigne (matrice,p,h);
-        afficherLaGrille(matrice);
-        cout << "------" << endl;
+        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        std::cout << "------" << std::endl;
     }
-    while(auMoinsTroisDansLaColonne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
     {
-        supprimmerUneColonne (matrice,p,h);
-        afficherLaGrille(matrice);
-        cout << "------" << endl;
+        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        std::cout << "------" << std::endl;
     }
 }
-void test2_column_row (CMatrice & matrice,CPosition p,unsigned h)
+void modeFestival::test2_column_row (CMat & matrice, CPosition p, unsigned h)
 {
-    while(auMoinsTroisDansLaColonne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
     {
-        supprimmerUneColonne (matrice,p,h);
-        afficherLaGrille(matrice);
+        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
     }
-    while(auMoinsTroisDansLaLigne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
     {
-        supprimmerUneLigne (matrice,p,h);
-        afficherLaGrille(matrice);
+        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
     }
-    afficherLaGrille(matrice);
+    manipulationDeLaGrille::afficherLaGrille(matrice);
 }
 
-void testFestival (CMatrice & matrice,CPosition p,unsigned h)
+void modeFestival::testFestival (CMat & matrice, CPosition p, unsigned h)
 {
-    rajouteBombe(matrice);
-    afficherLaGrille(matrice);
+    festival::rajouteBombe(matrice);
+    manipulationDeLaGrille::afficherLaGrille(matrice);
 
-    while(auMoinsTroisDansLaLigne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
     {
-        int couleur = detectionBombe(matrice, p, h, true);
-        supprimmerUneLigne (matrice,p,h);
+        unsigned couleur = festival::detectionBombe(matrice, p, h, true);
+        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
         if (couleur != 0){
-            cout << "On enleve couleur: "<< couleur << endl;
-            supprimeCouleurBombe(matrice, couleur);
-            gravite(matrice);
+            std::cout << "On enleve couleur: "<< couleur << std::endl;
+            festival::supprimeCouleurBombe(matrice, couleur);
+            festival::gravite(matrice);
         }
-        afficherLaGrille(matrice);
-        cout << "------" << endl;
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        std::cout << "------" << std::endl;
     }
 
-    while(auMoinsTroisDansLaColonne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
     {
-        int couleur = detectionBombe(matrice, p, h, false);
-        supprimmerUneColonne (matrice,p,h);
+        unsigned couleur = festival::detectionBombe(matrice, p, h, false);
+        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
         if (couleur != 0){
-            cout << "On enleve couleur: "<< couleur << endl;
-            supprimeCouleurBombe(matrice, couleur);
-            gravite(matrice);
+            std::cout << "On enleve couleur: "<< couleur << std::endl;
+            festival::supprimeCouleurBombe(matrice, couleur);
+            festival::gravite(matrice);
         }
-        afficherLaGrille(matrice);
-        cout << "------" << endl;
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        std::cout << "------" << std::endl;
     }
 }
 
 
-int modeFestival ()
+int modeFestival::lancer ()
 {
     //cout << "\033[" << 41 <<"m";
     unsigned h (1);
     CPosition p {0,0};
-    CMatrice matrice;
-    InitiationGrille(matrice,8);
+    CMat matrice;
+    manipulationDeLaGrille::InitiationGrille(matrice,8);
     //matrice[1][5] = 5;
-    afficherLaGrille(matrice);
-    cout << "------" << endl;
+    manipulationDeLaGrille::afficherLaGrille(matrice);
+    std::cout << "------" << std::endl;
     //test1_row_column(matrice,p,h);
     //test2_column_row(matrice,p,h);
     testFestival(matrice,p,h);

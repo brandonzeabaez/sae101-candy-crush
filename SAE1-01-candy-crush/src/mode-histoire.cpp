@@ -1,35 +1,10 @@
 #include "../headers/mode-histoire.h"
 #include "../headers/affichage.h"
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <iomanip>
-using namespace std;
-using namespace manipulationDeVecteur;
-using namespace manipulationDeLaGrille;
-using namespace testSurLaGrille;
+
 const unsigned K2Impossible (999);
 const unsigned K2NbDeBonbons (4);
-void rajoutDesBonbons(CMatrice & grille);
-void test1_row_column (CMatrice & matrice,CPosition p,unsigned h)
-{
-    while(auMoinsTroisDansLaLigne(matrice,p,h))
-    {
-        supprimmerUneLigne (matrice,p,h);
-        afficherLaGrille(matrice);
-        rajoutDesBonbons(matrice);
 
-    }
-    while(auMoinsTroisDansLaColonne(matrice,p,h))
-    {
-        supprimmerUneColonne (matrice,p,h);
-        afficherLaGrille(matrice);
-        rajoutDesBonbons(matrice);
-
-    }
-
-}
-void rajoutDesBonbons(CMatrice & grille)
+void modeHistoire::rajoutDesBonbons(CMat & grille)
 {
     for(CVLigne & ligne : grille)
     {
@@ -39,53 +14,71 @@ void rajoutDesBonbons(CMatrice & grille)
         }
     }
 }
-void melangeDesBonbons(CMatrice & grille)
+void modeHistoire::test1_row_column (CMat & matrice,CPosition p,unsigned h)
+{
+    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
+    {
+        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        rajoutDesBonbons(matrice);
+
+    }
+    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
+    {
+        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        rajoutDesBonbons(matrice);
+
+    }
+
+}
+void modeHistoire::melangeDesBonbons(CMat & grille)
 {
     for(size_t ligne (0) ; ligne < grille.size(); ++ligne)
     {
         for(size_t colonne (0) ; colonne < grille.size(); ++colonne) grille[ligne][colonne] = grille[rand()%(grille.size())][rand()%(grille.size())];
     }
 }
-void test2_column_row (CMatrice & matrice,CPosition p,unsigned h)
+void modeHistoire::test2_column_row (CMat & matrice,CPosition p,unsigned h)
 {
-    while(auMoinsTroisDansLaColonne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaColonne(matrice,p,h))
     {
-        supprimmerUneColonne (matrice,p,h);
-        afficherLaGrille(matrice);
+        manipulationDeLaGrille::supprimmerUneColonne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
     }
-    while(auMoinsTroisDansLaLigne(matrice,p,h))
+    while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
     {
-        supprimmerUneLigne (matrice,p,h);
-        afficherLaGrille(matrice);
+        manipulationDeLaGrille::supprimmerUneLigne (matrice,p,h);
+        manipulationDeLaGrille::afficherLaGrille(matrice);
     }
 }
-int modeHistoire ()
+int modeHistoire::lancer ()
 {
     //cout << "\033[" << 41 <<"m";
     unsigned h (1);
     CPosition p {0,0};
-    CMatrice matrice;
-    InitiationGrille(matrice,6);
-    afficherLaGrille(matrice);
+    CMat matrice;
+    manipulationDeLaGrille::InitiationGrille(matrice,6);
+    manipulationDeLaGrille::afficherLaGrille(matrice);
     test1_row_column(matrice,p,h);
     //afficherLaGrille(matrice);
     //melangeDesBonbons(matrice);
     char direction;
     do
     {
-        string chaine;
-        afficherLaGrille(matrice);
-        cout << "veuillez mettre une position pour la ligne : ";
-        cin >> chaine;
-        p.second=stoul(chaine);
-        cout << p.second << endl;
-        cout << "veuillez mettre une position pour la colonne : ";
-        cin >> chaine;
-        p.first=stoul(chaine);
-        cout << p.first << endl;
-        cout << "veuillez mettre une direction valide : ";
-        cin >> direction;
-        faireUnMouvement(matrice,p,direction);
+        std::string chaine;
+        manipulationDeLaGrille::afficherLaGrille(matrice);
+        std::cout << "veuillez mettre une position pour la ligne : ";
+        std::cin >> chaine;
+        p.second=std::stoul(chaine);
+        std::cout << p.second << std::endl;
+        std::cout << "veuillez mettre une position pour la colonne : ";
+        std::cin >> chaine;
+        p.first=std::stoul(chaine);
+        std::cout << p.first << std::endl;
+        std::cout << "veuillez mettre une direction valide : ";
+        std::cin >> direction;
+        manipulationDeLaGrille::faireUnMouvement(matrice,p,direction);
         test1_row_column(matrice,p,h);
         ansiEscapeAffichage::nettoyerLEcran();
         // afficherLaGrille(matrice);

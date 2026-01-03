@@ -7,6 +7,7 @@ SOURCES += \
         main.cpp \
         src/affichage.cpp \
         src/bombe.cpp \
+        src/grille.cpp \
         src/mode-1vs1.cpp \
         src/mode-festival.cpp \
         src/mode-histoire.cpp \
@@ -15,6 +16,7 @@ SOURCES += \
 HEADERS += \
     headers/affichage.h \
     headers/bombe.h \
+    headers/grille.h \
     headers/mode-1vs1.h \
     headers/mode-festival.h \
     headers/mode-histoire.h \

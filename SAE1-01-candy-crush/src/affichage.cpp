@@ -1,18 +1,26 @@
 #include "../headers/affichage.h"
-#include <iostream>
-#include <vector>
-#include <iomanip>
-#include <cstdlib>
-using namespace std;
+
+const unsigned KNoir    (30);
+const unsigned KRouge   (31);
+const unsigned KVert    (32);
+const unsigned KJaune   (33);
+const unsigned KBleu    (34);
+const unsigned KMAgenta (35);
+const unsigned KCyan    (36);
+const unsigned KReset   (0);
+const unsigned KNbDeBonbons (4);
+const unsigned KImpossible (999);
 
 void ansiEscapeAffichage::couleur (const unsigned & coul)
 {
-    cout << "\033[" << coul <<"m"; //On change de couleur avec coul le code couleur
+    std::cout << "\033[" << coul <<"m"; //On change de couleur avec coul le code couleur
 }
+
 void ansiEscapeAffichage::nettoyerLEcran () {
-    cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
+    std::cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
     //Remplacer 2J par 3J c mieux
 }
+
 void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
 {
     switch (bonbon)
@@ -31,23 +39,23 @@ void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
     }
 }
 
-vector <unsigned> & manipulationDeVecteur::suppressionDElement (vector <unsigned> & VTemporaire, const size_t & positionDuDebut)
+std::vector <unsigned> & manipulationDeVecteur::suppressionDElement (std::vector <unsigned> & VTemporaire, const std::size_t & positionDuDebut)
 {
     //l'élément qui se trouve dans cette position est supprimé du vector
-    for(size_t i (positionDuDebut);i < VTemporaire.size()-1;++i) VTemporaire[i]=VTemporaire[i+1];
+    for(std::size_t i (positionDuDebut);i < VTemporaire.size()-1;++i) VTemporaire[i]=VTemporaire[i+1];
     VTemporaire.resize(VTemporaire.size()-1);
     return VTemporaire;
 }
-vector <unsigned> & manipulationDeVecteur::insertionDElement (vector <unsigned> & VTemporaire,const size_t pos,const unsigned val)
+std::vector <unsigned> & manipulationDeVecteur::insertionDElement (std::vector <unsigned> & VTemporaire,const std::size_t pos, const unsigned val)
 {
     //On insère un élement à une certaine position
     VTemporaire.resize(VTemporaire.size()+1);
-    for (size_t i = VTemporaire.size()-1;  pos < i; --i) VTemporaire[i]=VTemporaire[i-1];
+    for (std::size_t i = VTemporaire.size()-1; pos < i; --i) VTemporaire[i]=VTemporaire[i-1];
     VTemporaire[pos]=val;
     return VTemporaire;
 }
 
-vector <unsigned> & manipulationDeVecteur::deplacerUnElement (vector <unsigned> & VTemporaire, const size_t & positionDuDebut, const size_t & positionDeFin)
+std::vector <unsigned> & manipulationDeVecteur::deplacerUnElement (std::vector <unsigned> & VTemporaire, const std::size_t & positionDuDebut, const std::size_t & positionDeFin)
 {
     //On combine les fonctions suppressionDElement et Insertion pour déplacer un élement
     //on met les valeurs à KImpossible
@@ -57,7 +65,7 @@ vector <unsigned> & manipulationDeVecteur::deplacerUnElement (vector <unsigned> 
     return VTemporaire;
 }
 
-void manipulationDeLaGrille::InitiationGrille (CMatrice & grille, size_t taille)
+void manipulationDeLaGrille::InitiationGrille (CMatrice & grille, std::size_t taille)
 {
     grille.resize(taille, CVLigne (taille));
     for (CVLigne & ligne : grille)
@@ -75,15 +83,15 @@ void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
             if (cellule >= 1 && cellule <= KNbDeBonbons) //il faut que la cellule corresponde à un bonbon
             {
                 ansiEscapeAffichage::couleurBonbon(cellule); // on affecte chaque case à une couleur selon sa valeur
-                cout << setw(3) << cellule;// on espace de 2 et le 3eme charactere est la case
+                std::cout << std::setw(3) << cellule;// on espace de 2 et le 3eme charactere est la case
             }
             else
             {
                 ansiEscapeAffichage::couleur(KReset);
-                cout << setw(3) << ' '; //si ça correspond pas on a une case vide
+                std::cout << std::setw(3) << ' '; //si ça correspond pas on a une case vide
             }
         }
-        cout << endl; // saut de ligne à chaque ligne de la matrice
+        std::cout << std::endl; // saut de ligne à chaque ligne de la matrice
     }
     ansiEscapeAffichage::couleur(KReset); // on remet la couleur à la normale
 }
@@ -97,33 +105,33 @@ void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition
         case 'z' :
             if (pos.second > 0 ) //On évite la ligne qui est tt en haut
             {
-                swap(grille[pos.second][pos.first],grille[pos.second-1][pos.first]); //On permute la case en haut
+                std::swap(grille[pos.second][pos.first],grille[pos.second-1][pos.first]); //On permute la case en haut
                 break;
             }
             else break;
         case 's' :
             if (pos.second < grille.size()-1) //On évite la ligne qui est tt en bas
             {
-                swap(grille[pos.second][pos.first],grille[pos.second+1][pos.first]); //On permute la case en bas
+                std::swap(grille[pos.second][pos.first],grille[pos.second+1][pos.first]); //On permute la case en bas
                 break;
             }
             else break;
         case 'a' :
             if (pos.first > 0) //On évite la colonne qui est tt à gauche
             {
-                swap(grille[pos.second][pos.first],grille[pos.second][pos.first-1]); //On permute la case à gauche
+                std::swap(grille[pos.second][pos.first],grille[pos.second][pos.first-1]); //On permute la case à gauche
                 break;
             }
             else break;
         case 'e' :
             if (pos.first < grille.size()-1) //On évite la colonne qui est tt à droite
             {
-                swap(grille[pos.second][pos.first],grille[pos.second][pos.first+1]); //On permute la case à droite
+                std::swap(grille[pos.second][pos.first],grille[pos.second][pos.first+1]); //On permute la case à droite
                 break;
             }
             else break;
         default :
-            cout << "appuyer sur une touche valide" << endl;
+            std::cout << "appuyer sur une touche valide" << std::endl;
         }
     }
 }
@@ -136,11 +144,11 @@ void manipulationDeLaGrille::supprimmerUneColonne (CMatrice & grille, const CPos
     On met le nombre de motifs d'affilées en valeur KImposssible au début du vector
     On injecte les valeurs du vector dans la colonne de la grille
     */
-    vector <unsigned> VTemporaire;
+    std::vector <unsigned> VTemporaire;
     VTemporaire.resize(grille.size());
-    for (size_t i (0); i < grille.size() ;++i) VTemporaire[i] = grille[i][pos.first];
-    for (size_t i (pos.second); i < pos.second+combien ;++i) manipulationDeVecteur::insertionDElement(manipulationDeVecteur::suppressionDElement(VTemporaire,i),0,KImpossible);
-    for (size_t i (0); i < grille.size() ;++i) grille[i][pos.first] = VTemporaire[i];
+    for (std::size_t i (0); i < grille.size() ;++i) VTemporaire[i] = grille[i][pos.first];
+    for (std::size_t i (pos.second); i < pos.second+combien ;++i) manipulationDeVecteur::insertionDElement(manipulationDeVecteur::suppressionDElement(VTemporaire,i),0,KImpossible);
+    for (std::size_t i (0); i < grille.size() ;++i) grille[i][pos.first] = VTemporaire[i];
 }
 
 void manipulationDeLaGrille::supprimmerUneLigne (CMatrice & grille, const CPosition & pos, unsigned  combien)
@@ -148,16 +156,16 @@ void manipulationDeLaGrille::supprimmerUneLigne (CMatrice & grille, const CPosit
     /*
     On supprimme une ligne en supprimmant en supprimmant une valeur dde chaque colonne le nombre de fois ou le motif se répète
     */
-    for (size_t i (pos.first); i < pos.first+combien; ++i) manipulationDeLaGrille::supprimmerUneColonne (grille,CPosition {i,pos.second},1);
+    for (std::size_t i (pos.first); i < pos.first+combien; ++i) manipulationDeLaGrille::supprimmerUneColonne (grille,CPosition {i,pos.second},1);
 }
 
 bool testSurLaGrille::auMoinsTroisDansLaColonne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien)
 {
     bool siCEstAlignee (false);
     combien = 1;
-    for (size_t j (0);j < size(grille);++j) //On itère les indices des colonnes
+    for (std::size_t j (0);j < size(grille);++j) //On itère les indices des colonnes
     {
-        for (size_t i (0);i < size(grille)-1 && !siCEstAlignee;++i)
+        for (std::size_t i (0);i < size(grille)-1 && !siCEstAlignee;++i)
         {
             /*
             On parcours la colonne en itérant l'indice de la ligne
@@ -207,9 +215,9 @@ bool testSurLaGrille::auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMa
 {
     bool siCEstAlignee (false);
     combien = 1;
-    for (size_t i (0);i < size(grille);++i) //On itère les indices des lignes
+    for (std::size_t i (0);i < size(grille);++i) //On itère les indices des lignes
     {
-        for (size_t j(0);j < size(grille)-1 && !siCEstAlignee;++j)
+        for (std::size_t j(0);j < size(grille)-1 && !siCEstAlignee;++j)
         {
             /*
             On parcours la ligne en itérant l'indice de la colonne
