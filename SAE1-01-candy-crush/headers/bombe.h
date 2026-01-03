@@ -9,7 +9,7 @@ namespace festival
     using CPosition = manipulationDeLaGrille::CPosition; // une position dans la girlle
 
     void rajouteBombe(CMat & grille);
-    int detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne); // je sais pas si c'est voulu de pas avoir mis de & mais ok ?
+    unsigned detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne); // je sais pas si c'est voulu de pas avoir mis de & mais ok ?
     void supprimeCouleurBombe(CMat & grille, unsigned & couleurCible);
     void gravite (CMat & grille);
 }

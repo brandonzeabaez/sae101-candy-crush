@@ -10,7 +10,7 @@ void festival::rajouteBombe(CMat & grille){
     grille[numPremier][numDeuxieme] = 5;
 }
 
-int festival::detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne){
+unsigned festival::detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne){
     // si couleurCible == 0, il n'y a pas de bombe
     // si couleurCible != 0, on veut eliminer toutes cases avec couleurCible
     unsigned couleurCible = 0;
