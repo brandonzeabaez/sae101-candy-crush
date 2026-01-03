@@ -12,14 +12,14 @@ typedef vector <CVLine> CMat; // un type représentant la grille
 typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
 // constantes de couleurs d'affichage du terminal
-const unsigned KReset   (0);
-const unsigned KNoir    (30);
-const unsigned KRouge   (31);
-const unsigned KVert    (32);
-const unsigned KJaune   (33);
-const unsigned KBleu    (34);
-const unsigned KMAgenta (35);
-const unsigned KCyan    (36);
+// const unsigned KReset   (0);
+// const unsigned KNoir    (30);
+// const unsigned KRouge   (31);
+// const unsigned KVert    (32);
+// const unsigned KJaune   (33);
+// const unsigned KBleu    (34);
+// const unsigned KMAgenta (35);
+// const unsigned KCyan    (36);
 
 // change la couleur du terminal
 void changerCouleur (const unsigned & couleur) {
