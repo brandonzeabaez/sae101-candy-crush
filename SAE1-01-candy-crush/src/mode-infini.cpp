@@ -15,13 +15,14 @@
 
 // constantes de couleurs d'affichage du terminal
 const unsigned KReset   (0);
-const unsigned KNoir    (30);
-const unsigned KRouge   (31);
-const unsigned KVert    (32);
-const unsigned KJaune   (33);
-const unsigned KBleu    (34);
-const unsigned KMAgenta (35);
-const unsigned KCyan    (36);
+unsigned Noir    (30);
+unsigned Rouge   (31);
+unsigned Vert    (32);
+unsigned Jaune   (33);
+unsigned Bleu    (34);
+unsigned Magenta (35);
+unsigned Cyan    (36);
+
 
 const unsigned KTailleGrille (10); // Longueur & largeur de la grille de jeu
 const unsigned KCoupsMax     (20); // Nombre de coups possibles dans la partie
@@ -36,6 +37,17 @@ unsigned compteScore (CMat & matrice, unsigned & combo) {
             if(element == 1)
                 score = score * combo;
     return score;
+}
+
+// Remplace les zéros de la grille par des bonbons
+void remplacerZero (CMat & grille) {
+    for (unsigned i=0 ; i <= KTailleGrille - 1; ++i) {
+        for (unsigned j=0 ; j <= KTailleGrille - 1; ++j) {
+            if (grille[i][j] == 0) {
+                grille[i][j] = rand() % KNbSymboles + 1;
+            } // { }
+        }
+    }
 }
 
 // Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
@@ -191,6 +203,41 @@ bool regleRespectee(Regle & regle, CMat & grille, std::string & sensGravite, std
     return true;
 }
 
+// Gestion des déplacements des bonbons de la grille
+bool faireUnMouvement (CMat & grille, const CPosition & pos, const char direction) {
+    bool changement = true;
+    switch (direction) {
+    case 'Z':
+        if (grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second] != 0)
+            std::swap(grille[pos.first][pos.second], grille[(pos.first > 0 ? pos.first - 1 : KTailleGrille - 1)][pos.second]);
+        else
+            changement = false;
+        break;
+    case 'S':
+        if (grille[(pos.first + 1) % KTailleGrille][pos.second] != 0)
+            std::swap(grille[pos.first][pos.second], grille[(pos.first + 1) % KTailleGrille][pos.second]);
+        else
+            changement = false;
+        break;
+    case 'A':
+        if (grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)] != 0)
+            std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second > 0 ? pos.second - 1 : KTailleGrille - 1)]);
+        else
+            changement = false;
+        break;
+    case 'E':
+        if (grille[pos.first][(pos.second + 1) % KTailleGrille] != 0)
+            std::swap(grille[pos.first][pos.second], grille[pos.first][(pos.second + 1) % KTailleGrille]);
+        else
+            changement = false;
+        break;
+    default:
+        break;
+    }
+    return changement;
+}
+
+
 std::string litUneString (std::ifstream & entree){
     std::string uneChaine;
     while (true){
@@ -207,6 +254,19 @@ int litUnEntier (std::ifstream & entree){
         if ((!entree) || (uneChaine.substr(0,2) != "//")) break;
     }
     return stoi(uneChaine);
+}
+
+std::vector <unsigned> suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
+    std::vector <unsigned> historiqueSuppressions;
+    for(unsigned i (0); i <= KTailleGrille - 1; ++i) {
+        for(unsigned j (0); j <= KTailleGrille - 1; ++j) {
+            if(matrice[i][j] == 1) {
+                historiqueSuppressions.push_back(grille[i][j]);
+                grille[i][j] = 0;
+            }
+        }
+    }
+    return historiqueSuppressions;
 }
 
 // trie les scores lus dans le fichier
@@ -340,12 +400,12 @@ int lancer () {
 
         // Traitement du mouvement
         if (coordonnée == 'Z' || coordonnée == 'S' || coordonnée == 'A' || coordonnée == 'E') {
-            if (grille::faireUnMouvement(grille, pos, coordonnée)) {
+            if (faireUnMouvement(grille, pos, coordonnée)) {
                 combo = 0;
                 while(grille::auMoinsTroisParLigne(grille, matrice) | grille::auMoinsTroisParColonne(grille, matrice)) {
                     ++combo;
                     score += compteScore(matrice, combo); // met à jour le score
-                    std::vector <unsigned> l = grille::suppressionDansLaGrille(grille, matrice);
+                    std::vector <unsigned> l = suppressionDansLaGrille(grille, matrice);
                     for (unsigned terme : l) {
                         somme += terme;
                     }
