@@ -1,5 +1,5 @@
 /**
- * @file mode-infini/cpp
+ * @file mode-infini.cpp
  * A propos du jeu:
  * Commandes : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droite), ‘S’ (bas)
  * Règles: Cette fois, quand des bonbons disparaissent, ils sont

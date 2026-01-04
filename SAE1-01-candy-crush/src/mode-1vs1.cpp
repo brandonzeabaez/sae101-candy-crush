@@ -13,39 +13,39 @@
 */
 const unsigned KReset = 0;
 /**
- *  variable contenant le code pour changer la couleur dans la console en noir
+ *  constante contenant le code pour changer la couleur dans la console en noir
 */
-unsigned Noir    (30);
+const unsigned KNoir    (30);
 
 /**
- *  variable contenant le code pour changer la couleur dans la console en rouge
+ *  constante contenant le code pour changer la couleur dans la console en rouge
 */
-unsigned Rouge   (31);
+const unsigned KRouge   (31);
 
 /**
- *  variable contenant le code pour changer la couleur dans la console en vert
+ *  constante contenant le code pour changer la couleur dans la console en vert
 */
-unsigned Vert    (32);
+const unsigned KVert    (32);
 
 /**
- *  variable contenant le code pour changer la couleur dans la console en jaune
+ *  constante contenant le code pour changer la couleur dans la console en jaune
 */
-unsigned Jaune   (33);
+const unsigned KJaune   (33);
 
 /**
- *  variable contenant le code pour changer la couleur dans la console en bleu
+ *  constante contenant le code pour changer la couleur dans la console en bleu
 */
-unsigned Bleu    (34);
+const unsigned KBleu    (34);
 
 /**
- *  variable contenant le code pour changer la couleur dans la console en magenta
+ *  constante contenant le code pour changer la couleur dans la console en magenta
 */
-unsigned Magenta (35);
+const unsigned KMagenta (35);
 
 /**
- *  variable contenant le code pour changer la couleur dans la console en cyan
+ *  constante contenant le code pour changer la couleur dans la console en cyan
 */
-unsigned Cyan    (36);
+const unsigned KCyan    (36);
 
 /**
  * constante représentant la taille de la grille
