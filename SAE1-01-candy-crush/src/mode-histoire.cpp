@@ -1,9 +1,21 @@
+/**
+ * @file mode-histoire.cpp
+*/
 #include "../headers/mode-histoire.h"
 #include "../headers/utilitaires.h"
 
+/**
+ * constante qui sert de symbole nul
+*/
 const unsigned K2Impossible (999);
+/**
+ * constante qui détermine le nombre de bonbons/nombres dans la grille
+*/
 const unsigned K2NbDeBonbons (4);
 
+/**
+ * Lance le mode Histoire
+*/
 int modeHistoire::lancer ()
 {
     parametresDeLaPartie partie;

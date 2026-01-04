@@ -1,12 +1,21 @@
+/**
+ * @file mode-histoire.h
+*/
 #ifndef MODE_HISTOIRE_H
 #define MODE_HISTOIRE_H
 
 #include <vector>
 
-typedef std::vector <unsigned> CVLigne; // un type représentant une ligne de la grille
+/**
+ * un type représentant une ligne de la grille
+*/
+typedef std::vector <unsigned> CVLigne; //
 typedef std::vector <CVLigne> CMat; // un type représentant la grille
 typedef std::pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
+/**
+ * C'est là qu'on trouve toutes les fonctions qu'on utilisera pour notre mode histoire
+*/
 namespace modeHistoire{
     void rajoutDesBonbons(CMat & grille);
     void test1_row_column (CMat & matrice,CPosition p,unsigned h);

@@ -1,3 +1,6 @@
+/**
+ * @file utilitaires.h
+*/
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
 
@@ -6,6 +9,9 @@
 #include <iomanip>
 #include <cstdlib>
 
+/**
+ * la structure qui donne les paramètres d'une partie
+*/
 struct parametresDeLaPartie
 {
     size_t taille;
@@ -13,6 +19,9 @@ struct parametresDeLaPartie
     unsigned score;
 };
 
+/**
+ *
+*/
 namespace ansiEscapeAffichage
 {
     void couleurBonbon (const unsigned & bonbon);
@@ -20,6 +29,9 @@ namespace ansiEscapeAffichage
     void couleur (const unsigned & coul);
 }
 
+/**
+ *
+*/
 namespace manipulationDeVecteur
 {
     std::vector <unsigned> & suppressionDElement (std::vector <unsigned> & VTemporaire, const size_t & positionDuDebut);
@@ -27,6 +39,9 @@ namespace manipulationDeVecteur
     std::vector <unsigned> & deplacerUnElement (std::vector <unsigned> & VTemporaire, const size_t & positionDuDebut, const size_t & positionDeFin);
 }
 
+/**
+ *
+*/
 namespace manipulationDeLaGrille
 {
     typedef std::vector <unsigned> CVLigne; // un type représentant une ligne de la grille
@@ -40,12 +55,18 @@ namespace manipulationDeLaGrille
     void supprimmerUneLigne (CMatrice & grille, const CPosition & pos, unsigned  combien);
 }
 
+/**
+ *
+*/
 namespace testSurLaGrille
 {
     bool auMoinsTroisDansLaColonne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien);
     bool auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien);
 }
 
+/**
+ *
+*/
 namespace gestionHistoire
 {
     void dynamiqueDuJeu (manipulationDeLaGrille::CMatrice & matrice,manipulationDeLaGrille::CPosition p,unsigned h,unsigned & cpt);
