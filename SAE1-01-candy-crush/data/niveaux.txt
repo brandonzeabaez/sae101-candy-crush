@@ -17,3 +17,8 @@ Niveau 4
 Taille de la grille : 6
 Nombre de tours : 30
 Score à atteindre : 2000
+####
+Niveau 5
+Taille de la grille : 15
+Nombre de tours : 400
+Score à atteindre : 5000000

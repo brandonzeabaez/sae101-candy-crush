@@ -6,6 +6,7 @@
 #include "headers/mode-festival.h"
 #include "headers/mode-histoire.h"
 #include "headers/mode-infini.h"
+#include "headers/utilitaires.h"
 #include <iostream>
 #include <vector>
 
@@ -71,7 +72,7 @@ int main () {
         case '1':
             modeHistoire::lancer();
             break;
-        case '2':
+            case '2':
             modeInfini::lancer();
             break;
         case '3':
@@ -88,5 +89,6 @@ int main () {
         cout << "Retour au menu" << endl;
         affichage::retouralaligne(3);
     }
+
     return 0;
 }

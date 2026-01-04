@@ -370,7 +370,7 @@ void gestionHistoire::lectureFichier(const std::string & cheminDuFichier, const 
 void gestionHistoire::selecteurDeNiveaux(const unsigned & niveau,parametresDeLaPartie & partie)
 {
     std::ifstream ifs;
-    ifs.open("../data/niveaux.txt");
+    ifs.open("../../data/niveaux.txt");
     for (size_t j (0);j!=niveau && !ifs.eof();++j)
     {
         for(std::string chaine;!ifs.eof();)

@@ -5,15 +5,6 @@
 #include "../headers/utilitaires.h"
 
 /**
- * constante qui sert de symbole nul
-*/
-const unsigned K2Impossible (999);
-/**
- * constante qui détermine le nombre de bonbons/nombres dans la grille
-*/
-const unsigned K2NbDeBonbons (4);
-
-/**
  * Lance le mode Histoire
 */
 int modeHistoire::lancer ()
@@ -28,19 +19,23 @@ int modeHistoire::lancer ()
     manipulationDeLaGrille::CMatrice matrice;
     std::cout << "veuillez saisir votre niveau : ";
     std::cin >> choix;
-    choix = choix-1;
+    if(choix>=1 && choix<=5) choix = choix-1;
+    else choix=0;
     gestionHistoire::selecteurDeNiveaux(choix,partie);
+    std::cout << partie.taille <<std::endl;
+    std::cout << partie.nombreDeTours <<std::endl;
+    std::cout << partie.score <<std::endl;
     manipulationDeLaGrille::InitiationGrille(matrice,partie.taille);
     manipulationDeLaGrille::afficherLaGrille(matrice);
     gestionHistoire::dynamiqueDuJeu(matrice,position,combien,scoreActuelle);
     ansiEscapeAffichage::nettoyerLEcran();
     scoreActuelle = 0;
-    do
-    {
+     do
+     {
         std::string chaine;
         manipulationDeLaGrille::afficherLaGrille(matrice);
-        gestionHistoire::lectureFichier("../data/regles_du_mode_histoire.txt");
-        gestionHistoire::lectureFichier("../data/lore.txt",choix);
+        gestionHistoire::lectureFichier("../../data/regles_du_mode_histoire.txt");
+        gestionHistoire::lectureFichier("../../data/lore.txt",choix);
         std::cout << "voici votre score actuel : " << scoreActuelle << std::endl;
         std::cout << "voici vos nombres de tours restants : " << partie.nombreDeTours-nbDeTours << std::endl;
         std::cout << "veuillez mettre une direction valide : " << std::flush;
@@ -58,7 +53,7 @@ int modeHistoire::lancer ()
             manipulationDeLaGrille::faireUnMouvement(matrice,position,direction);
         }
         else
-        {
+         {
             gestionHistoire::dynamiqueDuJeu(matrice,position,combien,scoreActuelle);
             ++nbDeTours;
         }
