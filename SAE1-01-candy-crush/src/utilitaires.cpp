@@ -49,6 +49,10 @@ void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
         break;
     case 4 :
         couleur(KJaune+10); //bonbon jaune
+        break;
+    case 5:
+        couleur(KMAgenta+10); //bonbon spéciale magenta bombe
+        break;
     }
 }
 
@@ -107,7 +111,7 @@ void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
     {
         for (const unsigned & cellule : uneLigne) //On parcourt chaque ligne de la matrice
         {
-            if (cellule >= 1 && cellule <= KNbDeBonbons) //il faut que la cellule corresponde à un bonbon
+            if ((cellule >=1 && cellule <=KNbDeBonbons) || cellule ==5) //il faut que la cellule corresponde à un bonbon
             {
                 ansiEscapeAffichage::couleurBonbon(cellule); // on affecte chaque case à une couleur selon sa valeur
                 std::cout << std::setw(3) << cellule;// on espace de 2 et le 3eme charactere est la case
