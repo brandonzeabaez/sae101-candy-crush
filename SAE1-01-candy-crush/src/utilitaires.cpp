@@ -1,3 +1,6 @@
+/**
+ * @file utilitaires.cpp
+*/
 #include "../headers/utilitaires.h"
 #include <fstream>
 
@@ -12,16 +15,25 @@ const unsigned KReset   (0);
 const unsigned KNbDeBonbons (4);
 const unsigned KImpossible (999);
 
+/**
+ *
+*/
 void ansiEscapeAffichage::couleur (const unsigned & coul)
 {
     std::cout << "\033[" << coul <<"m"; //On change de couleur avec coul le code couleur
 }
 
+/**
+ *
+*/
 void ansiEscapeAffichage::nettoyerLEcran () {
     std::cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
     //Remplacer 2J par 3J c mieux
 }
 
+/**
+ *
+*/
 void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
 {
     switch (bonbon)
@@ -40,6 +52,9 @@ void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
     }
 }
 
+/**
+ *
+*/
 std::vector <unsigned> & manipulationDeVecteur::suppressionDElement (std::vector <unsigned> & VTemporaire, const std::size_t & positionDuDebut)
 {
     //l'élément qui se trouve dans cette position est supprimé du vector
@@ -47,6 +62,10 @@ std::vector <unsigned> & manipulationDeVecteur::suppressionDElement (std::vector
     VTemporaire.resize(VTemporaire.size()-1);
     return VTemporaire;
 }
+
+/**
+ *
+*/
 std::vector <unsigned> & manipulationDeVecteur::insertionDElement (std::vector <unsigned> & VTemporaire,const std::size_t pos, const unsigned val)
 {
     //On insère un élement à une certaine position
@@ -56,6 +75,9 @@ std::vector <unsigned> & manipulationDeVecteur::insertionDElement (std::vector <
     return VTemporaire;
 }
 
+/**
+ *
+*/
 std::vector <unsigned> & manipulationDeVecteur::deplacerUnElement (std::vector <unsigned> & VTemporaire, const std::size_t & positionDuDebut, const std::size_t & positionDeFin)
 {
     //On combine les fonctions suppressionDElement et Insertion pour déplacer un élement
@@ -66,6 +88,9 @@ std::vector <unsigned> & manipulationDeVecteur::deplacerUnElement (std::vector <
     return VTemporaire;
 }
 
+/**
+ *
+*/
 void manipulationDeLaGrille::InitiationGrille (CMatrice & grille, std::size_t taille)
 {
     grille.resize(taille, CVLigne (taille));
@@ -74,6 +99,10 @@ void manipulationDeLaGrille::InitiationGrille (CMatrice & grille, std::size_t ta
         for (unsigned & cas : ligne) cas = rand()%(KNbDeBonbons)+1; // on choisit un nb random entre [1,nbCandies]
     }
 }
+
+/**
+ *
+*/
 void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
 {
     ansiEscapeAffichage::nettoyerLEcran(); //on nettoie le screen
@@ -97,6 +126,9 @@ void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
     ansiEscapeAffichage::couleur(KReset); // on remet la couleur à la normale
 }
 
+/**
+ *
+*/
 void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition & pos,char direction)
 {
     if ( ((pos.first < grille.size()-1)) && ((pos.second < grille.size()-1)))
@@ -137,6 +169,9 @@ void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition
     }
 }
 
+/**
+ *
+*/
 void manipulationDeLaGrille::supprimmerUneColonne (CMatrice & grille, const CPosition & pos, unsigned  combien)
 {
     /*
@@ -152,6 +187,9 @@ void manipulationDeLaGrille::supprimmerUneColonne (CMatrice & grille, const CPos
     for (std::size_t i (0); i < grille.size() ;++i) grille[i][pos.first] = VTemporaire[i];
 }
 
+/**
+ *
+*/
 void manipulationDeLaGrille::supprimmerUneLigne (CMatrice & grille, const CPosition & pos, unsigned  combien)
 {
     /*
@@ -160,6 +198,9 @@ void manipulationDeLaGrille::supprimmerUneLigne (CMatrice & grille, const CPosit
     for (std::size_t i (pos.first); i < pos.first+combien; ++i) manipulationDeLaGrille::supprimmerUneColonne (grille,CPosition {i,pos.second},1);
 }
 
+/**
+ *
+*/
 bool testSurLaGrille::auMoinsTroisDansLaColonne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien)
 {
     bool siCEstAlignee (false);
@@ -212,6 +253,9 @@ bool testSurLaGrille::auMoinsTroisDansLaColonne (const manipulationDeLaGrille::C
     return siCEstAlignee;
 }
 
+/**
+ *
+*/
 bool testSurLaGrille::auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien)
 {
     bool siCEstAlignee (false);
@@ -264,6 +308,9 @@ bool testSurLaGrille::auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMa
     return siCEstAlignee;
 }
 
+/**
+ *
+*/
 void gestionHistoire::dynamiqueDuJeu (manipulationDeLaGrille::CMatrice & matrice, manipulationDeLaGrille::CPosition p, unsigned h, unsigned & cpt)
 {
     while(testSurLaGrille::auMoinsTroisDansLaLigne(matrice,p,h))
@@ -281,6 +328,10 @@ void gestionHistoire::dynamiqueDuJeu (manipulationDeLaGrille::CMatrice & matrice
         gestionHistoire::rajoutDesBonbons(matrice);
     }
 }
+
+/**
+ *
+*/
 void gestionHistoire::rajoutDesBonbons(manipulationDeLaGrille::CMatrice & grille)
 {
     for(manipulationDeLaGrille::CVLigne & ligne : grille)
@@ -291,6 +342,10 @@ void gestionHistoire::rajoutDesBonbons(manipulationDeLaGrille::CMatrice & grille
         }
     }
 }
+
+/**
+ *
+*/
 void gestionHistoire::lectureFichier(const std::string & cheminDuFichier, const size_t i)
 {
     std::ifstream ifs;
@@ -311,6 +366,10 @@ void gestionHistoire::lectureFichier(const std::string & cheminDuFichier, const 
     }
     ifs.close();
 }
+
+/**
+ *
+*/
 void gestionHistoire::selecteurDeNiveaux(const unsigned & niveau,parametresDeLaPartie & partie)
 {
     std::ifstream ifs;
@@ -334,6 +393,10 @@ void gestionHistoire::selecteurDeNiveaux(const unsigned & niveau,parametresDeLaP
     partie.score= std::stoul(gestionHistoire::lectureDeChiffresDansUneChaine (chaine));
     ifs.close();
 }
+
+/**
+ *
+*/
 std::string gestionHistoire::lectureDeChiffresDansUneChaine(const std::string & chaine)
 {
     std::string numeros;
@@ -343,6 +406,10 @@ std::string gestionHistoire::lectureDeChiffresDansUneChaine(const std::string & 
     }
     return numeros;
 }
+
+/**
+ *
+*/
 void gestionHistoire::melangeDesBonbons(manipulationDeLaGrille::CMatrice & grille)
 {
     for(size_t ligne (0) ; ligne < grille.size(); ++ligne)

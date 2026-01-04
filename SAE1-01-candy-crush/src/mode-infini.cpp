@@ -1,5 +1,10 @@
 /**
- * @file mode-infini.h
+ * @file mode-infini/cpp
+ * A propos du jeu:
+ * Commandes : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droite), ‘S’ (bas)
+ * Règles: Cette fois, quand des bonbons disparaissent, ils sont
+ * tout de suite remplacés ! Tenez compte des règles spéciales si
+ * vous voulez continuer à jouer !
 */
 #include "../headers/grille.h"
 #include "../headers/mode-infini.h"
@@ -8,70 +13,63 @@
 #include <fstream>
 #include <algorithm>
 
-/**
- * @file mode-infini/cpp
- * A propos du jeu:
- * Commandes : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droite), ‘S’ (bas)
- * Règles: Cette fois, quand des bonbons disparaissent, ils sont
- * tout de suite remplacés ! Tenez compte des règles spéciales si
- * vous voulez continuer à jouer !
-*/
+
 
 /**
  * constante pour réinitialiser
 */
 const unsigned KReset = 0;
 /**
- * variables contenant le code pour changer la couleur dans la console en noir
+ *  variable contenant le code pour changer la couleur dans la console en noir
 */
 unsigned Noir    (30);
 
 /**
- * variables contenant le code pour changer la couleur dans la console en rouge
+ *  variable contenant le code pour changer la couleur dans la console en rouge
 */
 unsigned Rouge   (31);
 
 /**
- * variables contenant le code pour changer la couleur dans la console en vert
+ *  variable contenant le code pour changer la couleur dans la console en vert
 */
 unsigned Vert    (32);
 
 /**
- * variables contenant le code pour changer la couleur dans la console en jaune
+ *  variable contenant le code pour changer la couleur dans la console en jaune
 */
 unsigned Jaune   (33);
 
 /**
- * variables contenant le code pour changer la couleur dans la console en bleu
+ *  variable contenant le code pour changer la couleur dans la console en bleu
 */
 unsigned Bleu    (34);
 
 /**
- * variables contenant le code pour changer la couleur dans la console en magenta
+ *  variable contenant le code pour changer la couleur dans la console en magenta
 */
 unsigned Magenta (35);
 
 /**
- * variables contenant le code pour changer la couleur dans la console en cyan
+ *  variable contenant le code pour changer la couleur dans la console en cyan
 */
 unsigned Cyan    (36);
 
 /**
  * constante représentant la taille de la grille
 */
-const unsigned KTailleGrille (10); // Longueur & largeur de la grille de jeu
+const unsigned KTailleGrille (10);
 /**
  * constante représentant le nombre de coups max
 */
-const unsigned KCoupsMax     (20); // Nombre de coups possibles dans la partie
+const unsigned KCoupsMax     (20);
 /**
  * constante représentant le nombre de bonbons/nombres
 */
-const unsigned KNbSymboles   (5); // Nombre de symboles représentés dans la grille
+const unsigned KNbSymboles   (5);
 /**
  * constante représentant un symbole nul
 */
-const unsigned KImpossible   (0); // symbole nul
+const unsigned KImpossible   (0);
 
 /**
  * Calcule le score (nb de blocs éliminés * combo)

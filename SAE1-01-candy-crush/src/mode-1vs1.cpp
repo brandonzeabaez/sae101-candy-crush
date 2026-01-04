@@ -1,29 +1,72 @@
-#include "../headers/grille.h"
-#include "../headers/mode-1vs1.h"
-
-/*
- * MODE 1VS1
+/**
+ *  @file mode-1vs1.cpp
  * commandes :
  *      Joueur 1 : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droite), ‘S’ (bas)
  *      Joueur 2 : ‘I’ (gauche), ‘O’ (haut), ‘P’ (droite), ‘L’ (bas)
 */
+#include "../headers/grille.h"
+#include "../headers/mode-1vs1.h"
 
-// constantes de couleurs d'affichage du terminal
-const unsigned KReset   (0);
-const unsigned KNoir    (30);
-const unsigned KRouge   (31);
-const unsigned KVert    (32);
-const unsigned KJaune   (33);
-const unsigned KBleu    (34);
-const unsigned KMAgenta (35);
-const unsigned KCyan    (36);
 
-const unsigned KTailleGrille (10); // Longueur & largeur de la grille de jeu
-const unsigned KCoupsMax     (20); // Nombre de coups possibles dans la partie
-const unsigned KNbSymboles   (5); // Nombre de symboles représentés dans la grille
-const unsigned KImpossible   (0); // symbole nul
+/**
+ * constante pour réinitialiser
+*/
+const unsigned KReset = 0;
+/**
+ *  variable contenant le code pour changer la couleur dans la console en noir
+*/
+unsigned Noir    (30);
 
-// Gestion des déplacements en fonction du joueur
+/**
+ *  variable contenant le code pour changer la couleur dans la console en rouge
+*/
+unsigned Rouge   (31);
+
+/**
+ *  variable contenant le code pour changer la couleur dans la console en vert
+*/
+unsigned Vert    (32);
+
+/**
+ *  variable contenant le code pour changer la couleur dans la console en jaune
+*/
+unsigned Jaune   (33);
+
+/**
+ *  variable contenant le code pour changer la couleur dans la console en bleu
+*/
+unsigned Bleu    (34);
+
+/**
+ *  variable contenant le code pour changer la couleur dans la console en magenta
+*/
+unsigned Magenta (35);
+
+/**
+ *  variable contenant le code pour changer la couleur dans la console en cyan
+*/
+unsigned Cyan    (36);
+
+/**
+ * constante représentant la taille de la grille
+*/
+const unsigned KTailleGrille (10);
+/**
+ * constante représentant le nombre de coups max
+*/
+const unsigned KCoupsMax     (20);
+/**
+ * constante représentant le nombre de bonbons/nombres
+*/
+const unsigned KNbSymboles   (5);
+/**
+ * constante représentant un symbole nul
+*/
+const unsigned KImpossible   (0);
+
+/**
+ * Gestion des déplacements en fonction du joueur
+*/
 bool mode1vs1::faireUnMouvement (CMat & grille, const CPosition & pos, const char direction, const unsigned KJoueur) {
     bool changement = true;
     if (KJoueur == 0) {
@@ -88,7 +131,9 @@ bool mode1vs1::faireUnMouvement (CMat & grille, const CPosition & pos, const cha
     return changement;
 }
 
-// Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
+/**
+ * Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
+*/
 void mode1vs1::gravite (CMat & grille) {
     unsigned saut (0);
     for(unsigned i (0); i <= KTailleGrille - 1; ++i) {
@@ -105,7 +150,9 @@ void mode1vs1::gravite (CMat & grille) {
     }
 }
 
-// Supprime les nombres identiques successifs de la grille (horizontalement et vertialement)
+/**
+ *  Supprime les nombres identiques successifs de la grille (horizontalement et vertialement)
+*/
 void mode1vs1::suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
     for(unsigned i (0); i <= KTailleGrille - 1; ++i)
         for(unsigned j (0); j <= KTailleGrille - 1; ++j)
@@ -113,7 +160,9 @@ void mode1vs1::suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
                 grille[i][j] = 0;
 }
 
-// Calcule le nombre de points gagnés pendant ce tour de jeu par le joueur en cours
+/**
+ * Calcule le nombre de points gagnés pendant ce tour de jeu par le joueur en cours
+*/
 unsigned mode1vs1::compteScore (CMat & matrice) {
     unsigned score (0);
     for(CVLine & ligne : matrice)
@@ -123,6 +172,9 @@ unsigned mode1vs1::compteScore (CMat & matrice) {
     return score;
 }
 
+/**
+ * lance le mode 1vs1
+*/
 int mode1vs1::lancer () {
     unsigned joueur (0); // Stocke le joueur en cours
     unsigned coups (0); // Stocke le nombre de coups joués
