@@ -1,3 +1,6 @@
+/**
+ * @file mode-infini.h
+*/
 #include "../headers/grille.h"
 #include "../headers/mode-infini.h"
 #include <iostream>
@@ -5,31 +8,74 @@
 #include <fstream>
 #include <algorithm>
 
-/*
-    Mode Infini
-    Commandes : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droite), ‘S’ (bas)
-    Règles: Cette fois, quand des bonbons disparaissent, ils sont
-    tout de suite remplacés ! Tenez compte des règles spéciales si
-    vous voulez continuer à jouer !
+/**
+ * @file mode-infini/cpp
+ * A propos du jeu:
+ * Commandes : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droite), ‘S’ (bas)
+ * Règles: Cette fois, quand des bonbons disparaissent, ils sont
+ * tout de suite remplacés ! Tenez compte des règles spéciales si
+ * vous voulez continuer à jouer !
 */
 
-// constantes de couleurs d'affichage du terminal
-const unsigned KReset   (0);
+/**
+ * constante pour réinitialiser
+*/
+const unsigned KReset = 0;
+/**
+ * variables contenant le code pour changer la couleur dans la console en noir
+*/
 unsigned Noir    (30);
+
+/**
+ * variables contenant le code pour changer la couleur dans la console en rouge
+*/
 unsigned Rouge   (31);
+
+/**
+ * variables contenant le code pour changer la couleur dans la console en vert
+*/
 unsigned Vert    (32);
+
+/**
+ * variables contenant le code pour changer la couleur dans la console en jaune
+*/
 unsigned Jaune   (33);
+
+/**
+ * variables contenant le code pour changer la couleur dans la console en bleu
+*/
 unsigned Bleu    (34);
+
+/**
+ * variables contenant le code pour changer la couleur dans la console en magenta
+*/
 unsigned Magenta (35);
+
+/**
+ * variables contenant le code pour changer la couleur dans la console en cyan
+*/
 unsigned Cyan    (36);
 
-
+/**
+ * constante représentant la taille de la grille
+*/
 const unsigned KTailleGrille (10); // Longueur & largeur de la grille de jeu
+/**
+ * constante représentant le nombre de coups max
+*/
 const unsigned KCoupsMax     (20); // Nombre de coups possibles dans la partie
+/**
+ * constante représentant le nombre de bonbons/nombres
+*/
 const unsigned KNbSymboles   (5); // Nombre de symboles représentés dans la grille
+/**
+ * constante représentant un symbole nul
+*/
 const unsigned KImpossible   (0); // symbole nul
 
-// Calcule le score (nb de blocs éliminés * combo)
+/**
+ * Calcule le score (nb de blocs éliminés * combo)
+*/
 unsigned modeInfini::compteScore (CMat & matrice, unsigned & combo) {
     unsigned score (0);
     for(CVLine & ligne : matrice)
@@ -39,7 +85,9 @@ unsigned modeInfini::compteScore (CMat & matrice, unsigned & combo) {
     return score;
 }
 
-// Remplace les zéros de la grille par des bonbons
+/**
+ * Remplace les zéros de la grille par des bonbons
+*/
 void modeInfini::remplacerZero (CMat & grille) {
     for (unsigned i=0 ; i <= KTailleGrille - 1; ++i) {
         for (unsigned j=0 ; j <= KTailleGrille - 1; ++j) {
@@ -49,8 +97,9 @@ void modeInfini::remplacerZero (CMat & grille) {
         }
     }
 }
-
-// Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
+/**
+  * Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
+*/
 void modeInfini::gravite (CMat & grille, std::string & sens) {
     unsigned saut (0);
     if (sens == "BAS") { // C'est à dire les bonbons descendent
@@ -121,6 +170,10 @@ void modeInfini::gravite (CMat & grille, std::string & sens) {
     }
 }
 
+
+/**
+ * Renvoie la position de tout les sept aprés avoir été mis dans la grille
+*/
 std::vector <CPosition> modeInfini::obtenirPositionsSept (CMat & grille) {
     std::vector <CPosition> positionsSept;
     for (unsigned i=0; i < KTailleGrille; ++i) {
@@ -136,6 +189,9 @@ std::vector <CPosition> modeInfini::obtenirPositionsSept (CMat & grille) {
     return positionsSept;
 }
 
+/**
+ * Change un nombre en un autre dans la grille
+*/
 void modeInfini::transformer(const unsigned & a, const unsigned & b, CMat & grille) {
     for (unsigned i = 0; i < KTailleGrille; ++i) {
         for (unsigned j = 0; j < KTailleGrille; ++j) {
@@ -146,7 +202,9 @@ void modeInfini::transformer(const unsigned & a, const unsigned & b, CMat & gril
     }
 }
 
-// Réalisation d'un objectif, dès qu'il est réalisé un nouveau apparait s'il n'est pas réalisé dans le nombre de tours imparti alors finito
+/**
+ * Réalisation d'un objectif, dès qu'il est réalisé un nouveau apparait s'il n'est pas réalisé dans le nombre de tours imparti alors finito
+*/
 bool modeInfini::regleRespectee(Regle & regle, CMat & grille, std::string & sensGravite, std::vector <CPosition> & posSept, unsigned & tribut, CPosition & pos, unsigned & somme, unsigned & combo, bool & tourNonJoue) {
     if (tourNonJoue) {
         return true;
@@ -203,7 +261,9 @@ bool modeInfini::regleRespectee(Regle & regle, CMat & grille, std::string & sens
     return true;
 }
 
-// Gestion des déplacements des bonbons de la grille
+/**
+ * Gestion des déplacements des bonbons de la grille
+*/
 bool modeInfini::faireUnMouvement (CMat & grille, const CPosition & pos, const char direction) {
     bool changement = true;
     switch (direction) {
@@ -237,7 +297,9 @@ bool modeInfini::faireUnMouvement (CMat & grille, const CPosition & pos, const c
     return changement;
 }
 
-
+/**
+ * Renvoie la lecture d'une string dans un fichier
+*/
 std::string modeInfini::litUneString (std::ifstream & entree){
     std::string uneChaine;
     while (true){
@@ -247,15 +309,20 @@ std::string modeInfini::litUneString (std::ifstream & entree){
     return uneChaine;
 }
 
+/**
+ * Renvoie la lecture d'un int dans un fichier
+*/
 int modeInfini::litUnEntier (std::ifstream & entree){
     std::string uneChaine;
-    while (true){
-        std::getline (entree, uneChaine);
-        if ((!entree) || (uneChaine.substr(0,2) != "//")) break;
+    while (std::getline (entree, uneChaine)){
+        if (!entree) break;
     }
-    return stoi(uneChaine);
+    return std::stoi(uneChaine);
 }
 
+/**
+ * Renvoie les éléments de la grille éliminés après les avoir supprimés selon les règles classiques d'un candy crush
+*/
 std::vector <unsigned> modeInfini::suppressionDansLaGrille (CMat & grille, const CMat & matrice) {
     std::vector <unsigned> historiqueSuppressions;
     for(unsigned i (0); i <= KTailleGrille - 1; ++i) {
@@ -269,18 +336,23 @@ std::vector <unsigned> modeInfini::suppressionDansLaGrille (CMat & grille, const
     return historiqueSuppressions;
 }
 
-// trie les scores lus dans le fichier
+/**
+  * trie les scores lus dans le fichier
+*/
 void modeInfini::triScores (std::vector <std::pair<std::string, unsigned>> & scores) {
     sort(scores.begin(), scores.end(), [](const std::pair<std::string, unsigned> &a, const std::pair<std::string, unsigned> &b){
         return a.second < b.second; }); // https://www.geeksforgeeks.org/cpp/sort-c-stl/
 }
 
+/**
+ * Lance le mode infini
+*/
 int modeInfini::lancer () {
     unsigned coups (0); // Stocke le nombre de coups joués
     unsigned score = 0; // Stock le score de chaque joueur
     CPosition pos; // Tuple des coordonnées du symbole à déplacer
     pos.first = 0; pos.second = 0; // valeur arbitraire pour pas casser le code à la premiere iteration
-    char coordonnée; // Variable temporaire qui stocke le choix utilisateur des coordonnées
+    char coordonnee; // Variable temporaire qui stocke le choix utilisateur des coordonnées
     CMat grille; // Grille qui contiendra les symboles
     CMat matrice; // Matrice qui contiendra les emplacements des symboles à supprimer
     std::string pseudo; // pseudo pour le record
@@ -291,24 +363,25 @@ int modeInfini::lancer () {
     unsigned somme = 0;
     unsigned combo = 1;
 
-    std::ifstream entree ("scores.txt"); // Là où on récupère les scores
-    std::vector <std::pair<std::string, unsigned>> scores;
-    while (entree.is_open() && !entree.eof()) { // s'il existe
-        std::pair<std::string, unsigned> temp;
-        temp.first = litUneString(entree);
-        temp.second = litUnEntier(entree);
-        scores.push_back(temp);
-    }
-    std::ofstream fichier ("scores.txt"); // Là où on va écrire les scores
-    if (!entree.is_open()) { // s'il existe pas
-        for (unsigned i=0; i<10; ++i) {
-            std::pair<std::string, unsigned> temp;
-            temp.first = "ANONYME";
-            temp.second = 0;
-            scores.push_back(temp);
-            fichier << "ANONYME" << std::endl << "0" << std::endl;
-        }
-    }
+    // PBLM avec la lecture de fichiers
+    // std::ifstream entree ("scores.txt"); // Là où on récupère les scores
+    // std::vector <std::pair<std::string, unsigned>> scores;
+    // while (entree.is_open() && !entree.eof()) { // s'il existe
+    //     std::pair<std::string, unsigned> temp;
+    //     temp.first = litUneString(entree);
+    //     temp.second = litUnEntier(entree);
+    //     scores.push_back(temp);
+    // }
+    // std::ofstream fichier ("scores.txt"); // Là où on va écrire les scores
+    // if (!entree.is_open()) { // s'il existe pas
+    //     for (unsigned i=0; i<10; ++i) {
+    //         std::pair<std::string, unsigned> temp;
+    //         temp.first = "ANONYME";
+    //         temp.second = 0;
+    //         scores.push_back(temp);
+    //         fichier << "ANONYME" << std::endl << "0" << std::endl;
+    //     }
+    // }
 
 
 
@@ -390,17 +463,17 @@ int modeInfini::lancer () {
 
         // récupération des coordonnées & la direction
         std::cout << "Abscisse : " << std::flush;
-        std::cin >> coordonnée;
-        pos.second = std::stoi(&coordonnée);
+        std::cin >> coordonnee;
+        pos.second = std::stoi(&coordonnee);
         std::cout << "Ordonnée : " << std::flush;
-        std::cin >> coordonnée;
-        pos.first = std::stoi(&coordonnée);
+        std::cin >> coordonnee;
+        pos.first = std::stoi(&coordonnee);
         std::cout << "direction : " << std::flush;
-        std::cin >> coordonnée;
+        std::cin >> coordonnee;
 
         // Traitement du mouvement
-        if (coordonnée == 'Z' || coordonnée == 'S' || coordonnée == 'A' || coordonnée == 'E') {
-            if (faireUnMouvement(grille, pos, coordonnée)) {
+        if (coordonnee == 'Z' || coordonnee == 'S' || coordonnee == 'A' || coordonnee == 'E') {
+            if (faireUnMouvement(grille, pos, coordonnee)) {
                 combo = 0;
                 while(grille::auMoinsTroisParLigne(grille, matrice) | grille::auMoinsTroisParColonne(grille, matrice)) {
                     ++combo;
@@ -445,20 +518,20 @@ int modeInfini::lancer () {
 
     std::cout << std::string(80, '^') << "- Score final : " << score << std::endl << "- Coups joués: " << coups << std::endl;
 
-    std::cout << std::endl << std::string(30, '*') << " tableau des scores " << std::string(30, '*') << std::endl;
+    // std::cout << std::endl << std::string(30, '*') << " tableau des scores " << std::string(30, '*') << std::endl;
 
-    std::pair<std::string, unsigned> resultat;
-    resultat.first = pseudo;
-    resultat.second = score;
-    scores.push_back(resultat);
-    triScores(scores);
-    // on garde que les 10 meilleurs scores
-    scores.resize(10);
+    // std::pair<std::string, unsigned> resultat;
+    // resultat.first = pseudo;
+    // resultat.second = score;
+    // scores.push_back(resultat);
+    // triScores(scores);
+    // // on garde que les 10 meilleurs scores
+    // scores.resize(10);
 
-    for (std::pair<std::string, unsigned> & p: scores) {
-        std::cout << "  -  " << p.first << " : " << p.second << std::endl;
-        fichier << p.first << std::endl << p.second << std::endl;
-    }
+    // for (std::pair<std::string, unsigned> & p: scores) {
+    //     std::cout << "  -  " << p.first << " : " << p.second << std::endl;
+    //     fichier << p.first << std::endl << p.second << std::endl;
+    // }
 
     return 0;
 }

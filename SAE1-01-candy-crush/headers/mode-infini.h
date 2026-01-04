@@ -1,14 +1,23 @@
+/**
+ * @file mode-infini.h
+*/
 #ifndef MODE_INFINI_H
 #define MODE_INFINI_H
 
 #include "grille.h"
 
+/**
+ * La structure qui permettra de définir nos règles pour le mode infini
+*/
 struct Regle {
     std::string id;
     std::string description;
     unsigned duree;
 };
 
+/**
+ * C'est là qu'on trouve toutes les fonctions qu'on utilisera pour notre mode infini
+*/
 namespace modeInfini{
     unsigned compteScore (CMat & matrice, unsigned & combo);
     void remplacerZero (CMat & grille);
