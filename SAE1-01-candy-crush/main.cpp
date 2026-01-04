@@ -41,7 +41,7 @@ int main () {
         {"3: Mode 1 VS 1"},
         {"4: Mode festival"}
     };
-    unsigned choix;
+    char choix;
 
     affichage::retouralaligne(3);
     for(string & ligne : logo) {
@@ -53,26 +53,30 @@ int main () {
     }
     affichage::retouralaligne(3);
 
-    cout << "> " << flush;
-    cin >> choix;
+    while(true) {
+        cout << "> " << flush;
+        cin >> choix;
 
-    switch(choix) {
-    case 1:
-        modeHistoire::lancer();
-        break;
-    case 2:
-        modeInfini::lancer();
-        break;
-    case 3:
-        mode1vs1::lancer();
-        break;
-    case 4:
-        modeFestival::lancer();
-        break;
-    default:
-        cout << "Aucun mode ne correpond à ce numéro" << endl;
-        break;
+        switch(choix) {
+        case '1':
+            modeHistoire::lancer();
+            break;
+        case '2':
+            modeInfini::lancer();
+            break;
+        case '3':
+            mode1vs1::lancer();
+            break;
+        case '4':
+            modeFestival::lancer();
+            break;
+        default:
+            cout << "Aucun mode ne correpond à ce numéro" << endl;
+            break;
+        }
+        affichage::retouralaligne(3);
+        cout << "Retour au menu" << endl;
+        affichage::retouralaligne(3);
     }
-
     return 0;
 }
