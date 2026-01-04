@@ -131,7 +131,7 @@ void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
 */
 void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition & pos,char direction)
 {
-    if ( ((pos.first < grille.size()-1)) && ((pos.second < grille.size()-1)))
+    if ( ((pos.first <= grille.size()-1)) && ((pos.second <= grille.size()-1)))
     {
         switch (tolower(direction)) //On interprete les char Maj
         {

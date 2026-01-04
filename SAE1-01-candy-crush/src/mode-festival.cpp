@@ -4,7 +4,16 @@
 
 const unsigned KImpossible (999);
 
-// verification de mouvement valide pour mode festival
+/**
+ * @brief  verification de mouvement valide pour mode festival
+ * @param grille
+ * @param x - abscisse
+ * @param y - ordonnée
+ * @param direction - caractere Z, S, A, E
+ * @return true or false si mouvement est valide pour mode festival
+ */
+
+
 bool modeFestival::mouvementValideFestival(const CMat& grille, int x, int y, char direction) {
     bool cond = true;
     if (x < 0 || x >= grille.size() || y < 0 || y >= grille.size()) {
@@ -35,11 +44,15 @@ bool modeFestival::mouvementValideFestival(const CMat& grille, int x, int y, cha
     return cond;
 }
 
-// calcule de score pour mode festival
+/**
+ * @brief calcule de score pour mode festival
+ * @param grille de jeu
+ * @return score final du joueur
+ */
 int modeFestival::calculeScore(const CMat & grille){
     int score = 0;
     for (size_t i = 0; i < grille.size(); ++i){
-        for (size_t j = 0; j < grille.size(); ++i){
+        for (size_t j = 0; j < grille.size(); ++j){
             if (grille[i][j] != KImpossible){
                 score = score + 5;
             }
@@ -48,7 +61,9 @@ int modeFestival::calculeScore(const CMat & grille){
     return score;
 }
 
-// jeu principale
+/**
+ * @brief le jeu entier de mode festival
+ */
 int modeFestival::lancer(){
     // initialisation des variables
     CMat grille;
@@ -56,15 +71,16 @@ int modeFestival::lancer(){
     unsigned combien;
     CPosition pos;
     char direction;
-    int coups = 11;
+    int coups = 10;
     int score = 0;
 
     manipulationDeLaGrille::InitiationGrille(grille, taille);
-
+    festival::rajouteBombe(grille);
+    manipulationDeLaGrille::afficherLaGrille(grille);
     // boucle principale du jeu
     while(coups != 0){
-        manipulationDeLaGrille::afficherLaGrille(grille);
-        std::cout << "Il reste " << coups << "coups" << std::endl;
+        std::cout << "-------------" << std::endl;
+        std::cout << "Il reste " << coups << " coups" << std::endl;
 
         // verifier si mouvement est valide
         bool valide = false;
@@ -85,30 +101,35 @@ int modeFestival::lancer(){
         }
         manipulationDeLaGrille::faireUnMouvement(grille, pos, direction);
 
-        // enleve les lignes et colonnes avec detection de bombe
-        while(testSurLaGrille::auMoinsTroisDansLaLigne(grille, pos, combien))
-        {
-            unsigned couleur = festival::detectionBombe(grille, pos, combien, true);
-            manipulationDeLaGrille::supprimmerUneLigne (grille, pos, combien);
-            if (couleur != 0){
-                festival::supprimeCouleurBombe(grille, couleur);
+        bool encoreDesCombos = true;
+        while (encoreDesCombos) {
+            encoreDesCombos = false;
+            // enleve les lignes et colonnes avec detection de bombe
+            if(testSurLaGrille::auMoinsTroisDansLaLigne(grille, pos, combien))
+            {
+                unsigned couleur = festival::detectionBombe(grille, pos, combien, true);
+                manipulationDeLaGrille::supprimmerUneLigne (grille, pos, combien);
+                if (couleur != 0){
+                    festival::supprimeCouleurBombe(grille, couleur);
+                }
+                festival::gravite(grille);
+                encoreDesCombos = true;
             }
-            festival::gravite(grille);
-            manipulationDeLaGrille::afficherLaGrille(grille);
-            std::cout << "------" << std::endl;
-        }
 
-        while(testSurLaGrille::auMoinsTroisDansLaColonne(grille, pos, combien))
-        {
-            unsigned couleur = festival::detectionBombe(grille, pos, combien, false);
-            manipulationDeLaGrille::supprimmerUneColonne (grille, pos, combien);
-            if (couleur != 0){
-                festival::supprimeCouleurBombe(grille, couleur);
+            if(testSurLaGrille::auMoinsTroisDansLaColonne(grille, pos, combien))
+            {
+                unsigned couleur = festival::detectionBombe(grille, pos, combien, false);
+                manipulationDeLaGrille::supprimmerUneColonne (grille, pos, combien);
+                if (couleur != 0){
+                    festival::supprimeCouleurBombe(grille, couleur);
+                }
+                festival::gravite(grille);
+                encoreDesCombos = true;
             }
-            festival::gravite(grille);
-            manipulationDeLaGrille::afficherLaGrille(grille);
-            std::cout << "------" << std::endl;
         }
+        std::cout << "-------------" << std::endl;
+        manipulationDeLaGrille::afficherLaGrille(grille);
+        --coups;
     }
 
 

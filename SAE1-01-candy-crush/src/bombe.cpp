@@ -3,13 +3,25 @@
 
 const unsigned KImpossible (999);
 
-// rajoute bombe (nombre 5) dans un endroit rnadom dans la grille
+/**
+ * @brief rajoute bombe (nombre 5) dans un endroit random dans la grille
+ * @param grille de jeu
+ */
 void festival::rajouteBombe(CMat & grille){
     size_t numPremier = rand()%(grille.size());
     size_t numDeuxieme = rand()%(grille.size());
     grille[numPremier][numDeuxieme] = 5;
 }
 
+/**
+ * @brief verifier si la ligne qui va etre eliminer est adjacent a une bombe
+ * @param grille de jeu
+ * @param pos - position de la ligne/colonne éliminée
+ * @param combien - nombre de case à verfier
+ * @param uneLigne - si c'est une ligne ou colonne
+ * @return si couleurCible == 0, il n'y a pas de bombe
+ *         si couleurCible != 0, on veut eliminer toutes cases avec couleurCible
+ */
 unsigned festival::detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne){
     // si couleurCible == 0, il n'y a pas de bombe
     // si couleurCible != 0, on veut eliminer toutes cases avec couleurCible
@@ -52,6 +64,11 @@ unsigned festival::detectionBombe(CMat & grille, const CPosition & pos, unsigned
 
 
 // enleve toute couleurCible dans la grille avec KImpossible
+/**
+ * @brief enleve toute couleurCible dans la grille avec KImpossible
+ * @param grille de jeu
+ * @param couleur cible - couleur éliminée
+ */
 void festival::supprimeCouleurBombe(CMat & grille, unsigned & couleurCible){
     for (size_t i = 0; i < grille.size(); ++i){
         for (size_t j = 0; j < grille.size(); ++j) {
@@ -63,6 +80,10 @@ void festival::supprimeCouleurBombe(CMat & grille, unsigned & couleurCible){
 }
 
 // Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
+/**
+ * @brief Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité)
+ * @param grille de jeu
+ */
 void festival::gravite (CMat & grille) {
     unsigned saut (0);
     for(unsigned i (0); i <= grille.size() - 1; ++i) {
