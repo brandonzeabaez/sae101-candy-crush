@@ -45,8 +45,8 @@ unsigned festival::detectionBombe(CMat & grille, const CPosition & pos, unsigned
 
         // on verifie chaque coord adjacent (haut, bas, gauche, droite)
         for (int coord = 0; coord < 4; ++coord){
-            int yAdjacent = y + coordVertical[coord];
-            int xAdjacent = x + coordHorizontal[coord];
+            unsigned int yAdjacent = y + coordVertical[coord];
+            unsigned int xAdjacent = x + coordHorizontal[coord];
             // on verifie si la case adjacent n'est pas au bord
             if (yAdjacent >= 0 && yAdjacent < grille.size() && xAdjacent >= 0 && xAdjacent < grille.size()){
                 // verification si case adjacent est une bombe (numero 5)

@@ -14,7 +14,7 @@ const unsigned KImpossible (999);
  */
 
 
-bool modeFestival::mouvementValideFestival(const CMat& grille, int x, int y, char direction) {
+bool modeFestival::mouvementValideFestival(const CMat& grille, unsigned int x, unsigned int y, char direction) {
     bool cond = true;
     if (x < 0 || x >= grille.size() || y < 0 || y >= grille.size()) {
         cond = false;

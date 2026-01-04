@@ -8,7 +8,7 @@ typedef std::vector <CVLine> CMat; // un type représentant la grille
 typedef std::pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
 namespace modeFestival{
-    bool mouvementValideFestival(const CMat & grille, int x, int y, char direction);
+    bool mouvementValideFestival(const CMat & grille, unsigned int x, unsigned int y, char direction);
     int calculeScore(const CMat & grille);
     int lancer ();
 }
