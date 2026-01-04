@@ -16,23 +16,23 @@ const unsigned KNbDeBonbons (4);
 const unsigned KImpossible (999);
 
 /**
- *
+ * On change de couleur avec coul le code couleur
 */
 void ansiEscapeAffichage::couleur (const unsigned & coul)
 {
-    std::cout << "\033[" << coul <<"m"; //On change de couleur avec coul le code couleur
+    std::cout << "\033[" << coul <<"m";
 }
 
 /**
- *
+ * on dit au terminal CTRL+L
 */
 void ansiEscapeAffichage::nettoyerLEcran () {
-    std::cout << "\033[H\033[2J"; //on dit au terminal CTRL+L
+    std::cout << "\033[H\033[2J";
     //Remplacer 2J par 3J c mieux
 }
 
 /**
- *
+ * Colore les bonbons
 */
 void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
 {
@@ -53,22 +53,20 @@ void ansiEscapeAffichage::couleurBonbon(const unsigned & bonbon)
 }
 
 /**
- *
+ * l'élément qui se trouve dans cette position est supprimé du vector
 */
 std::vector <unsigned> & manipulationDeVecteur::suppressionDElement (std::vector <unsigned> & VTemporaire, const std::size_t & positionDuDebut)
 {
-    //l'élément qui se trouve dans cette position est supprimé du vector
     for(std::size_t i (positionDuDebut);i < VTemporaire.size()-1;++i) VTemporaire[i]=VTemporaire[i+1];
     VTemporaire.resize(VTemporaire.size()-1);
     return VTemporaire;
 }
 
 /**
- *
+ * On insère un élement à une certaine position
 */
 std::vector <unsigned> & manipulationDeVecteur::insertionDElement (std::vector <unsigned> & VTemporaire,const std::size_t pos, const unsigned val)
 {
-    //On insère un élement à une certaine position
     VTemporaire.resize(VTemporaire.size()+1);
     for (std::size_t i = VTemporaire.size()-1; pos < i; --i) VTemporaire[i]=VTemporaire[i-1];
     VTemporaire[pos]=val;
@@ -76,11 +74,10 @@ std::vector <unsigned> & manipulationDeVecteur::insertionDElement (std::vector <
 }
 
 /**
- *
+ * On combine les fonctions suppressionDElement et Insertion pour déplacer un élement
 */
 std::vector <unsigned> & manipulationDeVecteur::deplacerUnElement (std::vector <unsigned> & VTemporaire, const std::size_t & positionDuDebut, const std::size_t & positionDeFin)
 {
-    //On combine les fonctions suppressionDElement et Insertion pour déplacer un élement
     //on met les valeurs à KImpossible
     unsigned val = VTemporaire[positionDuDebut];
     manipulationDeVecteur::suppressionDElement(VTemporaire,positionDuDebut);
@@ -89,7 +86,7 @@ std::vector <unsigned> & manipulationDeVecteur::deplacerUnElement (std::vector <
 }
 
 /**
- *
+ * Initialise la grille avec des bonbons dedans
 */
 void manipulationDeLaGrille::InitiationGrille (CMatrice & grille, std::size_t taille)
 {
@@ -101,7 +98,7 @@ void manipulationDeLaGrille::InitiationGrille (CMatrice & grille, std::size_t ta
 }
 
 /**
- *
+ * affiche la grille dans le terminal
 */
 void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
 {
@@ -127,7 +124,7 @@ void manipulationDeLaGrille::afficherLaGrille (const CMatrice & grille)
 }
 
 /**
- *
+ * gère les mouvements effectués par le joueur
 */
 void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition & pos,char direction)
 {
@@ -170,7 +167,7 @@ void manipulationDeLaGrille::faireUnMouvement (CMatrice & grille,const CPosition
 }
 
 /**
- *
+ * permet de supprimer une colonne
 */
 void manipulationDeLaGrille::supprimmerUneColonne (CMatrice & grille, const CPosition & pos, unsigned  combien)
 {
@@ -188,7 +185,7 @@ void manipulationDeLaGrille::supprimmerUneColonne (CMatrice & grille, const CPos
 }
 
 /**
- *
+ * permet de supprimer une colonne
 */
 void manipulationDeLaGrille::supprimmerUneLigne (CMatrice & grille, const CPosition & pos, unsigned  combien)
 {
@@ -199,7 +196,7 @@ void manipulationDeLaGrille::supprimmerUneLigne (CMatrice & grille, const CPosit
 }
 
 /**
- *
+ * renvoie un booleen selon s'il y a au moins trois fois le même bonbon à la suite en colonne
 */
 bool testSurLaGrille::auMoinsTroisDansLaColonne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien)
 {
@@ -254,7 +251,7 @@ bool testSurLaGrille::auMoinsTroisDansLaColonne (const manipulationDeLaGrille::C
 }
 
 /**
- *
+ * renvoie un booleen selon s'il y a au moins trois fois le même bonbon à la suite en ligne
 */
 bool testSurLaGrille::auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMatrice & grille, manipulationDeLaGrille::CPosition & pos, unsigned & combien)
 {
@@ -309,7 +306,7 @@ bool testSurLaGrille::auMoinsTroisDansLaLigne (const manipulationDeLaGrille::CMa
 }
 
 /**
- *
+ * gère la suppression des colonnes et lignes de bonbons alignés, leur affichage et le remplissage de la grille
 */
 void gestionHistoire::dynamiqueDuJeu (manipulationDeLaGrille::CMatrice & matrice, manipulationDeLaGrille::CPosition p, unsigned h, unsigned & cpt)
 {
@@ -330,7 +327,7 @@ void gestionHistoire::dynamiqueDuJeu (manipulationDeLaGrille::CMatrice & matrice
 }
 
 /**
- *
+ * ajoute des bonbons dans la grille
 */
 void gestionHistoire::rajoutDesBonbons(manipulationDeLaGrille::CMatrice & grille)
 {
@@ -344,7 +341,7 @@ void gestionHistoire::rajoutDesBonbons(manipulationDeLaGrille::CMatrice & grille
 }
 
 /**
- *
+ * extrait les données d'un ficher (pour l'histoire nottament)
 */
 void gestionHistoire::lectureFichier(const std::string & cheminDuFichier, const size_t i)
 {
@@ -368,7 +365,7 @@ void gestionHistoire::lectureFichier(const std::string & cheminDuFichier, const 
 }
 
 /**
- *
+ * permet de selctionner un niveau du mode histoire
 */
 void gestionHistoire::selecteurDeNiveaux(const unsigned & niveau,parametresDeLaPartie & partie)
 {
@@ -395,7 +392,7 @@ void gestionHistoire::selecteurDeNiveaux(const unsigned & niveau,parametresDeLaP
 }
 
 /**
- *
+ * permet de lire les chiffres dans une chaine
 */
 std::string gestionHistoire::lectureDeChiffresDansUneChaine(const std::string & chaine)
 {
@@ -408,7 +405,7 @@ std::string gestionHistoire::lectureDeChiffresDansUneChaine(const std::string & 
 }
 
 /**
- *
+ * mélange les bonbons de la grille
 */
 void gestionHistoire::melangeDesBonbons(manipulationDeLaGrille::CMatrice & grille)
 {

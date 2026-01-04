@@ -20,7 +20,7 @@ struct parametresDeLaPartie
 };
 
 /**
- *
+ * fonctions liées à l'affichage
 */
 namespace ansiEscapeAffichage
 {
@@ -30,7 +30,7 @@ namespace ansiEscapeAffichage
 }
 
 /**
- *
+ * fonctions liées à la manipulation de vecteurs
 */
 namespace manipulationDeVecteur
 {
@@ -40,7 +40,7 @@ namespace manipulationDeVecteur
 }
 
 /**
- *
+ * fonctions liées à la manipulation de la grille
 */
 namespace manipulationDeLaGrille
 {
@@ -56,7 +56,7 @@ namespace manipulationDeLaGrille
 }
 
 /**
- *
+ * fonctions relatives aux tests de certaines conditions dans la grille (lié au jeu)
 */
 namespace testSurLaGrille
 {
@@ -65,7 +65,7 @@ namespace testSurLaGrille
 }
 
 /**
- *
+ * fonctions liées à l'implémentation du mode histoire
 */
 namespace gestionHistoire
 {
