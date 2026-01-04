@@ -1,0 +1,22 @@
+\doxysection{mode-\/festival.h}
+\hypertarget{mode-festival_8h_source}{}\label{mode-festival_8h_source}\index{headers/mode-\/festival.h@{headers/mode-\/festival.h}}
+\mbox{\hyperlink{mode-festival_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MODE\_FESTIVAL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MODE\_FESTIVAL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ std::vector\ <unsigned>\ \mbox{\hyperlink{mode-festival_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49}{CVLine}};\ \textcolor{comment}{//\ un\ type\ représentant\ une\ ligne\ de\ la\ grille}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ std::vector\ <CVLine>\ \mbox{\hyperlink{mode-festival_8h_addd4f0b75fafec52973417249c213a6f}{CMat}};\ \textcolor{comment}{//\ un\ type\ représentant\ la\ grille}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ std::pair\ <unsigned,\ unsigned>\ \mbox{\hyperlink{mode-festival_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}};\ \textcolor{comment}{//\ une\ position\ dans\ la\ girlle}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemodeFestival}{modeFestival}}\{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacemodeFestival_a2a707876531365a2fe418fdfd300202e}{mouvementValideFestival}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacemodeFestival_adae4f8996d35e9eace7bc352fb163c7f}{calculeScore}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacemodeFestival_a270e2b84dee7094c94d4634eff01e7b6}{lancer}}\ ();}
+\DoxyCodeLine{00014\ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MODE\_FESTIVAL\_H}}
+
+\end{DoxyCode}

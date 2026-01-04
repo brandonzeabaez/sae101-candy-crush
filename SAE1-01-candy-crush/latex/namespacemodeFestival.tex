@@ -1,0 +1,66 @@
+\doxysection{mode\+Festival Namespace Reference}
+\hypertarget{namespacemodeFestival}{}\label{namespacemodeFestival}\index{modeFestival@{modeFestival}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacemodeFestival_a2a707876531365a2fe418fdfd300202e}{mouvement\+Valide\+Festival}} (const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, int x, int y, char direction)
+\begin{DoxyCompactList}\small\item\em verification de mouvement valide pour mode festival \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacemodeFestival_adae4f8996d35e9eace7bc352fb163c7f}{calcule\+Score}} (const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille)
+\begin{DoxyCompactList}\small\item\em calcule de score pour mode festival \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacemodeFestival_a270e2b84dee7094c94d4634eff01e7b6}{lancer}} ()
+\begin{DoxyCompactList}\small\item\em le jeu entier de mode festival \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemodeFestival_adae4f8996d35e9eace7bc352fb163c7f}\label{namespacemodeFestival_adae4f8996d35e9eace7bc352fb163c7f} 
+\index{modeFestival@{modeFestival}!calculeScore@{calculeScore}}
+\index{calculeScore@{calculeScore}!modeFestival@{modeFestival}}
+\doxysubsubsection{\texorpdfstring{calculeScore()}{calculeScore()}}
+{\footnotesize\ttfamily int mode\+Festival\+::calcule\+Score (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille }\end{DoxyParamCaption})}
+
+
+
+calcule de score pour mode festival 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grille} & de jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+score final du joueur 
+\end{DoxyReturn}
+\Hypertarget{namespacemodeFestival_a270e2b84dee7094c94d4634eff01e7b6}\label{namespacemodeFestival_a270e2b84dee7094c94d4634eff01e7b6} 
+\index{modeFestival@{modeFestival}!lancer@{lancer}}
+\index{lancer@{lancer}!modeFestival@{modeFestival}}
+\doxysubsubsection{\texorpdfstring{lancer()}{lancer()}}
+{\footnotesize\ttfamily int mode\+Festival\+::lancer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+le jeu entier de mode festival 
+
+\Hypertarget{namespacemodeFestival_a2a707876531365a2fe418fdfd300202e}\label{namespacemodeFestival_a2a707876531365a2fe418fdfd300202e} 
+\index{modeFestival@{modeFestival}!mouvementValideFestival@{mouvementValideFestival}}
+\index{mouvementValideFestival@{mouvementValideFestival}!modeFestival@{modeFestival}}
+\doxysubsubsection{\texorpdfstring{mouvementValideFestival()}{mouvementValideFestival()}}
+{\footnotesize\ttfamily bool mode\+Festival\+::mouvement\+Valide\+Festival (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{char}]{direction }\end{DoxyParamCaption})}
+
+
+
+verification de mouvement valide pour mode festival 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grille} & \\
+\hline
+{\em x} & -\/ abscisse \\
+\hline
+{\em y} & -\/ ordonnée \\
+\hline
+{\em direction} & -\/ caractere Z, S, A, E \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false si mouvement est valide pour mode festival 
+\end{DoxyReturn}

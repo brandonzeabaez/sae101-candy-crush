@@ -1,0 +1,40 @@
+\doxysection{headers/bombe.h File Reference}
+\hypertarget{bombe_8h}{}\label{bombe_8h}\index{headers/bombe.h@{headers/bombe.h}}
+{\ttfamily \#include "{}utilitaires.\+h"{}}\newline
+Include dependency graph for bombe.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{bombe_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{bombe_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacefestival}{festival}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{festival\+::\+CMat}} = \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}}
+\item 
+using \mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{festival\+::\+CPosition}} = \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacefestival_ab8daf2883f5786c2dcacbd4dccf4ae25}{festival\+::rajoute\+Bombe}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille)
+\begin{DoxyCompactList}\small\item\em rajoute bombe (nombre 5) dans un endroit random dans la grille \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{namespacefestival_a2a40735d58a3648e7ba49fbe4e722519}{festival\+::detection\+Bombe}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille, const \mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{CPosition}} \&pos, unsigned combien, bool une\+Ligne)
+\begin{DoxyCompactList}\small\item\em verifier si la ligne qui va etre eliminer est adjacent a une bombe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacefestival_a3ebdfc27ee7393570230d27ab1d3f726}{festival\+::supprime\+Couleur\+Bombe}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille, unsigned \&couleur\+Cible)
+\begin{DoxyCompactList}\small\item\em enleve toute couleur\+Cible dans la grille avec KImpossible \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacefestival_a4c822944c78d5c22d427f84e17d00d41}{festival\+::gravite}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille)
+\begin{DoxyCompactList}\small\item\em Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité) \end{DoxyCompactList}\end{DoxyCompactItemize}

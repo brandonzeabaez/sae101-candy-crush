@@ -1,0 +1,16 @@
+<map id="src/mode&#45;histoire.cpp" name="src/mode&#45;histoire.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="122,5,285,31"/>
+<area shape="rect" id="Node000002" href="$mode-histoire_8h.html" title=" " alt="" coords="5,79,199,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,33,131,73,128,68,186,28"/>
+<area shape="rect" id="Node000004" href="$utilitaires_8h.html" title=" " alt="" coords="223,79,387,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="221,28,278,68,275,73,218,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="73,152,136,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,104,106,138,101,139,100,104"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="273,107,150,150,148,145,272,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="163,152,243,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="290,106,233,146,230,142,287,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="267,152,342,177"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="307,104,307,138,302,138,302,104"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="367,152,432,177"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="321,102,374,141,371,146,318,106"/>
+</map>

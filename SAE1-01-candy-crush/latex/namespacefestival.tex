@@ -1,0 +1,109 @@
+\doxysection{festival Namespace Reference}
+\hypertarget{namespacefestival}{}\label{namespacefestival}\index{festival@{festival}}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} = \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}}
+\item 
+using \mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{CPosition}} = \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacefestival_ab8daf2883f5786c2dcacbd4dccf4ae25}{rajoute\+Bombe}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille)
+\begin{DoxyCompactList}\small\item\em rajoute bombe (nombre 5) dans un endroit random dans la grille \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{namespacefestival_a2a40735d58a3648e7ba49fbe4e722519}{detection\+Bombe}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille, const \mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{CPosition}} \&pos, unsigned combien, bool une\+Ligne)
+\begin{DoxyCompactList}\small\item\em verifier si la ligne qui va etre eliminer est adjacent a une bombe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacefestival_a3ebdfc27ee7393570230d27ab1d3f726}{supprime\+Couleur\+Bombe}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille, unsigned \&couleur\+Cible)
+\begin{DoxyCompactList}\small\item\em enleve toute couleur\+Cible dans la grille avec KImpossible \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacefestival_a4c822944c78d5c22d427f84e17d00d41}{gravite}} (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&grille)
+\begin{DoxyCompactList}\small\item\em Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacefestival_ad0333bd35182ff78699e998a98658d76}\label{namespacefestival_ad0333bd35182ff78699e998a98658d76} 
+\index{festival@{festival}!CMat@{CMat}}
+\index{CMat@{CMat}!festival@{festival}}
+\doxysubsubsection{\texorpdfstring{CMat}{CMat}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{festival\+::\+CMat}} = typedef \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}}}
+
+\Hypertarget{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}\label{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3} 
+\index{festival@{festival}!CPosition@{CPosition}}
+\index{CPosition@{CPosition}!festival@{festival}}
+\doxysubsubsection{\texorpdfstring{CPosition}{CPosition}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{festival\+::\+CPosition}} = typedef \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacefestival_a2a40735d58a3648e7ba49fbe4e722519}\label{namespacefestival_a2a40735d58a3648e7ba49fbe4e722519} 
+\index{festival@{festival}!detectionBombe@{detectionBombe}}
+\index{detectionBombe@{detectionBombe}!festival@{festival}}
+\doxysubsubsection{\texorpdfstring{detectionBombe()}{detectionBombe()}}
+{\footnotesize\ttfamily unsigned festival\+::detection\+Bombe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&}]{grille,  }\item[{const \mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{CPosition}} \&}]{pos,  }\item[{unsigned}]{combien,  }\item[{bool}]{une\+Ligne }\end{DoxyParamCaption})}
+
+
+
+verifier si la ligne qui va etre eliminer est adjacent a une bombe 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grille} & de jeu \\
+\hline
+{\em pos} & -\/ position de la ligne/colonne éliminée \\
+\hline
+{\em combien} & -\/ nombre de case à verfier \\
+\hline
+{\em une\+Ligne} & -\/ si c\textquotesingle{}est une ligne ou colonne \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si couleur\+Cible == 0, il n\textquotesingle{}y a pas de bombe si couleur\+Cible != 0, on veut eliminer toutes cases avec couleur\+Cible 
+\end{DoxyReturn}
+\Hypertarget{namespacefestival_a4c822944c78d5c22d427f84e17d00d41}\label{namespacefestival_a4c822944c78d5c22d427f84e17d00d41} 
+\index{festival@{festival}!gravite@{gravite}}
+\index{gravite@{gravite}!festival@{festival}}
+\doxysubsubsection{\texorpdfstring{gravite()}{gravite()}}
+{\footnotesize\ttfamily void festival\+::gravite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&}]{grille }\end{DoxyParamCaption})}
+
+
+
+Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grille} & de jeu \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacefestival_ab8daf2883f5786c2dcacbd4dccf4ae25}\label{namespacefestival_ab8daf2883f5786c2dcacbd4dccf4ae25} 
+\index{festival@{festival}!rajouteBombe@{rajouteBombe}}
+\index{rajouteBombe@{rajouteBombe}!festival@{festival}}
+\doxysubsubsection{\texorpdfstring{rajouteBombe()}{rajouteBombe()}}
+{\footnotesize\ttfamily void festival\+::rajoute\+Bombe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&}]{grille }\end{DoxyParamCaption})}
+
+
+
+rajoute bombe (nombre 5) dans un endroit random dans la grille 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grille} & de jeu \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacefestival_a3ebdfc27ee7393570230d27ab1d3f726}\label{namespacefestival_a3ebdfc27ee7393570230d27ab1d3f726} 
+\index{festival@{festival}!supprimeCouleurBombe@{supprimeCouleurBombe}}
+\index{supprimeCouleurBombe@{supprimeCouleurBombe}!festival@{festival}}
+\doxysubsubsection{\texorpdfstring{supprimeCouleurBombe()}{supprimeCouleurBombe()}}
+{\footnotesize\ttfamily void festival\+::supprime\+Couleur\+Bombe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}} \&}]{grille,  }\item[{unsigned \&}]{couleur\+Cible }\end{DoxyParamCaption})}
+
+
+
+enleve toute couleur\+Cible dans la grille avec KImpossible 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grille} & de jeu \\
+\hline
+{\em couleur} & cible -\/ couleur éliminée \\
+\hline
+\end{DoxyParams}

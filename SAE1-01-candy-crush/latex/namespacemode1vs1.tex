@@ -1,0 +1,52 @@
+\doxysection{mode1vs1 Namespace Reference}
+\hypertarget{namespacemode1vs1}{}\label{namespacemode1vs1}\index{mode1vs1@{mode1vs1}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacemode1vs1_a726015ebf68f57b022f1006d1f876594}{faire\+Un\+Mouvement}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, const \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} \&pos, const char direction, const unsigned KJoueur)
+\item 
+void \mbox{\hyperlink{namespacemode1vs1_abffd57e5e64d97d338d95cdef087bf88}{gravite}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacemode1vs1_aaca942afa8f5667ef05b7af6d4f15590}{suppression\+Dans\+La\+Grille}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\item 
+unsigned \mbox{\hyperlink{namespacemode1vs1_aed02d1911d73cae1c7d26787ccb45836}{compte\+Score}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\item 
+int \mbox{\hyperlink{namespacemode1vs1_ad847285f427da5cd147374362020c256}{lancer}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+C\textquotesingle{}est là qu\textquotesingle{}on trouve toutes les fonctions qu\textquotesingle{}on utilisera pour notre mode 1vs1 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemode1vs1_aed02d1911d73cae1c7d26787ccb45836}\label{namespacemode1vs1_aed02d1911d73cae1c7d26787ccb45836} 
+\index{mode1vs1@{mode1vs1}!compteScore@{compteScore}}
+\index{compteScore@{compteScore}!mode1vs1@{mode1vs1}}
+\doxysubsubsection{\texorpdfstring{compteScore()}{compteScore()}}
+{\footnotesize\ttfamily unsigned mode1vs1\+::compte\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{matrice }\end{DoxyParamCaption})}
+
+Calcule le nombre de points gagnés pendant ce tour de jeu par le joueur en cours \Hypertarget{namespacemode1vs1_a726015ebf68f57b022f1006d1f876594}\label{namespacemode1vs1_a726015ebf68f57b022f1006d1f876594} 
+\index{mode1vs1@{mode1vs1}!faireUnMouvement@{faireUnMouvement}}
+\index{faireUnMouvement@{faireUnMouvement}!mode1vs1@{mode1vs1}}
+\doxysubsubsection{\texorpdfstring{faireUnMouvement()}{faireUnMouvement()}}
+{\footnotesize\ttfamily bool mode1vs1\+::faire\+Un\+Mouvement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille,  }\item[{const \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} \&}]{pos,  }\item[{const char}]{direction,  }\item[{const unsigned}]{KJoueur }\end{DoxyParamCaption})}
+
+Gestion des déplacements en fonction du joueur \Hypertarget{namespacemode1vs1_abffd57e5e64d97d338d95cdef087bf88}\label{namespacemode1vs1_abffd57e5e64d97d338d95cdef087bf88} 
+\index{mode1vs1@{mode1vs1}!gravite@{gravite}}
+\index{gravite@{gravite}!mode1vs1@{mode1vs1}}
+\doxysubsubsection{\texorpdfstring{gravite()}{gravite()}}
+{\footnotesize\ttfamily void mode1vs1\+::gravite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille }\end{DoxyParamCaption})}
+
+Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité) \Hypertarget{namespacemode1vs1_ad847285f427da5cd147374362020c256}\label{namespacemode1vs1_ad847285f427da5cd147374362020c256} 
+\index{mode1vs1@{mode1vs1}!lancer@{lancer}}
+\index{lancer@{lancer}!mode1vs1@{mode1vs1}}
+\doxysubsubsection{\texorpdfstring{lancer()}{lancer()}}
+{\footnotesize\ttfamily int mode1vs1\+::lancer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+lance le mode 1vs1 \Hypertarget{namespacemode1vs1_aaca942afa8f5667ef05b7af6d4f15590}\label{namespacemode1vs1_aaca942afa8f5667ef05b7af6d4f15590} 
+\index{mode1vs1@{mode1vs1}!suppressionDansLaGrille@{suppressionDansLaGrille}}
+\index{suppressionDansLaGrille@{suppressionDansLaGrille}!mode1vs1@{mode1vs1}}
+\doxysubsubsection{\texorpdfstring{suppressionDansLaGrille()}{suppressionDansLaGrille()}}
+{\footnotesize\ttfamily void mode1vs1\+::suppression\+Dans\+La\+Grille (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille,  }\item[{const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{matrice }\end{DoxyParamCaption})}
+
+Supprime les nombres identiques successifs de la grille (horizontalement et vertialement) 

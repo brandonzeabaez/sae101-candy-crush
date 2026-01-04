@@ -1,3 +1,7 @@
+/**
+ * @file main.cpp
+*/
+
 #include "headers/mode-1vs1.h"
 #include "headers/mode-festival.h"
 #include "headers/mode-histoire.h"
@@ -7,19 +11,25 @@
 
 using namespace std;
 
-typedef vector <unsigned> CVLine; // un type représentant une ligne de la grille
-typedef vector <CVLine> CMat; // un type représentant la grille
-typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
+/**
+ * @mainpage
+ * Bienvenue dans la documentation de notre projet pour la SAE de R101
+ * réalisée par le groupe de BARTHÉLÉMY Gaël, LI Tommy, SEFFAH Marwane et ZEA BAEZ Brandon.
+ * N'hésitez pas à naviguer dans la documentation avec la barre de navigation plus haut !
+*/
 
-// constantes de couleurs d'affichage du terminal
-// const unsigned KReset   (0);
-// const unsigned KNoir    (30);
-// const unsigned KRouge   (31);
-// const unsigned KVert    (32);
-// const unsigned KJaune   (33);
-// const unsigned KBleu    (34);
-// const unsigned KMAgenta (35);
-// const unsigned KCyan    (36);
+/**
+ * un type représentant une ligne de la grille
+*/
+typedef std::vector <unsigned> CVLigne;
+/**
+ * un type représentant la grille
+*/
+typedef std::vector <CVLigne> CMat;
+/**
+ * un type représentant une position dans la grille
+*/
+typedef std::pair <unsigned, unsigned> CPosition;
 
 int main () {
     srand(time(nullptr));

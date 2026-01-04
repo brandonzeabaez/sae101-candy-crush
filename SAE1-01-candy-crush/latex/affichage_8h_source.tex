@@ -1,0 +1,50 @@
+\doxysection{affichage.\+h}
+\hypertarget{affichage_8h_source}{}\label{affichage_8h_source}\index{headers/affichage.h@{headers/affichage.h}}
+\mbox{\hyperlink{affichage_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AFFICHAGE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AFFICHAGE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a2ce1342a3c5061b4504256f7ac7cfda6}{KNoir}}\ \ \ \ (30);}
+\DoxyCodeLine{00005\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a87aab004c1c22814beb8db1ddaa9f628}{KRouge}}\ \ \ (31);}
+\DoxyCodeLine{00006\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a72260f87613d24d0cd1e7c8f646ca5f5}{KVert}}\ \ \ \ (32);}
+\DoxyCodeLine{00007\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a1b010b9694f3acc35b02b0a667d99094}{KJaune}}\ \ \ (33);}
+\DoxyCodeLine{00008\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a587a099b5228e39c74a525cb4ac5d786}{KBleu}}\ \ \ \ (34);}
+\DoxyCodeLine{00009\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a1295d80e3fdb251b7969f86740392db4}{KMAgenta}}\ (35);}
+\DoxyCodeLine{00010\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_aed31d4db92c112edda1291acad69dd00}{KCyan}}\ \ \ \ (36);}
+\DoxyCodeLine{00011\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a63a18a31ab7815ab0d4eb5c133e5d1a5}{KReset}}\ \ \ (0);}
+\DoxyCodeLine{00012\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_abefdc7a6c834b48d851c473c499f47af}{KNbDeBonbons}}\ (4);}
+\DoxyCodeLine{00013\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{affichage_8h_a94aebf6958c6248ced3af6d23d9ed9d4}{KImpossible}}\ (999);}
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceansiEscapeAffichage}{ansiEscapeAffichage}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceansiEscapeAffichage_a186af95d9f30d164e10a46b0f066b911}{couleurBonbon}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ bonbon);}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceansiEscapeAffichage_a5f0c5d540e9cd167029386f75ba524e0}{nettoyerLEcran}}\ ();}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceansiEscapeAffichage_a50cd0c8b13706d4387dc23967ee3af99}{couleur}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ coul);}
+\DoxyCodeLine{00019\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemanipulationDeVecteur}{manipulationDeVecteur}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ std::vector\ <unsigned>\ \&\ \mbox{\hyperlink{namespacemanipulationDeVecteur_ae35bef073b4b27b5517eac256d60a1e7}{suppressionDElement}}\ (std::vector\ <unsigned>\ \&\ VTemporaire,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&\ positionDuDebut);}
+\DoxyCodeLine{00024\ std::vector\ <unsigned>\ \&\ \mbox{\hyperlink{namespacemanipulationDeVecteur_a46b7aa0378b017bdb7df3d8ec55be7f6}{insertionDElement}}\ (std::vector\ <unsigned>\ \&\ VTemporaire,\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ pos,\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ val);}
+\DoxyCodeLine{00025\ std::vector\ <unsigned>\ \&\ \mbox{\hyperlink{namespacemanipulationDeVecteur_a872905e0afe34de7b05025729cd34e32}{deplacerUnElement}}\ (std::vector\ <unsigned>\ \&\ VTemporaire,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&\ positionDuDebut,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&\ positionDeFin);}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemanipulationDeLaGrille}{manipulationDeLaGrille}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ std::vector\ <unsigned>\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a95281552e4631b3223fc9df151c7cae7}{CVLigne}};\ \textcolor{comment}{//\ un\ type\ représentant\ une\ ligne\ de\ la\ grille}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ std::vector\ <CVLigne>\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}};\ \textcolor{comment}{//\ un\ type\ représentant\ la\ grille}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ std::pair\ <unsigned,\ unsigned>\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}};\ \textcolor{comment}{//\ une\ position\ dans\ la\ grille}}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_afb2de48e9ce271b926ed7ebd6c357a13}{InitiationGrille}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ grille,\ \textcolor{keywordtype}{size\_t}\ taille);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_ad6d302000f1749de830439b099932b09}{afficherLaGrille}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ grille);}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a3257d79fbe8aeffa8adc0f0fcc983ac4}{faireUnMouvement}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ grille,\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}}\ \&\ pos,\textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_abdd6614903241a18462b7da39ddaabbf}{supprimmerUneColonne}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ grille,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \ combien);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_af68a9a83696b47a4d3d80fe28933f15d}{supprimmerUneLigne}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ grille,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \ combien);}
+\DoxyCodeLine{00038\ \}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetestSurLaGrille}{testSurLaGrille}}}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacetestSurLaGrille_afc8a9eaf853ff76930dff5e2927c87f1}{auMoinsTroisDansLaColonne}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}}\ \&\ grille,\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulationDeLaGrille::CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \&\ combien);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacetestSurLaGrille_a29daa70f306da4b7790fe80fc0350f6d}{auMoinsTroisDansLaLigne}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}}\ \&\ grille,\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulationDeLaGrille::CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \&\ combien);}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ AFFICHAGE\_H}}
+
+\end{DoxyCode}

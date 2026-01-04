@@ -1,0 +1,88 @@
+\doxysection{headers/utilitaires.h File Reference}
+\hypertarget{utilitaires_8h}{}\label{utilitaires_8h}\index{headers/utilitaires.h@{headers/utilitaires.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+Include dependency graph for utilitaires.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{utilitaires_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utilitaires_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structparametresDeLaPartie}{parametres\+De\+La\+Partie}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceansiEscapeAffichage}{ansi\+Escape\+Affichage}}
+\item 
+namespace \mbox{\hyperlink{namespacemanipulationDeVecteur}{manipulation\+De\+Vecteur}}
+\item 
+namespace \mbox{\hyperlink{namespacemanipulationDeLaGrille}{manipulation\+De\+La\+Grille}}
+\item 
+namespace \mbox{\hyperlink{namespacetestSurLaGrille}{test\+Sur\+La\+Grille}}
+\item 
+namespace \mbox{\hyperlink{namespacegestionHistoire}{gestion\+Histoire}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ unsigned $>$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a95281552e4631b3223fc9df151c7cae7}{manipulation\+De\+La\+Grille\+::\+CVLigne}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a95281552e4631b3223fc9df151c7cae7}{CVLigne}} $>$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}}
+\item 
+typedef std\+::pair$<$ unsigned, unsigned $>$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceansiEscapeAffichage_a186af95d9f30d164e10a46b0f066b911}{ansi\+Escape\+Affichage\+::couleur\+Bonbon}} (const unsigned \&bonbon)
+\item 
+void \mbox{\hyperlink{namespaceansiEscapeAffichage_a5f0c5d540e9cd167029386f75ba524e0}{ansi\+Escape\+Affichage\+::nettoyer\+LEcran}} ()
+\item 
+void \mbox{\hyperlink{namespaceansiEscapeAffichage_a50cd0c8b13706d4387dc23967ee3af99}{ansi\+Escape\+Affichage\+::couleur}} (const unsigned \&coul)
+\item 
+std\+::vector$<$ unsigned $>$ \& \mbox{\hyperlink{namespacemanipulationDeVecteur_ae35bef073b4b27b5517eac256d60a1e7}{manipulation\+De\+Vecteur\+::suppression\+DElement}} (std\+::vector$<$ unsigned $>$ \&VTemporaire, const size\+\_\+t \&position\+Du\+Debut)
+\item 
+std\+::vector$<$ unsigned $>$ \& \mbox{\hyperlink{namespacemanipulationDeVecteur_a46b7aa0378b017bdb7df3d8ec55be7f6}{manipulation\+De\+Vecteur\+::insertion\+DElement}} (std\+::vector$<$ unsigned $>$ \&VTemporaire, const size\+\_\+t pos, const unsigned val)
+\item 
+std\+::vector$<$ unsigned $>$ \& \mbox{\hyperlink{namespacemanipulationDeVecteur_a872905e0afe34de7b05025729cd34e32}{manipulation\+De\+Vecteur\+::deplacer\+Un\+Element}} (std\+::vector$<$ unsigned $>$ \&VTemporaire, const size\+\_\+t \&position\+Du\+Debut, const size\+\_\+t \&position\+De\+Fin)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_afb2de48e9ce271b926ed7ebd6c357a13}{manipulation\+De\+La\+Grille\+::\+Initiation\+Grille}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, size\+\_\+t taille)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_ad6d302000f1749de830439b099932b09}{manipulation\+De\+La\+Grille\+::afficher\+La\+Grille}} (const \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_a3257d79fbe8aeffa8adc0f0fcc983ac4}{manipulation\+De\+La\+Grille\+::faire\+Un\+Mouvement}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, const \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}} \&pos, char direction)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_abdd6614903241a18462b7da39ddaabbf}{manipulation\+De\+La\+Grille\+::supprimmer\+Une\+Colonne}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, const \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}} \&pos, unsigned combien)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_af68a9a83696b47a4d3d80fe28933f15d}{manipulation\+De\+La\+Grille\+::supprimmer\+Une\+Ligne}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, const \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}} \&pos, unsigned combien)
+\item 
+bool \mbox{\hyperlink{namespacetestSurLaGrille_afc8a9eaf853ff76930dff5e2927c87f1}{test\+Sur\+La\+Grille\+::au\+Moins\+Trois\+Dans\+La\+Colonne}} (const \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille, \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}} \&pos, unsigned \&combien)
+\item 
+bool \mbox{\hyperlink{namespacetestSurLaGrille_a29daa70f306da4b7790fe80fc0350f6d}{test\+Sur\+La\+Grille\+::au\+Moins\+Trois\+Dans\+La\+Ligne}} (const \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille, \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}} \&pos, unsigned \&combien)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_a12ffd9a39c96914dab97ab5130ffb7aa}{gestion\+Histoire\+::dynamique\+Du\+Jeu}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&matrice, \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}} p, unsigned h, unsigned \&cpt)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_a9b6b23149a377fbd3928d812d9027394}{gestion\+Histoire\+::rajout\+Des\+Bonbons}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_afd0586d5cca907469f059c16f7b2e605}{gestion\+Histoire\+::lecture\+Fichier}} (const std\+::string \&chemin\+Du\+Fichier, const size\+\_\+t i=0)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_add82c2d5c1c55d5862f8feef9120313d}{gestion\+Histoire\+::selecteur\+De\+Niveaux}} (const unsigned \&niveau, \mbox{\hyperlink{structparametresDeLaPartie}{parametres\+De\+La\+Partie}} \&partie)
+\item 
+std\+::string \mbox{\hyperlink{namespacegestionHistoire_adfe4ebff49280082fedfa82e4dcb4c81}{gestion\+Histoire\+::lecture\+De\+Chiffres\+Dans\+Une\+Chaine}} (const std\+::string \&chaine)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_a610dc85f21f91e5e738e8e994e72c70b}{gestion\+Histoire\+::melange\+Des\+Bonbons}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille)
+\end{DoxyCompactItemize}

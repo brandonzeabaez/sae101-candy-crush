@@ -1,0 +1,151 @@
+\doxysection{headers/affichage.h File Reference}
+\hypertarget{affichage_8h}{}\label{affichage_8h}\index{headers/affichage.h@{headers/affichage.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for affichage.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{affichage_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceansiEscapeAffichage}{ansi\+Escape\+Affichage}}
+\item 
+namespace \mbox{\hyperlink{namespacemanipulationDeVecteur}{manipulation\+De\+Vecteur}}
+\item 
+namespace \mbox{\hyperlink{namespacemanipulationDeLaGrille}{manipulation\+De\+La\+Grille}}
+\item 
+namespace \mbox{\hyperlink{namespacetestSurLaGrille}{test\+Sur\+La\+Grille}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ unsigned $>$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a95281552e4631b3223fc9df151c7cae7}{manipulation\+De\+La\+Grille\+::\+CVLigne}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a95281552e4631b3223fc9df151c7cae7}{CVLigne}} $>$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}}
+\item 
+typedef std\+::pair$<$ unsigned, unsigned $>$ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a2ce1342a3c5061b4504256f7ac7cfda6}{KNoir}} (30)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a87aab004c1c22814beb8db1ddaa9f628}{KRouge}} (31)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a72260f87613d24d0cd1e7c8f646ca5f5}{KVert}} (32)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a1b010b9694f3acc35b02b0a667d99094}{KJaune}} (33)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a587a099b5228e39c74a525cb4ac5d786}{KBleu}} (34)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a1295d80e3fdb251b7969f86740392db4}{KMAgenta}} (35)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_aed31d4db92c112edda1291acad69dd00}{KCyan}} (36)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a63a18a31ab7815ab0d4eb5c133e5d1a5}{KReset}} (0)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_abefdc7a6c834b48d851c473c499f47af}{KNb\+De\+Bonbons}} (4)
+\item 
+const unsigned \mbox{\hyperlink{affichage_8h_a94aebf6958c6248ced3af6d23d9ed9d4}{KImpossible}} (999)
+\item 
+void \mbox{\hyperlink{namespaceansiEscapeAffichage_a186af95d9f30d164e10a46b0f066b911}{ansi\+Escape\+Affichage\+::couleur\+Bonbon}} (const unsigned \&bonbon)
+\item 
+void \mbox{\hyperlink{namespaceansiEscapeAffichage_a5f0c5d540e9cd167029386f75ba524e0}{ansi\+Escape\+Affichage\+::nettoyer\+LEcran}} ()
+\item 
+void \mbox{\hyperlink{namespaceansiEscapeAffichage_a50cd0c8b13706d4387dc23967ee3af99}{ansi\+Escape\+Affichage\+::couleur}} (const unsigned \&coul)
+\item 
+std\+::vector$<$ unsigned $>$ \& \mbox{\hyperlink{namespacemanipulationDeVecteur_ae35bef073b4b27b5517eac256d60a1e7}{manipulation\+De\+Vecteur\+::suppression\+DElement}} (std\+::vector$<$ unsigned $>$ \&VTemporaire, const size\+\_\+t \&position\+Du\+Debut)
+\item 
+std\+::vector$<$ unsigned $>$ \& \mbox{\hyperlink{namespacemanipulationDeVecteur_a46b7aa0378b017bdb7df3d8ec55be7f6}{manipulation\+De\+Vecteur\+::insertion\+DElement}} (std\+::vector$<$ unsigned $>$ \&VTemporaire, const size\+\_\+t pos, const unsigned val)
+\item 
+std\+::vector$<$ unsigned $>$ \& \mbox{\hyperlink{namespacemanipulationDeVecteur_a872905e0afe34de7b05025729cd34e32}{manipulation\+De\+Vecteur\+::deplacer\+Un\+Element}} (std\+::vector$<$ unsigned $>$ \&VTemporaire, const size\+\_\+t \&position\+Du\+Debut, const size\+\_\+t \&position\+De\+Fin)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_afb2de48e9ce271b926ed7ebd6c357a13}{manipulation\+De\+La\+Grille\+::\+Initiation\+Grille}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, size\+\_\+t taille)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_ad6d302000f1749de830439b099932b09}{manipulation\+De\+La\+Grille\+::afficher\+La\+Grille}} (const \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_a3257d79fbe8aeffa8adc0f0fcc983ac4}{manipulation\+De\+La\+Grille\+::faire\+Un\+Mouvement}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, const \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}} \&pos, char direction)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_abdd6614903241a18462b7da39ddaabbf}{manipulation\+De\+La\+Grille\+::supprimmer\+Une\+Colonne}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, const \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}} \&pos, unsigned combien)
+\item 
+void \mbox{\hyperlink{namespacemanipulationDeLaGrille_af68a9a83696b47a4d3d80fe28933f15d}{manipulation\+De\+La\+Grille\+::supprimmer\+Une\+Ligne}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}} \&grille, const \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}} \&pos, unsigned combien)
+\item 
+bool \mbox{\hyperlink{namespacetestSurLaGrille_afc8a9eaf853ff76930dff5e2927c87f1}{test\+Sur\+La\+Grille\+::au\+Moins\+Trois\+Dans\+La\+Colonne}} (const \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille, \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}} \&pos, unsigned \&combien)
+\item 
+bool \mbox{\hyperlink{namespacetestSurLaGrille_a29daa70f306da4b7790fe80fc0350f6d}{test\+Sur\+La\+Grille\+::au\+Moins\+Trois\+Dans\+La\+Ligne}} (const \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille, \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}} \&pos, unsigned \&combien)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{affichage_8h_a587a099b5228e39c74a525cb4ac5d786}\label{affichage_8h_a587a099b5228e39c74a525cb4ac5d786} 
+\index{affichage.h@{affichage.h}!KBleu@{KBleu}}
+\index{KBleu@{KBleu}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KBleu()}{KBleu()}}
+{\footnotesize\ttfamily const unsigned KBleu (\begin{DoxyParamCaption}\item[{34}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_aed31d4db92c112edda1291acad69dd00}\label{affichage_8h_aed31d4db92c112edda1291acad69dd00} 
+\index{affichage.h@{affichage.h}!KCyan@{KCyan}}
+\index{KCyan@{KCyan}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KCyan()}{KCyan()}}
+{\footnotesize\ttfamily const unsigned KCyan (\begin{DoxyParamCaption}\item[{36}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_a94aebf6958c6248ced3af6d23d9ed9d4}\label{affichage_8h_a94aebf6958c6248ced3af6d23d9ed9d4} 
+\index{affichage.h@{affichage.h}!KImpossible@{KImpossible}}
+\index{KImpossible@{KImpossible}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KImpossible()}{KImpossible()}}
+{\footnotesize\ttfamily const unsigned KImpossible (\begin{DoxyParamCaption}\item[{999}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_a1b010b9694f3acc35b02b0a667d99094}\label{affichage_8h_a1b010b9694f3acc35b02b0a667d99094} 
+\index{affichage.h@{affichage.h}!KJaune@{KJaune}}
+\index{KJaune@{KJaune}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KJaune()}{KJaune()}}
+{\footnotesize\ttfamily const unsigned KJaune (\begin{DoxyParamCaption}\item[{33}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_a1295d80e3fdb251b7969f86740392db4}\label{affichage_8h_a1295d80e3fdb251b7969f86740392db4} 
+\index{affichage.h@{affichage.h}!KMAgenta@{KMAgenta}}
+\index{KMAgenta@{KMAgenta}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KMAgenta()}{KMAgenta()}}
+{\footnotesize\ttfamily const unsigned KMAgenta (\begin{DoxyParamCaption}\item[{35}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_abefdc7a6c834b48d851c473c499f47af}\label{affichage_8h_abefdc7a6c834b48d851c473c499f47af} 
+\index{affichage.h@{affichage.h}!KNbDeBonbons@{KNbDeBonbons}}
+\index{KNbDeBonbons@{KNbDeBonbons}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KNbDeBonbons()}{KNbDeBonbons()}}
+{\footnotesize\ttfamily const unsigned KNb\+De\+Bonbons (\begin{DoxyParamCaption}\item[{4}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_a2ce1342a3c5061b4504256f7ac7cfda6}\label{affichage_8h_a2ce1342a3c5061b4504256f7ac7cfda6} 
+\index{affichage.h@{affichage.h}!KNoir@{KNoir}}
+\index{KNoir@{KNoir}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KNoir()}{KNoir()}}
+{\footnotesize\ttfamily const unsigned KNoir (\begin{DoxyParamCaption}\item[{30}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_a63a18a31ab7815ab0d4eb5c133e5d1a5}\label{affichage_8h_a63a18a31ab7815ab0d4eb5c133e5d1a5} 
+\index{affichage.h@{affichage.h}!KReset@{KReset}}
+\index{KReset@{KReset}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KReset()}{KReset()}}
+{\footnotesize\ttfamily const unsigned KReset (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_a87aab004c1c22814beb8db1ddaa9f628}\label{affichage_8h_a87aab004c1c22814beb8db1ddaa9f628} 
+\index{affichage.h@{affichage.h}!KRouge@{KRouge}}
+\index{KRouge@{KRouge}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KRouge()}{KRouge()}}
+{\footnotesize\ttfamily const unsigned KRouge (\begin{DoxyParamCaption}\item[{31}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{affichage_8h_a72260f87613d24d0cd1e7c8f646ca5f5}\label{affichage_8h_a72260f87613d24d0cd1e7c8f646ca5f5} 
+\index{affichage.h@{affichage.h}!KVert@{KVert}}
+\index{KVert@{KVert}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{KVert()}{KVert()}}
+{\footnotesize\ttfamily const unsigned KVert (\begin{DoxyParamCaption}\item[{32}]{ }\end{DoxyParamCaption})}
+

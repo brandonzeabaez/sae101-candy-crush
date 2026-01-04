@@ -1,0 +1,66 @@
+\doxysection{utilitaires.\+h}
+\hypertarget{utilitaires_8h_source}{}\label{utilitaires_8h_source}\index{headers/utilitaires.h@{headers/utilitaires.h}}
+\mbox{\hyperlink{utilitaires_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ AFFICHAGE\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ AFFICHAGE\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structparametresDeLaPartie}{parametresDeLaPartie}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structparametresDeLaPartie_a30ba7cbc04d3d3e54b7831cf1e35fc43}{taille}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{structparametresDeLaPartie_a30c3815fcfbb7c2b0c738e04037eeb34}{nombreDeTours}};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{structparametresDeLaPartie_a15f7dea7e356ac0574fe1fffd3255c57}{score}};}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceansiEscapeAffichage}{ansiEscapeAffichage}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceansiEscapeAffichage_a186af95d9f30d164e10a46b0f066b911}{couleurBonbon}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ bonbon);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceansiEscapeAffichage_a5f0c5d540e9cd167029386f75ba524e0}{nettoyerLEcran}}\ ();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceansiEscapeAffichage_a50cd0c8b13706d4387dc23967ee3af99}{couleur}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ coul);}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemanipulationDeVecteur}{manipulationDeVecteur}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ std::vector\ <unsigned>\ \&\ \mbox{\hyperlink{namespacemanipulationDeVecteur_ae35bef073b4b27b5517eac256d60a1e7}{suppressionDElement}}\ (std::vector\ <unsigned>\ \&\ VTemporaire,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&\ positionDuDebut);}
+\DoxyCodeLine{00038\ \ \ \ \ std::vector\ <unsigned>\ \&\ \mbox{\hyperlink{namespacemanipulationDeVecteur_a46b7aa0378b017bdb7df3d8ec55be7f6}{insertionDElement}}\ (std::vector\ <unsigned>\ \&\ VTemporaire,\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ pos,\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ val);}
+\DoxyCodeLine{00039\ \ \ \ \ std::vector\ <unsigned>\ \&\ \mbox{\hyperlink{namespacemanipulationDeVecteur_a872905e0afe34de7b05025729cd34e32}{deplacerUnElement}}\ (std::vector\ <unsigned>\ \&\ VTemporaire,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&\ positionDuDebut,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&\ positionDeFin);}
+\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemanipulationDeLaGrille}{manipulationDeLaGrille}}}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector\ <unsigned>\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a95281552e4631b3223fc9df151c7cae7}{CVLigne}};\ \textcolor{comment}{//\ un\ type\ représentant\ une\ ligne\ de\ la\ grille}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector\ <CVLigne>\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}};\ \textcolor{comment}{//\ un\ type\ représentant\ la\ grille}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{typedef}\ std::pair\ <unsigned,\ unsigned>\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}};\ \textcolor{comment}{//\ une\ position\ dans\ la\ grille}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_afb2de48e9ce271b926ed7ebd6c357a13}{InitiationGrille}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keywordtype}{size\_t}\ taille);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_ad6d302000f1749de830439b099932b09}{afficherLaGrille}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a3257d79fbe8aeffa8adc0f0fcc983ac4}{faireUnMouvement}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}}\ \&\ pos,\textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_abdd6614903241a18462b7da39ddaabbf}{supprimmerUneColonne}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \ combien);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_af68a9a83696b47a4d3d80fe28933f15d}{supprimmerUneLigne}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \ combien);}
+\DoxyCodeLine{00056\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetestSurLaGrille}{testSurLaGrille}}}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacetestSurLaGrille_afc8a9eaf853ff76930dff5e2927c87f1}{auMoinsTroisDansLaColonne}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulationDeLaGrille::CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \&\ combien);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacetestSurLaGrille_a29daa70f306da4b7790fe80fc0350f6d}{auMoinsTroisDansLaLigne}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulationDeLaGrille::CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \&\ combien);}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegestionHistoire}{gestionHistoire}}}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegestionHistoire_a12ffd9a39c96914dab97ab5130ffb7aa}{dynamiqueDuJeu}}\ (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}}\ \&\ matrice,\mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulationDeLaGrille::CPosition}}\ p,\textcolor{keywordtype}{unsigned}\ h,\textcolor{keywordtype}{unsigned}\ \&\ cpt);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegestionHistoire_a9b6b23149a377fbd3928d812d9027394}{rajoutDesBonbons}}(\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegestionHistoire_afd0586d5cca907469f059c16f7b2e605}{lectureFichier}}(\textcolor{keyword}{const}\ std::string\ \&\ cheminDuFichier,\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ i\ =\ 0);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegestionHistoire_add82c2d5c1c55d5862f8feef9120313d}{selecteurDeNiveaux}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ niveau,\mbox{\hyperlink{structparametresDeLaPartie}{parametresDeLaPartie}}\ \&\ partie);}
+\DoxyCodeLine{00076\ \ \ \ \ std::string\ \mbox{\hyperlink{namespacegestionHistoire_adfe4ebff49280082fedfa82e4dcb4c81}{lectureDeChiffresDansUneChaine}}(\textcolor{keyword}{const}\ std::string\ \&\ chaine);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegestionHistoire_a610dc85f21f91e5e738e8e994e72c70b}{melangeDesBonbons}}(\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00078\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ AFFICHAGE\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,84 @@
+\doxysection{headers/grille.h File Reference}
+\hypertarget{grille_8h}{}\label{grille_8h}\index{headers/grille.h@{headers/grille.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+Include dependency graph for grille.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{grille_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{grille_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceaffichage}{affichage}}
+\item 
+namespace \mbox{\hyperlink{namespacegrille}{grille}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ unsigned $>$ \mbox{\hyperlink{grille_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49}{CVLine}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{grille_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49}{CVLine}} $>$ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}
+\item 
+typedef std\+::pair$<$ unsigned, unsigned $>$ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceaffichage_a36bd75c31be46eeb3fc28cda16ca08ea}{affichage\+::changer\+Couleur}} (const unsigned \&couleur)
+\item 
+void \mbox{\hyperlink{namespaceaffichage_ac995cf5a593db87d6d073b428af3f70b}{affichage\+::effacer\+Ecran}} ()
+\item 
+void \mbox{\hyperlink{namespaceaffichage_a481a7a8219001dad53d3083edf37a780}{affichage\+::afficher\+Grille}} (const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille)
+\item 
+void \mbox{\hyperlink{namespaceaffichage_a05e4e7d8a23ef5652c43d08a72d28671}{affichage\+::retouralaligne}} (unsigned n)
+\item 
+std\+::string \& \mbox{\hyperlink{namespaceaffichage_ac5295800493dd1c6d06acbdb9207b6da}{affichage\+::centrer}} (std\+::string \&chaine, const unsigned long n)
+\item 
+std\+::string \& \mbox{\hyperlink{namespaceaffichage_afdfa7efe2e4f52af103c848c3e38ff31}{affichage\+::alignement}} (std\+::string \&chaine, const unsigned n)
+\item 
+void \mbox{\hyperlink{namespacegrille_a58d654d28c344aaa6288ff24c888055c}{grille\+::init\+Grille}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacegrille_abfd0ef043b887afafd75206f6b5c1adb}{grille\+::init\+Mat}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\item 
+void \mbox{\hyperlink{namespacegrille_a36d3bde1829e8cf7ed5ce288dabc3b42}{grille\+::modifie\+Ligne\+Matrice}} (const unsigned i, const unsigned j, const unsigned combien\+De\+Suite, \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\item 
+void \mbox{\hyperlink{namespacegrille_ae1e64951082f82b28520dde45db7cc37}{grille\+::modifie\+Colonne\+Matrice}} (const unsigned i, const unsigned j, const unsigned combien\+De\+Suite, \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\item 
+bool \mbox{\hyperlink{namespacegrille_a16f9e6fbf8531e14ad7eda6342c8c385}{grille\+::au\+Moins\+Trois\+Par\+Ligne}} (const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\item 
+bool \mbox{\hyperlink{namespacegrille_aa2154e74b160896574cc1d5382b45db5}{grille\+::au\+Moins\+Trois\+Par\+Colonne}} (const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{grille_8h_addd4f0b75fafec52973417249c213a6f}\label{grille_8h_addd4f0b75fafec52973417249c213a6f} 
+\index{grille.h@{grille.h}!CMat@{CMat}}
+\index{CMat@{CMat}!grille.h@{grille.h}}
+\doxysubsubsection{\texorpdfstring{CMat}{CMat}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\mbox{\hyperlink{grille_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49}{CVLine}}$>$ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}}
+
+\Hypertarget{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}\label{grille_8h_a7035b1162647d49def2c24ac2c2e30c1} 
+\index{grille.h@{grille.h}!CPosition@{CPosition}}
+\index{CPosition@{CPosition}!grille.h@{grille.h}}
+\doxysubsubsection{\texorpdfstring{CPosition}{CPosition}}
+{\footnotesize\ttfamily typedef std\+::pair$<$unsigned, unsigned$>$ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}}}
+
+\Hypertarget{grille_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49}\label{grille_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49} 
+\index{grille.h@{grille.h}!CVLine@{CVLine}}
+\index{CVLine@{CVLine}!grille.h@{grille.h}}
+\doxysubsubsection{\texorpdfstring{CVLine}{CVLine}}
+{\footnotesize\ttfamily typedef std\+::vector$<$unsigned$>$ \mbox{\hyperlink{grille_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49}{CVLine}}}
+

@@ -1,0 +1,22 @@
+\doxysection{bombe.\+h}
+\hypertarget{bombe_8h_source}{}\label{bombe_8h_source}\index{headers/bombe.h@{headers/bombe.h}}
+\mbox{\hyperlink{bombe_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BOMBE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BOMBE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utilitaires_8h}{utilitaires.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacefestival}{festival}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}}\ =\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulationDeLaGrille::CMatrice}};\ \textcolor{comment}{//\ un\ type\ représentant\ la\ grille}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{CPosition}}\ =\ \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulationDeLaGrille::CPosition}};\ \textcolor{comment}{//\ une\ position\ dans\ la\ girlle}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacefestival_ab8daf2883f5786c2dcacbd4dccf4ae25}{rajouteBombe}}(\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{namespacefestival_a2a40735d58a3648e7ba49fbe4e722519}{detectionBombe}}(\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacefestival_a7e000b609a36330fc0f91145fb6a75b3}{CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ combien,\ \textcolor{keywordtype}{bool}\ uneLigne);\ \textcolor{comment}{//\ je\ sais\ pas\ si\ c'est\ voulu\ de\ pas\ avoir\ mis\ de\ \&\ mais\ ok\ ?}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacefestival_a3ebdfc27ee7393570230d27ab1d3f726}{supprimeCouleurBombe}}(\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keywordtype}{unsigned}\ \&\ couleurCible);}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacefestival_a4c822944c78d5c22d427f84e17d00d41}{gravite}}\ (\mbox{\hyperlink{namespacefestival_ad0333bd35182ff78699e998a98658d76}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BOMBE\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,108 @@
+\doxysection{mode\+Infini Namespace Reference}
+\hypertarget{namespacemodeInfini}{}\label{namespacemodeInfini}\index{modeInfini@{modeInfini}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{namespacemodeInfini_a543401886c6dbb56587f9a23ff6ac031}{compte\+Score}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice, unsigned \&combo)
+\item 
+void \mbox{\hyperlink{namespacemodeInfini_a99e7cbc52ac4cf5f21982a2593195f6c}{remplacer\+Zero}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacemodeInfini_a00712f70699a5c4d2ba91a526ef9434c}{gravite}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, std\+::string \&sens)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} $>$ \mbox{\hyperlink{namespacemodeInfini_aabafdaf3b517ca170849dfce7dfaf534}{obtenir\+Positions\+Sept}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacemodeInfini_acafb4e41c5ab4fc6092ab310fb745af7}{transformer}} (const unsigned \&a, const unsigned \&b, \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille)
+\item 
+bool \mbox{\hyperlink{namespacemodeInfini_abc387c1702e3a67c2657163e0b430d05}{regle\+Respectee}} (\mbox{\hyperlink{structRegle}{Regle}} \&regle, \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, std\+::string \&sens\+Gravite, std\+::vector$<$ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} $>$ \&pos\+Sept, unsigned \&tribut, \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} \&pos, unsigned \&somme, unsigned \&combo, bool \&tour\+Non\+Joue)
+\item 
+bool \mbox{\hyperlink{namespacemodeInfini_adcfcd0ad4e503d496bb11fa320e82724}{faire\+Un\+Mouvement}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, const \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} \&pos, const char direction)
+\item 
+std\+::string \mbox{\hyperlink{namespacemodeInfini_afc158baa36a2e48c8a2deaee811c1208}{lit\+Une\+String}} (std\+::ifstream \&entree)
+\item 
+int \mbox{\hyperlink{namespacemodeInfini_ab8ce27a1620acf4dc347377200d5d911}{lit\+Un\+Entier}} (std\+::ifstream \&entree)
+\item 
+std\+::vector$<$ unsigned $>$ \mbox{\hyperlink{namespacemodeInfini_a4b8c123be91f196633d1bb8e4fd3fffa}{suppression\+Dans\+La\+Grille}} (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&grille, const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&matrice)
+\item 
+void \mbox{\hyperlink{namespacemodeInfini_a187c8f17c5c34694e710c7e722816dfe}{tri\+Scores}} (std\+::vector$<$ std\+::pair$<$ std\+::string, unsigned $>$ $>$ \&scores)
+\item 
+int \mbox{\hyperlink{namespacemodeInfini_aa43f079379a6ec5fc4c29e9dcc3206b0}{lancer}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+C\textquotesingle{}est là qu\textquotesingle{}on trouve toutes les fonctions qu\textquotesingle{}on utilisera pour notre mode infini 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemodeInfini_a543401886c6dbb56587f9a23ff6ac031}\label{namespacemodeInfini_a543401886c6dbb56587f9a23ff6ac031} 
+\index{modeInfini@{modeInfini}!compteScore@{compteScore}}
+\index{compteScore@{compteScore}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{compteScore()}{compteScore()}}
+{\footnotesize\ttfamily unsigned mode\+Infini\+::compte\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{matrice,  }\item[{unsigned \&}]{combo }\end{DoxyParamCaption})}
+
+Calcule le score (nb de blocs éliminés \texorpdfstring{$\ast$}{*} combo) \Hypertarget{namespacemodeInfini_adcfcd0ad4e503d496bb11fa320e82724}\label{namespacemodeInfini_adcfcd0ad4e503d496bb11fa320e82724} 
+\index{modeInfini@{modeInfini}!faireUnMouvement@{faireUnMouvement}}
+\index{faireUnMouvement@{faireUnMouvement}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{faireUnMouvement()}{faireUnMouvement()}}
+{\footnotesize\ttfamily bool mode\+Infini\+::faire\+Un\+Mouvement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille,  }\item[{const \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} \&}]{pos,  }\item[{const char}]{direction }\end{DoxyParamCaption})}
+
+Gestion des déplacements des bonbons de la grille \Hypertarget{namespacemodeInfini_a00712f70699a5c4d2ba91a526ef9434c}\label{namespacemodeInfini_a00712f70699a5c4d2ba91a526ef9434c} 
+\index{modeInfini@{modeInfini}!gravite@{gravite}}
+\index{gravite@{gravite}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{gravite()}{gravite()}}
+{\footnotesize\ttfamily void mode\+Infini\+::gravite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille,  }\item[{std\+::string \&}]{sens }\end{DoxyParamCaption})}
+
+Fait remonter les cases vides (comme si les symboles étaient soumis à la gravité) \Hypertarget{namespacemodeInfini_aa43f079379a6ec5fc4c29e9dcc3206b0}\label{namespacemodeInfini_aa43f079379a6ec5fc4c29e9dcc3206b0} 
+\index{modeInfini@{modeInfini}!lancer@{lancer}}
+\index{lancer@{lancer}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{lancer()}{lancer()}}
+{\footnotesize\ttfamily int mode\+Infini\+::lancer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Lance le mode infini \Hypertarget{namespacemodeInfini_ab8ce27a1620acf4dc347377200d5d911}\label{namespacemodeInfini_ab8ce27a1620acf4dc347377200d5d911} 
+\index{modeInfini@{modeInfini}!litUnEntier@{litUnEntier}}
+\index{litUnEntier@{litUnEntier}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{litUnEntier()}{litUnEntier()}}
+{\footnotesize\ttfamily int mode\+Infini\+::lit\+Un\+Entier (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{entree }\end{DoxyParamCaption})}
+
+Renvoie la lecture d\textquotesingle{}un int dans un fichier \Hypertarget{namespacemodeInfini_afc158baa36a2e48c8a2deaee811c1208}\label{namespacemodeInfini_afc158baa36a2e48c8a2deaee811c1208} 
+\index{modeInfini@{modeInfini}!litUneString@{litUneString}}
+\index{litUneString@{litUneString}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{litUneString()}{litUneString()}}
+{\footnotesize\ttfamily std\+::string mode\+Infini\+::lit\+Une\+String (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{entree }\end{DoxyParamCaption})}
+
+Renvoie la lecture d\textquotesingle{}une string dans un fichier \Hypertarget{namespacemodeInfini_aabafdaf3b517ca170849dfce7dfaf534}\label{namespacemodeInfini_aabafdaf3b517ca170849dfce7dfaf534} 
+\index{modeInfini@{modeInfini}!obtenirPositionsSept@{obtenirPositionsSept}}
+\index{obtenirPositionsSept@{obtenirPositionsSept}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{obtenirPositionsSept()}{obtenirPositionsSept()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} $>$ mode\+Infini\+::obtenir\+Positions\+Sept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille }\end{DoxyParamCaption})}
+
+Renvoie la position de tout les sept aprés avoir été mis dans la grille \Hypertarget{namespacemodeInfini_abc387c1702e3a67c2657163e0b430d05}\label{namespacemodeInfini_abc387c1702e3a67c2657163e0b430d05} 
+\index{modeInfini@{modeInfini}!regleRespectee@{regleRespectee}}
+\index{regleRespectee@{regleRespectee}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{regleRespectee()}{regleRespectee()}}
+{\footnotesize\ttfamily bool mode\+Infini\+::regle\+Respectee (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRegle}{Regle}} \&}]{regle,  }\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille,  }\item[{std\+::string \&}]{sens\+Gravite,  }\item[{std\+::vector$<$ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} $>$ \&}]{pos\+Sept,  }\item[{unsigned \&}]{tribut,  }\item[{\mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}} \&}]{pos,  }\item[{unsigned \&}]{somme,  }\item[{unsigned \&}]{combo,  }\item[{bool \&}]{tour\+Non\+Joue }\end{DoxyParamCaption})}
+
+Réalisation d\textquotesingle{}un objectif, dès qu\textquotesingle{}il est réalisé un nouveau apparait s\textquotesingle{}il n\textquotesingle{}est pas réalisé dans le nombre de tours imparti alors finito \Hypertarget{namespacemodeInfini_a99e7cbc52ac4cf5f21982a2593195f6c}\label{namespacemodeInfini_a99e7cbc52ac4cf5f21982a2593195f6c} 
+\index{modeInfini@{modeInfini}!remplacerZero@{remplacerZero}}
+\index{remplacerZero@{remplacerZero}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{remplacerZero()}{remplacerZero()}}
+{\footnotesize\ttfamily void mode\+Infini\+::remplacer\+Zero (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille }\end{DoxyParamCaption})}
+
+Remplace les zéros de la grille par des bonbons \Hypertarget{namespacemodeInfini_a4b8c123be91f196633d1bb8e4fd3fffa}\label{namespacemodeInfini_a4b8c123be91f196633d1bb8e4fd3fffa} 
+\index{modeInfini@{modeInfini}!suppressionDansLaGrille@{suppressionDansLaGrille}}
+\index{suppressionDansLaGrille@{suppressionDansLaGrille}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{suppressionDansLaGrille()}{suppressionDansLaGrille()}}
+{\footnotesize\ttfamily std\+::vector$<$ unsigned $>$ mode\+Infini\+::suppression\+Dans\+La\+Grille (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille,  }\item[{const \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{matrice }\end{DoxyParamCaption})}
+
+Renvoie les éléments de la grille éliminés après les avoir supprimés selon les règles classiques d\textquotesingle{}un candy crush \Hypertarget{namespacemodeInfini_acafb4e41c5ab4fc6092ab310fb745af7}\label{namespacemodeInfini_acafb4e41c5ab4fc6092ab310fb745af7} 
+\index{modeInfini@{modeInfini}!transformer@{transformer}}
+\index{transformer@{transformer}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{transformer()}{transformer()}}
+{\footnotesize\ttfamily void mode\+Infini\+::transformer (\begin{DoxyParamCaption}\item[{const unsigned \&}]{a,  }\item[{const unsigned \&}]{b,  }\item[{\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}} \&}]{grille }\end{DoxyParamCaption})}
+
+Change un nombre en un autre dans la grille \Hypertarget{namespacemodeInfini_a187c8f17c5c34694e710c7e722816dfe}\label{namespacemodeInfini_a187c8f17c5c34694e710c7e722816dfe} 
+\index{modeInfini@{modeInfini}!triScores@{triScores}}
+\index{triScores@{triScores}!modeInfini@{modeInfini}}
+\doxysubsubsection{\texorpdfstring{triScores()}{triScores()}}
+{\footnotesize\ttfamily void mode\+Infini\+::tri\+Scores (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ std\+::string, unsigned $>$ $>$ \&}]{scores }\end{DoxyParamCaption})}
+
+trie les scores lus dans le fichier 

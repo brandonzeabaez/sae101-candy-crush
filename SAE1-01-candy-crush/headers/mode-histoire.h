@@ -9,9 +9,15 @@
 /**
  * un type représentant une ligne de la grille
 */
-typedef std::vector <unsigned> CVLigne; //
-typedef std::vector <CVLigne> CMat; // un type représentant la grille
-typedef std::pair <unsigned, unsigned> CPosition; // une position dans la girlle
+typedef std::vector <unsigned> CVLigne;
+/**
+ * un type représentant la grille
+*/
+typedef std::vector <CVLigne> CMat;
+/**
+ * un type représentant une position dans la grille
+*/
+typedef std::pair <unsigned, unsigned> CPosition;
 
 /**
  * C'est là qu'on trouve toutes les fonctions qu'on utilisera pour notre mode histoire

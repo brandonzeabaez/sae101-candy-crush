@@ -1,0 +1,34 @@
+\doxysection{mode-\/infini.h}
+\hypertarget{mode-infini_8h_source}{}\label{mode-infini_8h_source}\index{headers/mode-\/infini.h@{headers/mode-\/infini.h}}
+\mbox{\hyperlink{mode-infini_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ MODE\_INFINI\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ MODE\_INFINI\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{grille_8h}{grille.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRegle}{Regle}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ std::string\ \mbox{\hyperlink{structRegle_aa15df124f707594cbe5818d17353d1cf}{id}};}
+\DoxyCodeLine{00014\ \ \ \ \ std::string\ \mbox{\hyperlink{structRegle_ae495a6604924dd67517f81355088557a}{description}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{structRegle_a3448f7e68ecba65c3cb298cdd774eab6}{duree}};}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemodeInfini}{modeInfini}}\{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{namespacemodeInfini_a543401886c6dbb56587f9a23ff6ac031}{compteScore}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ matrice,\ \textcolor{keywordtype}{unsigned}\ \&\ combo);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemodeInfini_a99e7cbc52ac4cf5f21982a2593195f6c}{remplacerZero}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemodeInfini_a00712f70699a5c4d2ba91a526ef9434c}{gravite}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ std::string\ \&\ sens);}
+\DoxyCodeLine{00025\ \ \ \ \ std::vector\ <CPosition>\ \mbox{\hyperlink{namespacemodeInfini_aabafdaf3b517ca170849dfce7dfaf534}{obtenirPositionsSept}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemodeInfini_acafb4e41c5ab4fc6092ab310fb745af7}{transformer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ b,\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacemodeInfini_abc387c1702e3a67c2657163e0b430d05}{regleRespectee}}(\mbox{\hyperlink{structRegle}{Regle}}\ \&\ regle,\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ std::string\ \&\ sensGravite,\ std::vector\ <CPosition>\ \&\ posSept,\ \textcolor{keywordtype}{unsigned}\ \&\ tribut,\ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}}\ \&\ pos,\ \textcolor{keywordtype}{unsigned}\ \&\ somme,\ \textcolor{keywordtype}{unsigned}\ \&\ combo,\ \textcolor{keywordtype}{bool}\ \&\ tourNonJoue);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacemodeInfini_adcfcd0ad4e503d496bb11fa320e82724}{faireUnMouvement}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}}\ \&\ pos,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ \mbox{\hyperlink{namespacemodeInfini_afc158baa36a2e48c8a2deaee811c1208}{litUneString}}\ (std::ifstream\ \&\ entree);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacemodeInfini_ab8ce27a1620acf4dc347377200d5d911}{litUnEntier}}\ (std::ifstream\ \&\ entree);}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector\ <unsigned>\ \mbox{\hyperlink{namespacemodeInfini_a4b8c123be91f196633d1bb8e4fd3fffa}{suppressionDansLaGrille}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ matrice);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacemodeInfini_a187c8f17c5c34694e710c7e722816dfe}{triScores}}\ (std::vector\ <std::pair<std::string,\ unsigned>>\ \&\ scores);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacemodeInfini_aa43f079379a6ec5fc4c29e9dcc3206b0}{lancer}}\ ();}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MODE\_INFINI\_H}}
+
+\end{DoxyCode}

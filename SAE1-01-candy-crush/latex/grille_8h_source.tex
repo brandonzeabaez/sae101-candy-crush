@@ -1,0 +1,37 @@
+\doxysection{grille.\+h}
+\hypertarget{grille_8h_source}{}\label{grille_8h_source}\index{headers/grille.h@{headers/grille.h}}
+\mbox{\hyperlink{grille_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRILLE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRILLE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::vector\ <unsigned>\ \mbox{\hyperlink{grille_8h_a8d0101883e9c8ccfcef43c9d6fa3cc49}{CVLine}};\ \textcolor{comment}{//\ un\ type\ représentant\ une\ ligne\ de\ la\ grille}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ std::vector\ <CVLine>\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}};\ \textcolor{comment}{//\ un\ type\ représentant\ la\ grille}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ std::pair\ <unsigned,\ unsigned>\ \mbox{\hyperlink{grille_8h_a7035b1162647d49def2c24ac2c2e30c1}{CPosition}};\ \textcolor{comment}{//\ une\ position\ dans\ la\ girlle}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceaffichage}{affichage}}\{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceaffichage_a36bd75c31be46eeb3fc28cda16ca08ea}{changerCouleur}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&\ couleur);}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceaffichage_ac995cf5a593db87d6d073b428af3f70b}{effacerEcran}}\ ();}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceaffichage_a481a7a8219001dad53d3083edf37a780}{afficherGrille}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceaffichage_a05e4e7d8a23ef5652c43d08a72d28671}{retouralaligne}}(\textcolor{keywordtype}{unsigned}\ n);}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ \&\ \mbox{\hyperlink{namespaceaffichage_ac5295800493dd1c6d06acbdb9207b6da}{centrer}}\ (std::string\ \&\ chaine,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ n);}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \&\ \mbox{\hyperlink{namespaceaffichage_afdfa7efe2e4f52af103c848c3e38ff31}{alignement}}\ (std::string\ \&\ chaine,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ n);}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegrille}{grille}}\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegrille_a58d654d28c344aaa6288ff24c888055c}{initGrille}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}});}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegrille_abfd0ef043b887afafd75206f6b5c1adb}{initMat}}\ (\mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ matrice);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegrille_a36d3bde1829e8cf7ed5ce288dabc3b42}{modifieLigneMatrice}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ i,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ j,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ combienDeSuite,\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ matrice);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegrille_ae1e64951082f82b28520dde45db7cc37}{modifieColonneMatrice}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ i,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ j,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ combienDeSuite,\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ matrice);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacegrille_a16f9e6fbf8531e14ad7eda6342c8c385}{auMoinsTroisParLigne}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ matrice);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacegrille_aa2154e74b160896574cc1d5382b45db5}{auMoinsTroisParColonne}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ \mbox{\hyperlink{namespacegrille}{grille}},\ \mbox{\hyperlink{grille_8h_addd4f0b75fafec52973417249c213a6f}{CMat}}\ \&\ matrice);}
+\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GRILLE\_H}}
+
+\end{DoxyCode}

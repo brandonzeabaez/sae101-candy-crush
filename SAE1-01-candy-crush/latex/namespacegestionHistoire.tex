@@ -1,0 +1,60 @@
+\doxysection{gestion\+Histoire Namespace Reference}
+\hypertarget{namespacegestionHistoire}{}\label{namespacegestionHistoire}\index{gestionHistoire@{gestionHistoire}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_a12ffd9a39c96914dab97ab5130ffb7aa}{dynamique\+Du\+Jeu}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&matrice, \mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}} p, unsigned h, unsigned \&cpt)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_a9b6b23149a377fbd3928d812d9027394}{rajout\+Des\+Bonbons}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_afd0586d5cca907469f059c16f7b2e605}{lecture\+Fichier}} (const std\+::string \&chemin\+Du\+Fichier, const size\+\_\+t i=0)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_add82c2d5c1c55d5862f8feef9120313d}{selecteur\+De\+Niveaux}} (const unsigned \&niveau, \mbox{\hyperlink{structparametresDeLaPartie}{parametres\+De\+La\+Partie}} \&partie)
+\item 
+std\+::string \mbox{\hyperlink{namespacegestionHistoire_adfe4ebff49280082fedfa82e4dcb4c81}{lecture\+De\+Chiffres\+Dans\+Une\+Chaine}} (const std\+::string \&chaine)
+\item 
+void \mbox{\hyperlink{namespacegestionHistoire_a610dc85f21f91e5e738e8e994e72c70b}{melange\+Des\+Bonbons}} (\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&grille)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+fonctions liées à l\textquotesingle{}implémentation du mode histoire 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacegestionHistoire_a12ffd9a39c96914dab97ab5130ffb7aa}\label{namespacegestionHistoire_a12ffd9a39c96914dab97ab5130ffb7aa} 
+\index{gestionHistoire@{gestionHistoire}!dynamiqueDuJeu@{dynamiqueDuJeu}}
+\index{dynamiqueDuJeu@{dynamiqueDuJeu}!gestionHistoire@{gestionHistoire}}
+\doxysubsubsection{\texorpdfstring{dynamiqueDuJeu()}{dynamiqueDuJeu()}}
+{\footnotesize\ttfamily void gestion\+Histoire\+::dynamique\+Du\+Jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&}]{matrice,  }\item[{\mbox{\hyperlink{namespacemanipulationDeLaGrille_a751a8b5a46302532984943a6503d097f}{manipulation\+De\+La\+Grille\+::\+CPosition}}}]{p,  }\item[{unsigned}]{h,  }\item[{unsigned \&}]{cpt }\end{DoxyParamCaption})}
+
+gère la suppression des colonnes et lignes de bonbons alignés, leur affichage et le remplissage de la grille \Hypertarget{namespacegestionHistoire_adfe4ebff49280082fedfa82e4dcb4c81}\label{namespacegestionHistoire_adfe4ebff49280082fedfa82e4dcb4c81} 
+\index{gestionHistoire@{gestionHistoire}!lectureDeChiffresDansUneChaine@{lectureDeChiffresDansUneChaine}}
+\index{lectureDeChiffresDansUneChaine@{lectureDeChiffresDansUneChaine}!gestionHistoire@{gestionHistoire}}
+\doxysubsubsection{\texorpdfstring{lectureDeChiffresDansUneChaine()}{lectureDeChiffresDansUneChaine()}}
+{\footnotesize\ttfamily std\+::string gestion\+Histoire\+::lecture\+De\+Chiffres\+Dans\+Une\+Chaine (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{chaine }\end{DoxyParamCaption})}
+
+permet de lire les chiffres dans une chaine \Hypertarget{namespacegestionHistoire_afd0586d5cca907469f059c16f7b2e605}\label{namespacegestionHistoire_afd0586d5cca907469f059c16f7b2e605} 
+\index{gestionHistoire@{gestionHistoire}!lectureFichier@{lectureFichier}}
+\index{lectureFichier@{lectureFichier}!gestionHistoire@{gestionHistoire}}
+\doxysubsubsection{\texorpdfstring{lectureFichier()}{lectureFichier()}}
+{\footnotesize\ttfamily void gestion\+Histoire\+::lecture\+Fichier (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{chemin\+Du\+Fichier,  }\item[{const size\+\_\+t}]{i = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+extrait les données d\textquotesingle{}un ficher (pour l\textquotesingle{}histoire nottament) \Hypertarget{namespacegestionHistoire_a610dc85f21f91e5e738e8e994e72c70b}\label{namespacegestionHistoire_a610dc85f21f91e5e738e8e994e72c70b} 
+\index{gestionHistoire@{gestionHistoire}!melangeDesBonbons@{melangeDesBonbons}}
+\index{melangeDesBonbons@{melangeDesBonbons}!gestionHistoire@{gestionHistoire}}
+\doxysubsubsection{\texorpdfstring{melangeDesBonbons()}{melangeDesBonbons()}}
+{\footnotesize\ttfamily void gestion\+Histoire\+::melange\+Des\+Bonbons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&}]{grille }\end{DoxyParamCaption})}
+
+mélange les bonbons de la grille \Hypertarget{namespacegestionHistoire_a9b6b23149a377fbd3928d812d9027394}\label{namespacegestionHistoire_a9b6b23149a377fbd3928d812d9027394} 
+\index{gestionHistoire@{gestionHistoire}!rajoutDesBonbons@{rajoutDesBonbons}}
+\index{rajoutDesBonbons@{rajoutDesBonbons}!gestionHistoire@{gestionHistoire}}
+\doxysubsubsection{\texorpdfstring{rajoutDesBonbons()}{rajoutDesBonbons()}}
+{\footnotesize\ttfamily void gestion\+Histoire\+::rajout\+Des\+Bonbons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacemanipulationDeLaGrille_aba9e451a0e50ae35c974af2e8e29817a}{manipulation\+De\+La\+Grille\+::\+CMatrice}} \&}]{grille }\end{DoxyParamCaption})}
+
+ajoute des bonbons dans la grille \Hypertarget{namespacegestionHistoire_add82c2d5c1c55d5862f8feef9120313d}\label{namespacegestionHistoire_add82c2d5c1c55d5862f8feef9120313d} 
+\index{gestionHistoire@{gestionHistoire}!selecteurDeNiveaux@{selecteurDeNiveaux}}
+\index{selecteurDeNiveaux@{selecteurDeNiveaux}!gestionHistoire@{gestionHistoire}}
+\doxysubsubsection{\texorpdfstring{selecteurDeNiveaux()}{selecteurDeNiveaux()}}
+{\footnotesize\ttfamily void gestion\+Histoire\+::selecteur\+De\+Niveaux (\begin{DoxyParamCaption}\item[{const unsigned \&}]{niveau,  }\item[{\mbox{\hyperlink{structparametresDeLaPartie}{parametres\+De\+La\+Partie}} \&}]{partie }\end{DoxyParamCaption})}
+
+permet de selctionner un niveau du mode histoire 
