@@ -8,7 +8,7 @@
 
 typedef std::vector <unsigned> CVLine; // un type représentant une ligne de la grille
 typedef std::vector <CVLine> CMat; // un type représentant la grille
-typedef std::pair <unsigned, unsigned> CPosition; // une position dans la girlle
+typedef std::pair <unsigned, unsigned> CPosition; // une position dans la grille
 
 namespace affichage{
     void changerCouleur (const unsigned & couleur);

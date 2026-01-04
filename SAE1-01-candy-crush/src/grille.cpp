@@ -61,7 +61,7 @@ void grille::initGrille (CMat & grille) {
         for (unsigned j (0); j < KTailleGrille; ++j) {
             do{
                 grille[i][j] = rand() % KNbSymboles + 1;
-            }while(i >= 2 && j >= 2 && ((grille[i][j] == grille[i-1][j] && grille[i][j] == grille[i-2][j]) || (grille[i][j] == grille[i][j-1] && grille[i][j] == grille[i][j-2])));
+            }while((i >= 2 && ((grille[i][j] == grille[i-1][j] && grille[i][j] == grille[i-2][j])) || (j >= 2 && (grille[i][j] == grille[i][j-1] && grille[i][j] == grille[i][j-2]))));
         }
     }
 }
@@ -122,7 +122,6 @@ void grille::modifieLigneMatrice (const unsigned i, const unsigned j, const unsi
 // Modifie la matrice en fonction des suites de nombres identiques sur les mêmes colonnes
 void grille::modifieColonneMatrice (const unsigned i, const unsigned j, const unsigned combienDeSuite, CMat & matrice) {
     for(unsigned k (j + combienDeSuite); k-- > j; ) {
-        std::cout << k << std::endl;
         if(matrice[k][i] != 1)
             matrice[k][i] = 1;
     }}

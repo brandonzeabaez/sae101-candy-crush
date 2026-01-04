@@ -6,10 +6,10 @@
 namespace festival
 {
     using CMat = manipulationDeLaGrille::CMatrice; // un type représentant la grille
-    using CPosition = manipulationDeLaGrille::CPosition; // une position dans la girlle
+    using CPosition = manipulationDeLaGrille::CPosition; // une position dans la grille
 
     void rajouteBombe(CMat & grille);
-    unsigned detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne); // je sais pas si c'est voulu de pas avoir mis de & mais ok ?
+    unsigned detectionBombe(CMat & grille, const CPosition & pos, unsigned combien, bool uneLigne);
     void supprimeCouleurBombe(CMat & grille, unsigned & couleurCible);
     void gravite (CMat & grille);
 }

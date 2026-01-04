@@ -1,8 +1,8 @@
 /**
  *  @file mode-1vs1.cpp
  * commandes :
- *      Joueur 1 : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droite), ‘S’ (bas)
- *      Joueur 2 : ‘I’ (gauche), ‘O’ (haut), ‘P’ (droite), ‘L’ (bas)
+ *      Joueur 1 : ‘A’ (gauche), ‘Z’ (haut), ‘E’ (droit), ‘S’ (bas)
+ *      Joueur 2 : ‘I’ (gauche), ‘O’ (haut), ‘P’ (droit), ‘L’ (bas)
 */
 #include "../headers/grille.h"
 #include "../headers/mode-1vs1.h"
@@ -178,9 +178,9 @@ unsigned mode1vs1::compteScore (CMat & matrice) {
 int mode1vs1::lancer () {
     unsigned joueur (0); // Stocke le joueur en cours
     unsigned coups (0); // Stocke le nombre de coups joués
-    std::pair <unsigned, unsigned> score (std::pair(0, 0)); // Stock le score de chaque joueur
+    std::pair <unsigned, unsigned> score (std::pair(0, 0)); // Stocke le score de chaque joueur
     CPosition pos; // Tuple des coordonnées du symbole à déplacer
-    char coordonnée; // Variable temporaire qui stocke le choix utilisateur des coordonnées
+    char coordonnée; // Variable temporaire qui stocke les choix utilisateur des coordonnées
     CMat grille; // Grille qui contiendra les symboles
     CMat matrice; // Matrice qui contiendra les emplacements des symboles à supprimer
 
